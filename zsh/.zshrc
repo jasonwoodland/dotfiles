@@ -131,11 +131,7 @@ alias rg="rg -i \
   --colors column:none \
   --colors path:none \
   --colors path:style:bold"
-alias sns='~/Projects/sn/tmux-start.sh'
-alias c='~/Projects/sn/client'
-alias s='~/Projects/sn/server'
 alias t="track"
-alias track-node="~/.config/yarn/global/node_modules/.bin/track"
 
 
 rnd_alnum() {
@@ -190,6 +186,32 @@ tmux-session() {
   tmux new-session -c $selected -d -s $dirname && tmux switch-client -t $dirname || tmux new -c $selected -A -s $dirname
 }
 alias ts=tmux-session
+
+nvim-session() {
+  if [[ $# -eq 1 ]]; then
+    selected=$1
+  else
+    items=(
+      ~/ispec/*/
+      ~/ispec/*/go/
+      ~/ispec/*/*/apps/*/
+      ~/Projects/*/
+      ~/Projects/cone/
+      ~/Projects/cone/*/
+    )
+
+    selected=`printf "%s\n" "${items[@]}" | sort | fzf`
+  fi
+
+  pushd $selected >/dev/null
+  if [[ -f Session.vim ]]; then
+    nvim -S
+  else
+    nvim
+  fi
+  popd >/dev/null
+}
+alias v=nvim-session
 
 export FZF_DEFAULT_OPTS='
   --color=fg:-1,bg:-1,hl:-1
