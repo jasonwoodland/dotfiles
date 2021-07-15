@@ -1,0 +1,41 @@
+[user]
+	name = Jason Woodland
+	email = me@jasonwoodland.com
+[core]
+	editor = vim
+	excludesfile = /Users/jason/.gitignore_global
+	abbrev = 8
+[color]
+	ui = true
+[format]
+	pretty = oneline
+[alias]
+        l = log --oneline -10 --reverse --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
+        lg = log --oneline --graph --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
+[push]
+	default = current
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/
+[log]
+	abbrevcommit = yes
+[branch]
+	autosetupmerge = always
+[pull]
+	default = current
+	rebase = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
+[diff]
+	algorithm = histogram
+[merge]
+	tool = nvim -d
+	conflictstyle = diff3
+[mergetool]
+	prompt = false

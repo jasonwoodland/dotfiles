@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/Users/jason/ispec/ks-jewelry-front/src/app/tab2/pages/search-results'
+let g:netrw_dirhist_4='/Users/jason/ispec/ks-jewelry-front/src/app/tab2'
+let g:netrw_dirhist_3='/Users/jason/ispec/ks-jewelry-front/src/app/tab2/pages/search-results'
+let g:netrw_dirhist_2='/Users/jason/ispec/ks-jewelry-front/src/app/tab2/components/search-conditions-box'
+let g:netrw_dirhist_1='/Users/jason/ispec/ks-jewelry-front/src/app/tab2'
+let g:netrw_dirhist_0='/Users/jason/ispec/ks-jewelry-front/src/app/tab2/components/search-conditions'
+let g:netrw_dirhist_9='/Users/jason/ispec/ks-jewelry-front/src/app/tab2'
+let g:netrw_dirhist_8='/Users/jason/ispec/ks-jewelry-front/src/app/tab2/components/search-filter'
+let g:netrw_dirhist_7='/Users/jason/ispec/ks-jewelry-front/src/app/tab2/components/price-range-selection'
+let g:netrw_dirhist_6='/Users/jason/ispec/bakemall-shop-front/@types'
