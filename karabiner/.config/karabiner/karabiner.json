@@ -16,6 +16,27 @@
                 },
                 "rules": [
                     {
+                        "description": "Vim Terminal Fn-Esc (Power) for C-\\ C-n (HHKB)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "power"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "backslash",
+                                        "modifiers": "control"
+                                    },
+                                    {
+                                        "key_code": "n",
+                                        "modifiers": "control"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "F4 for Spotlight",
                         "manipulators": [
                             {
