@@ -67,13 +67,14 @@ alias -- -="cd -"
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
+HISTFILESIZE=100000
+HISTSIZE=100000
+SAVEHIST=100000
+setopt append_history
 setopt inc_append_history
 setopt share_history
-setopt histfindnodups
-setopt histignoredups
+setopt hist_find_no_dups
+setopt hist_ignore_dups
 setopt hist_ignore_space
 
 # Watch background jobs and notify immediately
