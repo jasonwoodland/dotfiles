@@ -2,6 +2,7 @@
 
 let g:user='Jason Woodland'
 let g:email='me@jasonwoodland.com'
+" lang ja_JP
 
 " Plug {{{
 
@@ -26,6 +27,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-obsession'
 
 " Treesitter plugins
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
@@ -206,7 +208,6 @@ set title
 set titlestring=%f
 
 hi TermCursorNC cterm=reverse gui=reverse
-
 
 tnoremap <leader><Esc> <C-\><C-n>
 tnoremap <C-\><C-\> <C-\><C-n>
