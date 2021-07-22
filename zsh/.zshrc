@@ -159,34 +159,13 @@ rnd_print() {
 # Add local completion (docker, it's already added to fpath)
 fpath=(~/.zsh/completion $fpath)
 
-for i in ~/.zsh/*.zsh; do
-  source $i
-done
-
 . ~/.acme.sh/acme.sh.env
 
 autoload -Uz compinit && compinit
 
-tmux-session() {
-  if [[ $# -eq 1 ]]; then
-    selected=$1
-  else
-    items=`find ~/ispec -maxdepth 1 -mindepth 1 -type d`"\n"
-    items+=`find ~/Projects -maxdepth 1 -mindepth 1 -type d`
-    selected=`echo "$items" | fzf`
-  fi
-
-  dirname=`basename $selected`
-
-  tmux switch-client -t $dirname > /dev/null 2>&1
-  tmux attach -t $dirname > /dev/null 2>&1
-  if [[ $? -eq 0 ]]; then
-    return
-  fi
-
-  tmux new-session -c $selected -d -s $dirname && tmux switch-client -t $dirname || tmux new -c $selected -A -s $dirname
-}
-alias ts=tmux-session
+for i in ~/.zsh/*.zsh; do
+  source $i
+done
 
 nvim-session() {
   if [[ $# -eq 1 ]]; then
@@ -196,20 +175,26 @@ nvim-session() {
       ~/ispec/*/
       ~/ispec/*/go/
       ~/ispec/*/*/apps/*/
-      ~/Projects/*/
-      ~/Projects/cone/
-      ~/Projects/cone/*/
+      ~/projects/*/
+      ~/projects/cone/
+      ~/projects/cone/*/
+      ~/.dotfiles/
+      ~/.dotfiles/*/
     )
 
     selected=`printf "%s\n" "${items[@]}" | sort | fzf`
+
+    if [[ $selected == '' ]]; then
+      return
+    fi
   fi
 
   pushd $selected >/dev/null
-  if [[ -f Session.vim ]]; then
-    nvim -S
-  else
-    nvim
-  fi
+  # if [[ -f Session.vim ]]; then
+  #   nvim -S
+  # else
+  nvim -c ":pwd"
+  # fi
   popd >/dev/null
 }
 alias v=nvim-session
