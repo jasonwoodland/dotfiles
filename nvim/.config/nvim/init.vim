@@ -215,11 +215,13 @@ tnoremap <C-\><C-c> <C-\><C-n><space>t
 augroup Terminal
   autocmd TermOpen * startinsert
   autocmd TermOpen * setl signcolumn=no nonumber
-  autocmd TermOpen * nnoremap <C-c> i<C-c>
+  autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
 augroup END
 
+command -nargs=0 Terminal :new|term
+command -nargs=0 Vterminal :vnew|term
 
-nnoremap <leader>tt :call ToggleTerminal()<CR>
+nnoremap <space>t :call ToggleTerminal()<CR>
 
 function ToggleTerminal()
   if exists("t:term_winnr") && win_gettype(t:term_winnr) != "unknown"
@@ -230,7 +232,7 @@ function ToggleTerminal()
       exe t:term_winnr . 'wincmd w'
     endif
   else
-    if exists("t:term_bufnr")
+    if exists("t:term_bufnr") && bufexists(t:term_bufnr)
       exe 'sb'.t:term_bufnr
     else
       sp term://$SHELL
@@ -504,7 +506,7 @@ nmap gs <Plug>(coc-git-chunkinfo)
 " let g:coc_snippet_prev = '<s-tab>'
 
 " coc-terminal
-nnoremap <silent> <space>t  :<C-u>CocCommand terminal.Toggle<CR>
+" nnoremap <silent> <space>t  :<C-u>CocCommand terminal.Toggle<CR>
 
 " coc hide floating windows on escape
 nmap <silent><nowait> <Esc> :call coc#float#close_all() <CR>
