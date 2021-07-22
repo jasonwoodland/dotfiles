@@ -212,9 +212,9 @@ csb() {
   clear && printf '\e[3J'
 }
 
-cleanup() {
+sysclean() {
   rm -rf $(brew --cache)
   npm cache clean --force
   yarn cache clean
-  docker system prune -a # prune unused AND dangling
+  docker system prune # -a # prune unused AND dangling
 }
