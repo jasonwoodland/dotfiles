@@ -1,0 +1,5 @@
+gh/.config/gh/hosts.yml
+gh/.config/gh/state.yml
+nvim/.vim/plugged/
+nvim/.vim/sessions/
+zsh/.zsh/cache/
