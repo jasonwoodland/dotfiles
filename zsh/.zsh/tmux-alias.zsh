@@ -1,8 +1,4 @@
-# ts() {
-#   tmux -2 attach -t $1 2> /dev/null || tmux -2 new -s $1
-# }
-
-s() {
+ts() {
   if [[ $# -eq 1 ]]; then
     selected=$1
   else
@@ -26,13 +22,30 @@ s() {
 
   dirname=`basename $selected`
 
-  tmux switch-client -t $dirname > /dev/null 2>&1
-  tmux attach -t $dirname > /dev/null 2>&1
+  if [[ -v TMUX ]]; then
+    tmux switch-client -t $dirname 2>/dev/null
+    if [[ $? -eq 0 ]]; then
+      return
+    fi
+  fi
+
+  tmux attach -t $dirname 2>/dev/null
   if [[ $? -eq 0 ]]; then
     return
   fi
 
-  tmux new-session -c $selected -d -s $dirname && tmux switch-client -t $dirname || tmux new -c $selected -A -s $dirname
+  tmux new-session -s $dirname -d -c $selected 2>/dev/null
+  if [[ $? -eq 0 ]]; then
+    if [[ -v TMUX ]]; then
+      tmux switch-client -t $dirname 2>/dev/null
+    else
+      tmux attach -t $dirname
+    fi
+  else
+    tmux new -s $dirname -A -c $selected
+  fi
+
+
 }
 
 # don't froget to rm ~/.zcompdump when you're finished
@@ -40,6 +53,5 @@ s() {
 alias tl="tmux ls"
 alias ta='tmux attach -t'
 alias tad='tmux attach -d -t'
-alias ts='tmux new-session -s'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'

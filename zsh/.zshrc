@@ -124,7 +124,6 @@ alias vim=nvim
 alias vimdiff="nvim -d"
 alias vh="sudo vi /etc/hosts"
 alias pg="psql -U postgres"
-alias irc="tmux attach -t irc || tmux new -s irc 'TERM=screen-256color-italic weechat' \; set status off"
 alias port="sudo port"
 alias rg="rg -i \
   --colors match:fg:13 \
@@ -141,6 +140,31 @@ rnd_alnum() {
 
 rnd_print() {
   LC_CTYPE=C tr -dc '[:print:]' < /dev/urandom | tr -d "'\"\\" | head -c${1:-32} | xargs -0 echo
+}
+
+irc() {
+  if [[ -v TMUX ]]; then
+    tmux switch-client -t irc 2>/dev/null
+    if [[ $? -eq 0 ]]; then
+      return
+    fi
+  fi
+
+  tmux attach -t irc 2>/dev/null
+  if [[ $? -eq 0 ]]; then
+    return
+  fi
+
+  tmux new-session -s irc -d 'weechat' \; set status off 2>/dev/null
+  if [[ $? -eq 0 ]]; then
+    if [[ -v TMUX ]]; then
+      tmux switch-client -t irc 2>/dev/null
+    else
+      tmux attach -t irc
+    fi
+  else
+    tmux new -s irc -A 'weechat' \; set status off
+  fi
 }
 
 # logged() {
