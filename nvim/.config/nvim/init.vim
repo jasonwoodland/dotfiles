@@ -569,7 +569,7 @@ call Alias("gsh", "Git stash")
 call Alias("gs", "Git status")
 
 command -nargs=0 GIssue :call system("gh issue view --web \`git branch --show-current \| grep -o '\\#[0-9]\\+'\`")
-command -nargs=0 GPullRequest :call system("gh pr view --web > /dev/null 2>&1 \|\| gh pr create --web")<
+command -nargs=0 GPullRequest :call system("gh pr view --web > /dev/null 2>&1 \|\| gh pr create --web --assignee @me")<
 command -nargs=0 GRepo :call system("gh repo view --web")
 
 cnoreabbrev <expr> gis GIssue

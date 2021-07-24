@@ -42,5 +42,4 @@ gis() {
   fi
 }
 
-alias gpr="gh pr view --web >/dev/null 2>&1 || gh pr create --web"
-
+alias gpr="gh pr view --web >/dev/null 2>&1 || gh pr create --web --assignee @me"
