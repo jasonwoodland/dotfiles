@@ -10,7 +10,7 @@
 [format]
 	pretty = oneline
 [alias]
-        l = log --oneline -10 --reverse --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
+        l = log --oneline --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
         lg = log --oneline --graph --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
 [push]
 	default = current
