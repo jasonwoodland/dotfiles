@@ -519,6 +519,7 @@ nmap <silent><nowait> <Esc> :call coc#float#close_all() <CR>
 augroup Fugitive
   autocmd FileType fugitive setl signcolumn=no
   autocmd FileType fugitive setl nonumber
+  autocmd FileType gitcommit setlocal spell
 augroup END
 
 " Fix git hook output on commit (see: https://github.com/tpope/vim-fugitive/issues/1446)
