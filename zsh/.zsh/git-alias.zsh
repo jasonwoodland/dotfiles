@@ -43,3 +43,5 @@ gis() {
 }
 
 alias gpr="gh pr view --web >/dev/null 2>&1 || gh pr create --web --assignee @me"
+
+alias gre="gh repo view --web"
