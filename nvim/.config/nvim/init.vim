@@ -207,41 +207,41 @@ set title
 " let &t_fs=""
 set titlestring=%f
 
-hi TermCursorNC cterm=reverse gui=reverse
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-v><Esc> <Esc>
 
-tnoremap <leader><Esc> <C-\><C-n>
-tnoremap <C-\><C-\> <C-\><C-n>
-tnoremap <C-\><C-p> <C-\><C-n><C-w>p
-tnoremap <C-\><C-c> <C-\><C-n><space>t
 augroup Terminal
-  autocmd TermOpen * startinsert
-  autocmd TermOpen * setl signcolumn=no nonumber
+  autocmd TermOpen * setlocal signcolumn=no nonumber
   autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
 augroup END
 
-command -nargs=0 Terminal :new|term
-command -nargs=0 Vterminal :vnew|term
+command -nargs=0 SplitTerminal :new|term
+command -nargs=0 VsplitTerminal :vnew|term
+command -nargs=0 TabTerminal :tabnew|term
+call Alias("st", "SplitTerminal")
+call Alias("vt", "VsplitTerminal")
+call Alias("tt", "TabTerminal")
 
-nnoremap <space>t :call ToggleTerminal()<CR>
+nnoremap <silent> <leader>t :<c-u>call ToggleTerminal(v:count)<CR>
 
-function ToggleTerminal()
-  if exists("t:term_winnr") && win_gettype(t:term_winnr) != "unknown"
-    if t:term_bufnr == bufnr("%")
-      close
-      unlet t:term_winnr
-    else
-      exe t:term_winnr . 'wincmd w'
-    endif
+function ToggleTerminal(height)
+  if exists('t:term_bufnr') && bufwinnr(t:term_bufnr) > 0
+    exe bufwinnr(t:term_bufnr).'close'
   else
-    if exists("t:term_bufnr") && bufexists(t:term_bufnr)
+    if exists('t:term_bufnr') && bufexists(t:term_bufnr)
       exe 'sb'.t:term_bufnr
     else
       sp term://$SHELL
+      let t:term_height = 15
     endif
-    resize 15
-    " norm "<C-w>Ji"
-    let t:term_winnr = bufwinnr("%")
-    let t:term_bufnr = bufnr("%")
+    if a:height > 1
+      exe 'res'.a:height
+    else
+      exe 'res'.t:term_height
+    endif
+    exe 'set wfh'
+    exe "normal! \<c-w>J"
+    let t:term_bufnr = bufnr('%')
   endif
 endfunction
 
