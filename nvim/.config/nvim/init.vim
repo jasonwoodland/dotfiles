@@ -1,9 +1,5 @@
 " vim:fdm=marker
 
-let g:user='Jason Woodland'
-let g:email='me@jasonwoodland.com'
-" lang ja_JP
-
 " Plug {{{
 
 call plug#begin('~/.vim/plugged')
@@ -13,6 +9,7 @@ Plug 'SirVer/ultisnips'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -29,26 +26,11 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-obsession'
 
-" Treesitter plugins
-Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-
 Plug 'jasonwoodland/vim-hyperstyle'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'AndrewRadev/splitjoin.vim'
 
-Plug 'projekt0n/github-nvim-theme'
-
-" Disabled
-" Plug 'wincent/ferret'
-" Plug 'kyazdani42/nvim-web-devicons' " for file icons
-" Plug 'kyazdani42/nvim-tree.lua'
-" Plug 'joshdick/onedark.vim'
-" Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'raghur/fruzzy', {'do': { -> fruzzy#install()}}
-" Plug 'alvan/vim-closetag'
-" Plug 'itchyny/lightline.vim'
-
-" only if coc-pairs disabled!!
+" Only if coc-pairs disabled!!
 Plug 'rstacruz/vim-closer'
 
 " Colorschemes
@@ -60,9 +42,12 @@ call plug#end()
 
 " Options {{{
 
-if has("nvim")
-  set inccommand=split
-endif
+let g:user='Jason Woodland'
+let g:email='me@jasonwoodland.com'
+
+lang messages ja_JP
+
+set nocompatible
 
 " If wrapping, indent blocks of text
 set breakindent
@@ -105,40 +90,76 @@ set clipboard=unnamed
 set splitright
 set splitbelow
 set number
-
 set nowrap
+
 " Only wrap cursor when using arrow keys
 set whichwrap=<,>,[,]
 
-" vim only
-set nocompatible
 " run modelines in files
 set modeline
+
 " run local project .nvimrc or .exrc files
 set exrc
 
 " Vertical split/fold fill chars
 set fillchars=vert:│
 
+if has("nvim")
+  " Show substututions in realtime in a split preview
+  set inccommand=split
+endif
+
 "}}}
 
-" Scrolling {{{
+" Mappings, commands, abbreviations, aliases {{{
 
-" Display as much of the last line as possible
-set display=lastline
+function Alias(lhs, rhs)
+  exe printf('cnoreabbrev <expr> %s (getcmdtype() == ":" && getcmdline() =~ "^%s$") ? "%s" : "%s"', a:lhs, a:lhs, a:rhs, a:lhs)
+endfunction
+
+nnoremap Q <nop>
+
+onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
+xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
+
+cabbrev vsb vert sb
+
+" F10 to show the current highlighting group under the cursor
+nmap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+  \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+  \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Trim whitespace
+function! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfunction
+
+nmap <silent> <leader><space> :call TrimWhitespace()<cr>
+
+" }}}
+
+" Scrolling, display {{{
+
+" lastline - Display as much of the last line as possible
+" uhex - show unprintable characters hexadecimal as <xx>
+set display=lastline,uhex
 
 " Minimum number of lines to keep above and below the cursor
 autocmd BufEnter * set scrolloff=8
 
 " Minimum number of characters either side of the cursor
-set sidescrolloff=12
+set sidescrolloff=10
 
 " Smooth horizontal scrolling
 set sidescroll=1
 
 "}}}
 
-" Files {{{
+" Files, buffers, backup, undo {{{
 
 " Reload a buffer if it was changed
 set autoread
@@ -165,7 +186,7 @@ set undodir=~/.local/share/nvim/undo
 
 " }}}
 
-" Search {{{
+" Search, search navigation {{{
 
 set magic
 set ignorecase
@@ -174,13 +195,13 @@ set hlsearch
 set incsearch
 
 " Tab/S-Tab for moving between search matches
-set wildcharm=<c-z>
+set wildcharm=<c-x>
 cnoremap <expr> <Tab>   getcmdtype() =~ '[?/]' ? "<c-g>" : "<c-z>"
 cnoremap <expr> <S-Tab> getcmdtype() =~ '[?/]' ? "<c-t>" : "<S-Tab>"
 
 " }}}
 
-" Bells, timeouts, flashing {{{
+" Bells, timeouts, matching parentheses {{{
 
 set noerrorbells
 set novisualbell
@@ -200,11 +221,31 @@ set matchtime=0
 
 " }}}
 
+" Statusline {{{
+
+set laststatus=2 " Always show the status line
+set statusline=%!StatusLine()
+function! StatusLine()
+  let l:status = "%F\ "
+  let l:status .= "%m%r%w%h"
+  let l:status .= "%=%*"
+  let l:status .= "%y\ "
+  let l:status .= "%l,%c/%L"
+  return l:status
+endfunction
+
+" }}}
+
+" Grep {{{
+
+set grepprg=rg\ --vimgrep
+set grepformat^=%f:%l:%c:%m
+
+" }}}
+
 " Terminal {{{
 
 set title
-" let &t_ts="]0;"
-" let &t_fs=""
 set titlestring=%f
 
 tnoremap <Esc> <C-\><C-n>
@@ -264,14 +305,148 @@ set sessionoptions=buffers,curdir,help,resize,tabpages,winpos,winsize
 
 " }}}
 
-" splitjoin.vim {{{
+" Colorscheme, syntax highlighting {{{
 
-" gS on JSX/HTML tag will land the /> on it's own line
-let g:splitjoin_html_attributes_bracket_on_new_line=1
+" Always synx syntax from start (fixes inline graphql breaking highlighting)
+" autocmd BufEnter * :syntax sync fromstart
+
+" nvcode-color-schemes onedark {{{
+
+  let g:nvcode_termcolors=256
+  syntax on
+  colorscheme onedark
+  set termguicolors
+  set pumblend=10
+  set winblend=10
+
+  " Fix yellow underline in vue templates
+  function! ClearTSStrike(timer)
+    hi clear TSStrike
+  endfunction
+  call timer_start(500, "ClearTSStrike")
+
+  hi clear Error
+  hi link Error ErrorMsg
+
+  hi clear MoreMsg " Used by coc-list prompt
+  hi clear EndOfBuffer
+  hi link EndOfBuffer NonText
+
+  hi clear Search
+  hi link Search Visual
+  hi clear IncSearch
+  hi link IncSearch lCursor
+
+  hi Comment guifg=#7A859B gui=italic
+  hi clear Folded
+  hi Folded guifg=#7A859B
+  hi clear FoldColumn
+  hi link FoldColumn Folded
+  hi clear MatchParen
+  hi link MatchParen Visual
+
+  hi clear CocCodeLens
+  hi CocCodeLens guifg=#4b5263 gui=italic
+
+  hi CocErrorSign guifg=#be5046
+  hi CocWarningSign guifg=#d19a66
+  hi CocInfoSign guifg=#e5c07b
+  hi CocHintSign guifg=#61afef
+
+  hi CocErrorHighlight gui=undercurl guisp=#be5046
+  hi CocWarningHighlight gui=undercurl guisp=#d19a66
+  hi CocInfoHighlight gui=undercurl guisp=#e5c07b
+  hi CocHintHighlight gui=undercurl guisp=#61afef
+
+  hi clear CocMenuSel
+  hi link CocMenuSel CursorLine
+  hi clear QuickFixLine
+  hi link QuickFixLine CursorLine
+
+  hi clear CocListMode
+  hi clear CocListPath
+  hi link CocListMode StatusLine
+  hi link CocListPath StatusLine
+
+  hi clear CocExplorerIndentLine
+  hi link CocExplorerIndentLine NonText
+  hi CocExplorerNormal guibg=#22262d
+  hi CocExplorerEndOfBuffer guifg=#22262d guibg=#22262d
+  hi CocExplorerVertSplit guifg=#282c34 guibg=#282c34
+  autocmd FileType coc-explorer set winhighlight=Normal:CocExplorerNormal,VertSplit:CocExplorerVertSplit,EndOfBuffer:CocExplorerEndOfBuffer
+
+  hi PanelNormal guibg=#22262d
+  " autocmd FileType list,qf set winhighlight=Normal:PanelNormal
+  autocmd FileType list,qf,help set signcolumn=auto
+
+  hi clear Cursor
+  hi link Cursor lCursor
+
+  hi clear VertSplit
+  hi VertSplit guifg=#22262d
+
+  hi SignColumn guibg=none
+  hi DiffChange cterm=none gui=none guifg=#e5c07b
+  hi DiffAdd cterm=none gui=none guifg=none guibg=#2d3828
+  hi DiffDelete cterm=none gui=none guifg=#bf383a guibg=none
+
+  hi CocGitAddedSign guifg=#98c379
+  hi CocGitRemovedSign guifg=#be5046 
+  hi link CocGitTopRemovedSign CocGitRemovedSign
+
+  hi Pmenu guibg=#22262d
+  hi clear PmenuSel
+  hi link PmenuSel Visual
+  hi clear PmenuSbar
+  hi PmenuSbar guibg=#32373e
+  hi PmenuThumb guibg=#454b54
+
+  hi StatusLine guibg=#22262d
+  hi StatusLineNC guifg=#7A859B guibg=#22262d
+  hi TabLineFill guibg=#22262d
+  hi TabLine guibg=#22262d
+  hi TabLineNC guibg=#22262d
+  hi TabLineSel guibg=none
+
+  hi clear SpecialKey " fixed unreadable diggraphs output
+  hi Special gui=none
+  hi link SpecialKey Special
 
 " }}}
 
-" Coc.nvim {{{
+hi link netrwTreeBar LineNr
+
+hi link Space Search
+match Space /\s\+$/
+
+" }}}
+
+" Languages {{{
+" Go {{{
+
+augroup GoLang
+  autocmd Filetype go setlocal formatprg=gofmt tabstop=4
+  autocmd BufWritePre *.go :Format
+  autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+augroup END
+
+" }}}
+" JavaScript {{{
+
+autocmd FileType javascript set ft=javascriptreact
+
+" }}}
+" }}}
+
+" Plugins {{{
+" netrw {{{
+
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_list_hide='.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
+
+" }}}
+" coc.nvim {{{
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -400,7 +575,7 @@ nmap <leader>a  <Plug>(coc-codeaction-line)
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>c  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>q  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -446,7 +621,7 @@ command! -nargs=0 OrganiseImport :call CocAction('runCommand', 'editor.action.or
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>x  :<C-u>CocList extensions<cr>
 " Show commands.
@@ -454,7 +629,7 @@ nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
@@ -470,9 +645,9 @@ nnoremap <silent><nowait> <space>f  :<C-u>CocList files<CR>
 " Most recently used completion
 nnoremap <silent><nowait> <space>m  :<C-u>CocList mru<CR>
 " Buffer completion
-nnoremap <silent><nowait> <space>b  :<C-u>CocList buffers<CR>
+" nnoremap <silent><nowait> <space>b  :<C-u>CocList buffers<CR>
 " Window completion
-nnoremap <silent><nowait> <space>b  :<C-u>CocList windows<CR>
+" nnoremap <silent><nowait> <space>b  :<C-u>CocList windows<CR>
 " Grep completion
 nnoremap <silent><nowait> <space>g  :<C-u>CocList -I grep -S -regex<CR>
 command! -nargs=0 Todos         CocList -A --normal grep -e TODO|FIXME
@@ -486,8 +661,8 @@ command! -nargs=0 PickColor :call CocAction('pickColor')
 command! -nargs=0 ColorPresentation :call CocAction('colorPresentation')
 
 " coc-translator
-nmap <leader>tr <Plug>(coc-translator-p)
-vmap <leader>tr <Plug>(coc-translator-pv)
+nmap <leader>x <Plug>(coc-translator-p)
+vmap <leader>x <Plug>(coc-translator-pv)
 
 autocmd User CocLocationsChange call setloclist(0, g:coc_jump_locations) | lwindow
 
@@ -513,7 +688,6 @@ nmap gs <Plug>(coc-git-chunkinfo)
 nmap <silent><nowait> <Esc> :call coc#float#close_all() <CR>
 
 " }}}
-
 " fugitive.vim {{{
 
 augroup Fugitive
@@ -533,10 +707,6 @@ function ToggleGit()
   else
     exe "bd".bufnr(".git/index")
   endif
-endfunction
-
-function Alias(lhs, rhs)
-  exe printf('cnoreabbrev <expr> %s (getcmdtype() == ":" && getcmdline() =~ "^%s$") ? "%s" : "%s"', a:lhs, a:lhs, a:rhs, a:lhs)
 endfunction
 
 call Alias("git", "Git")
@@ -561,7 +731,7 @@ call Alias("gds", "Git diff --staged")
 call Alias("gdsn", "Git diff --staged --name-only")
 call Alias("gfe", "Git fetch")
 call Alias("gl", "Git log")
-call Alias("glg", "split term://git\ lg")
+call Alias("glg", "Git log --graph")
 call Alias("gme", "Git merge")
 call Alias("gph", "Dispatch! git push -u origin")
 call Alias("gpl", "Dispatch! git pull")
@@ -573,22 +743,11 @@ command -nargs=0 GIssue :call system("gh issue view --web \`git branch --show-cu
 command -nargs=0 GPullRequest :call system("gh pr view --web > /dev/null 2>&1 \|\| gh pr create --web --assignee @me")<
 command -nargs=0 GRepo :call system("gh repo view --web")
 
-cnoreabbrev <expr> gis GIssue
-cnoreabbrev <expr> gpr GPullRequest
-cnoreabbrev <expr> grp GRepo
-
 call Alias("gis", "GIssue")
 call Alias("gpr", "GPullRequest")
 call Alias("gre", "GRepo")
 
 " }}}
-
-" vim-closetag (DISABLED) {{{
-
-" let g:closetag_filetypes = "html,php,javascript.jsx,typescript.tsx,javascriptreact,typescriptreact"
-
-" }}}
-
 " treesitter {{{
 
 lua <<EOF
@@ -628,42 +787,52 @@ EOF
 " EOF
 
 " }}}
+" splitjoin.vim {{{
 
-" netrw {{{
-
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-let g:netrw_list_hide='.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
-
-au FileType netrw au BufEnter set v_te=
-au FileType netrw au BufEnter set v_te=
-
-function! NetrwHideCursor()
-  set t_ve=
-  " Enable these lines if we dont have a cursorline
-  " hi clear CursorLine
-  " hi link CursorLine Visual
-  setl cursorline
-endfunction
-
-function! NetrwShowCursor()
-  set t_ve&
-  " hi clear CursorLine
-  " setl nocursorline
-endfunction
-
-augroup NetrwHideCursor
-  autocmd FileType,BufReadPost,BufEnter,FocusGained,VimEnter,WinEnter,BufWinEnter * if &ft=='netrw' || &ft=='list' | call NetrwHideCursor() | endif
-  autocmd FileType,BufReadPost,BufEnter,FocusGained,VimEnter,WinEnter,BufWinEnter * if &ft!='netrw' && &ft!='list' | call NetrwShowCursor() | endif
-  autocmd BufLeave,FocusLost,WinLeave * if &ft=='netrw' | call NetrwShowCursor() | endif
-
-  autocmd CmdlineEnter * if &ft=='netrw' | set t_ve& | endif
-  autocmd CmdlineLeave * if &ft=='netrw' | set t_ve= | endif
-  autocmd BufWinLeave * if &ft=='netrw' | set t_ve& | endif
-augroup END
+" gS on JSX/HTML tag will land the /> on it's own line
+let g:splitjoin_html_attributes_bracket_on_new_line=1
 
 " }}}
+" Redir output command {{{
 
+function! Redir(cmd, rng, start, end)
+	for win in range(1, winnr('$'))
+		if getwinvar(win, 'scratch')
+			execute win . 'windo close'
+		endif
+	endfor
+	if a:cmd =~ '^!'
+		let cmd = a:cmd =~' %'
+			\ ? matchstr(substitute(a:cmd, ' %', ' ' . expand('%:p'), ''), '^!\zs.*')
+			\ : matchstr(a:cmd, '^!\zs.*')
+		if a:rng == 0
+			let output = systemlist(cmd)
+		else
+			let joined_lines = join(getline(a:start, a:end), '\n')
+			let cleaned_lines = substitute(shellescape(joined_lines), "'\\\\''", "\\\\'", 'g')
+			let output = systemlist(cmd . " <<< $" . cleaned_lines)
+		endif
+	else
+		redir => output
+		execute a:cmd
+		redir END
+		let output = split(output, "\n")
+	endif
+	new
+	let w:scratch = 1
+	setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
+	call setline(1, output)
+endfunction
+
+command! -nargs=1 -complete=command -bar -range Redir silent call Redir(<q-args>, <range>, <line1>, <line2>)
+
+"}}}
+" DISABLED {{{
+" vim-closetag (DISABLED) {{{
+
+" let g:closetag_filetypes = "html,php,javascript.jsx,typescript.tsx,javascriptreact,typescriptreact"
+
+" }}}
 " nvim-tree (DISABLED) {{{
 
 " let g:nvim_tree_width = 35 "30 by default
@@ -691,184 +860,6 @@ augroup END
 " hi link NvimTreeIndentMarker NonText
 
 " }}}
-
-" JavaScript {{{
-
-autocmd FileType javascript set ft=javascriptreact
-
-" }}}
-
-" Golang {{{
-
-autocmd Filetype go set formatprg=gofmt
-au BufWritePre *.go :Format
-
-" }}}
-
-" Grep {{{
-
-set grepprg=rg\ --vimgrep
-set grepformat^=%f:%l:%c:%m
-
-" }}}
-
-" Mappings, commands and abbreviations {{{
-
-onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
-onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
-xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
-xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
-
-cabbrev vsb vert sb
-
-" F10 to show the current highlighting group under the cursor
-nmap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-  \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-  \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-" Trim whitespace
-function! TrimWhitespace()
-  let l:save = winsaveview()
-  keeppatterns %s/\s\+$//e
-  call winrestview(l:save)
-endfunction
-
-nmap <silent> <leader><space> :call TrimWhitespace()<cr>
-
-" }}}
-
-" Colorscheme, syntax highlighting {{{
-
-" Always synx syntax from start (fixes inline graphql breaking highlighting)
-" autocmd BufEnter * :syntax sync fromstart
-
-" nvcode-color-schemes onedark {{{
-
-  let g:nvcode_termcolors=256
-  syntax on
-  colorscheme onedark
-  set termguicolors
-  set pumblend=10
-  set winblend=10
-
-  " Fix yellow underline in vue templates
-  function! ClearTSStrike(timer)
-    hi clear TSStrike
-  endfunction
-  call timer_start(500, "ClearTSStrike")
-
-  hi clear Error
-  hi link Error ErrorMsg
-
-  hi clear MoreMsg " Used by coc-list prompt
-  hi clear EndOfBuffer
-  hi link EndOfBuffer NonText
-
-  hi clear Search
-  hi link Search Visual
-  hi clear IncSearch
-  hi link IncSearch lCursor
-
-  hi Comment guifg=#7A859B gui=italic
-  hi clear Folded
-  hi Folded guifg=#7A859B
-  hi clear FoldColumn
-  hi link FoldColumn Folded
-  hi clear MatchParen
-  hi link MatchParen Visual
-
-  hi clear CocCodeLens
-  hi CocCodeLens guifg=#4b5263 gui=italic
-
-  hi CocErrorSign guifg=#be5046
-  hi CocWarningSign guifg=#d19a66
-  hi CocInfoSign guifg=#e5c07b
-  hi CocHintSign guifg=#61afef
-
-  hi CocErrorHighlight gui=undercurl guisp=#be5046
-  hi CocWarningHighlight gui=undercurl guisp=#d19a66
-  hi CocInfoHighlight gui=undercurl guisp=#e5c07b
-  hi CocHintHighlight gui=undercurl guisp=#61afef
-
-  hi clear CocMenuSel
-  hi link CocMenuSel CursorLine
-  hi clear QuickFixLine
-  hi link QuickFixLine CursorLine
-
-  hi clear CocListMode
-  hi clear CocListPath
-  hi link CocListMode StatusLine
-  hi link CocListPath StatusLine
-
-  hi clear CocExplorerIndentLine
-  hi link CocExplorerIndentLine NonText
-  hi CocExplorerNormal guibg=#22262d
-  hi CocExplorerEndOfBuffer guifg=#22262d guibg=#22262d
-  hi CocExplorerVertSplit guifg=#282c34 guibg=#282c34
-  autocmd FileType coc-explorer set winhighlight=Normal:CocExplorerNormal,VertSplit:CocExplorerVertSplit,EndOfBuffer:CocExplorerEndOfBuffer
-
-  hi PanelNormal guibg=#22262d
-  autocmd FileType list,qf set winhighlight=Normal:PanelNormal
-  autocmd FileType list,qf,help set signcolumn=auto
-
-  hi clear Cursor
-  hi link Cursor lCursor
-
-  hi clear VertSplit
-  hi VertSplit guifg=#22262d
-
-  hi SignColumn guibg=none
-  hi DiffChange cterm=none gui=none guifg=#e5c07b
-  hi DiffAdd cterm=none gui=none guifg=none guibg=#2d3828
-  hi DiffDelete cterm=none gui=none guifg=#bf383a guibg=none
-
-  hi CocGitAddedSign guifg=#98c379
-  hi CocGitRemovedSign guifg=#be5046 
-  hi link CocGitTopRemovedSign CocGitRemovedSign
-
-  hi Pmenu guibg=#22262d
-  hi clear PmenuSel
-  hi link PmenuSel Visual
-  hi clear PmenuSbar
-  hi PmenuSbar guibg=#32373e
-  hi PmenuThumb guibg=#454b54
-
-  hi StatusLine guibg=#22262d
-  hi StatusLineNC guifg=#7A859B guibg=#22262d
-  hi TabLineFill guibg=#22262d
-  hi TabLine guibg=#22262d
-  hi TabLineNC guibg=#22262d
-  hi TabLineSel guibg=none
-
-  hi clear SpecialKey " fixed unreadable diggraphs output
-  hi Special gui=none
-  hi link SpecialKey Special
-
-" }}}
-
-hi link netrwTreeBar LineNr
-" hi link netrwClassify LineNr
-
-hi link Space Search
-match Space /\s\+$/
-
-" }}}
-
-" Statusline {{{
-
-set laststatus=2 " Always show the status line
-set statusline=%!StatusLine()
-function! StatusLine()
-  let l:status = "%F\ "
-  let l:status .= "%m%r%w%h"
-  let l:status .= "%=%*"
-  let l:status .= "%y\ "
-  let l:status .= "%l,%c/%L"
-  return l:status
-endfunction
-
-" }}}
-
 " Denite (DISABLED) {{{
 
 " let g:fruzzy#usenative = 1
@@ -958,7 +949,6 @@ endfunction
 " nmap <silent> <leader>g   :Denite -auto-resize -start-filter -default-action=open grep<cr>
 
 "}}}
-
 " Lightline (DISABLED) {{{
 " let g:lightline = {
 "   \ 'colorscheme': 'onedark',
@@ -976,38 +966,41 @@ endfunction
 " autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 "}}}
+" wilder.nvim (DISABLED) {{{
 
-" Redir output command {{{
+" call wilder#enable_cmdline_enter()
+" set wildcharm=<Tab>
+" cmap <expr> <C-N> wilder#in_context() ? wilder#next() : "\<C-N>"
+" cmap <expr> <C-P> wilder#in_context() ? wilder#previous() : "\<C-P>"
+" cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
+" cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
+" call wilder#set_option('modes', [':'])
 
-function! Redir(cmd, rng, start, end)
-	for win in range(1, winnr('$'))
-		if getwinvar(win, 'scratch')
-			execute win . 'windo close'
-		endif
-	endfor
-	if a:cmd =~ '^!'
-		let cmd = a:cmd =~' %'
-			\ ? matchstr(substitute(a:cmd, ' %', ' ' . expand('%:p'), ''), '^!\zs.*')
-			\ : matchstr(a:cmd, '^!\zs.*')
-		if a:rng == 0
-			let output = systemlist(cmd)
-		else
-			let joined_lines = join(getline(a:start, a:end), '\n')
-			let cleaned_lines = substitute(shellescape(joined_lines), "'\\\\''", "\\\\'", 'g')
-			let output = systemlist(cmd . " <<< $" . cleaned_lines)
-		endif
-	else
-		redir => output
-		execute a:cmd
-		redir END
-		let output = split(output, "\n")
-	endif
-	new
-	let w:scratch = 1
-	setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
-	call setline(1, output)
-endfunction
+" call wilder#set_option('pipeline', [
+"       \   wilder#branch(
+"       \     wilder#cmdline_pipeline({
+"       \       'fuzzy': 1,
+"       \     }),
+"       \     wilder#python_search_pipeline({
+"       \       'pattern': 'fuzzy',
+"       \     }),
+"       \   ),
+"       \ ])
 
-command! -nargs=1 -complete=command -bar -range Redir silent call Redir(<q-args>, <range>, <line1>, <line2>)
+" let s:highlighters = [
+"         \ wilder#pcre2_highlighter(),
+"         \ wilder#basic_highlighter(),
+"         \ ]
 
-"}}}
+" call wilder#set_option('renderer', wilder#renderer_mux({
+"       \ ':': wilder#popupmenu_renderer({
+"       \   'highlighter': wilder#basic_highlighter(),
+"       \   'left': [
+"       \     wilder#popupmenu_devicons(),
+"       \   ],
+"       \ }),
+"       \ }))
+
+" }}}
+" }}}
+" }}}
