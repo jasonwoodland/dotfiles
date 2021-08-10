@@ -6,12 +6,13 @@ ts() {
       ~/ispec/*/
       ~/ispec/*/go/
       ~/ispec/*/*/apps/*/
-      ~/projects/*/
-      ~/projects/cone/
-      ~/projects/cone/*/
+      ~/Projects/*/
+      ~/Projects/cone/
+      ~/Projects/cone/*/
       ~/.dotfiles/
       ~/.dotfiles/*/
     )
+    items=("${(u)items[@]}")
 
     selected=`printf "%s\n" "${items[@]}" | sort | fzf`
 
