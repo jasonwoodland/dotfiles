@@ -48,6 +48,9 @@
 
 # Completion {{{
 
+  # Docker completion
+  fpath=(~/.zsh/completion $fpath)
+
   # Nice completion menu
   zstyle ':completion:*' menu select
   setopt menu_complete
@@ -138,9 +141,6 @@
   export VISUAL=nvim
   export EDITOR=nvim
   export REACT_EDITOR=none # don't open vim on development crash
-
-  # Add local completion (docker, it's already added to fpath)
-  # fpath=(~/.zsh/completion $fpath)
 
   export FZF_DEFAULT_OPTS='
     --color=fg:-1,bg:-1,hl:-1
