@@ -267,6 +267,7 @@ nnoremap <silent> <leader>t :<c-u>call ToggleTerminal(v:count)<CR>
 
 function ToggleTerminal(height)
   if exists('t:term_bufnr') && bufwinnr(t:term_bufnr) > 0
+    let t:term_height = winheight(bufwinnr(t:term_bufnr))
     exe bufwinnr(t:term_bufnr).'close'
   else
     if exists('t:term_bufnr') && bufexists(t:term_bufnr)
