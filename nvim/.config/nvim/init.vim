@@ -413,6 +413,8 @@ set sessionoptions=buffers,curdir,help,resize,tabpages,winpos,winsize
   hi Special gui=none
   hi link SpecialKey Special
 
+  hi link TermCursorNC Visual
+
 " }}}
 
 hi link netrwTreeBar LineNr
