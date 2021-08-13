@@ -1,11 +1,14 @@
 # vim:fdm=marker
 
-# Prompt {{{
+# Prompt & highlighting {{{
+
   if [ $SSH_CONNECTION ]; then
     PROMPT='%n@%m %1~ %# '
   else
     PROMPT='%m %1~ %# '
   fi
+
+  zle_highlight=( region:bg=0 )
 
 # }}}
 
