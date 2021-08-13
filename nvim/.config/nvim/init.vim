@@ -274,7 +274,7 @@ function ToggleTerminal(height)
       exe 'sb'.t:term_bufnr
     else
       sp term://$SHELL
-      let t:term_height = 15
+      let t:term_height = 25
     endif
     if a:height > 1
       exe 'res'.a:height
