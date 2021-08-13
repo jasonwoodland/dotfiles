@@ -19,17 +19,30 @@
     # 10ms for key sequences
     KEYTIMEOUT=1
 
-    # Get the bindings for emacs mode, then re run them when bound to vi-mode. Clever, eh?
+    # Get the bindings for emacs mode, then re run them when bound to vi-mode.
     bindkey -e
-    bindings=`bindkey` 
+    bindings=`bindkey`
     bindkey -v
     while IFS= read -r binding; do
       eval "bindkey -v $binding"
     done <<< "$bindings"
     unset bindings binding
 
+    # Use vi-backward-kill-word in insert mode since the default one doesnt
+    # handle WORDCHARS properly
+    bindkey "^W" vi-backward-kill-word
+
+    # Clear wordchars so all symbols break words when ^W'ing
+    WORDCHARS=
+
     # Change cursor shape for different vi modes
     source ~/.zsh/vi-mode.zsh
+
+    bindkey -a "j" down-line
+    bindkey -a "k" up-line
+
+    bindkey -v "^p" down-line
+    bindkey -v "^n" up-line
 
   # }}}
 
@@ -42,8 +55,8 @@
     zle -N down-line-or-beginning-search
     bindkey "^[[A" up-line-or-beginning-search
     bindkey "^[[B" down-line-or-beginning-search
-    bindkey '^P' up-history
-    bindkey '^N' down-history
+    bindkey '^P' up-line-or-beginning-search
+    bindkey '^N' down-line-or-beginning-search
 
   # }}}
 
