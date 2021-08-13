@@ -1,0 +1,41 @@
+snippet daotest "dao test"
+package dao
+
+func Test$1Dao_$2(t *testing.T) {
+	cleanup := seed.Prepare(seed.Input{
+		Test: t,
+		DB:   db,
+		CleanTables: []interface{}{
+			&entity.$1{ID: int64(1)},
+		},
+	})
+	defer cleanup()
+
+	d := New$1(db)
+
+	cases := []struct {
+		name  string
+		model model.$1
+		err   bool
+	}{
+		{
+			name:  "$2d",
+			model: model.$1{},
+		},
+	}
+
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			m, aerr := d.$2(tc.model)
+
+			assert.NotNil(t, m.ID)
+
+			if tc.err {
+				assert.Error(t, aerr)
+			} else {
+				assert.NoError(t, aerr)
+			}
+		})
+	}
+}
+endsnippet
