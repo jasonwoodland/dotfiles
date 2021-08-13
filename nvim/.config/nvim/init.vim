@@ -146,13 +146,13 @@ nmap <silent> <leader><space> :call TrimWhitespace()<cr>
 
 " lastline - Display as much of the last line as possible
 " uhex - show unprintable characters hexadecimal as <xx>
-set display=lastline,uhex
+set display=lastline
 
 " Minimum number of lines to keep above and below the cursor
 autocmd BufEnter * set scrolloff=8
 
 " Minimum number of characters either side of the cursor
-set sidescrolloff=10
+set sidescrolloff=6
 
 " Smooth horizontal scrolling
 set sidescroll=1
