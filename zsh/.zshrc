@@ -191,6 +191,24 @@
 
 # }}}
 
+# Programs & Plugins {{{
+
+  # neovim-remote {{{
+
+    if [[ -v NVIM_LISTEN_ADDRESS ]]; then
+      alias nvim=nvr
+    fi
+
+  # }}}
+
+  # zsh-system-clipboard {{{
+
+    source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
+
+  # }}}
+
+# }}}
+
 # Functions {{{
 
   rnd_alnum() {
