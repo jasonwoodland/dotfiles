@@ -794,6 +794,15 @@ EOF
 let g:splitjoin_html_attributes_bracket_on_new_line=1
 
 " }}}
+" neovim-remote {{{
+
+let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+let $EDITOR = 'nvr'
+let $VISUAL = 'nvr'
+
+autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+
+" }}}
 " Redir output command {{{
 
 function! Redir(cmd, rng, start, end)
