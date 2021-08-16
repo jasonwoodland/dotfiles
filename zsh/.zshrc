@@ -38,15 +38,13 @@
     # Change cursor shape for different vi modes
     source ~/.zsh/vi-mode.zsh
 
+    # j and k to move up/down lines in normal mode
     bindkey -a "j" down-line
     bindkey -a "k" up-line
 
-    bindkey -v "^p" down-line
-    bindkey -v "^n" up-line
-
   # }}}
 
-  # History key binds {{{
+  # History bindings {{{
 
     # Up/down to match history
     autoload -Uz up-line-or-beginning-search
@@ -57,6 +55,16 @@
     bindkey "^[[B" down-line-or-beginning-search
     bindkey '^P' up-line-or-beginning-search
     bindkey '^N' down-line-or-beginning-search
+
+  # }}}
+
+  # Completion menu bindings {{{
+
+    zmodload zsh/complist
+    bindkey -M menuselect '^p' reverse-menu-complete
+    bindkey -M menuselect '^n' menu-complete
+    bindkey -M menuselect '^e' undo
+    bindkey -M menuselect '^y' accept-line
 
   # }}}
 
