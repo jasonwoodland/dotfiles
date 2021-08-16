@@ -140,6 +140,8 @@ endfunction
 
 nmap <silent> <leader><space> :call TrimWhitespace()<cr>
 
+nnoremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
+
 " }}}
 
 " Scrolling, display {{{
