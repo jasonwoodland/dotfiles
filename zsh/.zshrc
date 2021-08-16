@@ -231,11 +231,15 @@
     clear && printf '\e[3J'
   }
 
-  sysclean() {
+  sys_clean() {
     rm -rf $(brew --cache)
     npm cache clean --force
     yarn cache clean
     docker system prune # -a # prune unused AND dangling
+  }
+
+  pj_task() {
+    echo $(basename `git rev-parse --show-toplevel`) $(git branch --show-current)
   }
 
   # irc {{{
