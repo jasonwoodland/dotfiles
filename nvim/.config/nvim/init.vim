@@ -266,6 +266,7 @@ call Alias("vt", "VsplitTerminal")
 call Alias("tt", "TabTerminal")
 
 nnoremap <silent> <leader>t :<c-u>call ToggleTerminal(v:count)<CR>
+nnoremap <silent> <space>t :<c-u>call ToggleTerminal(v:count)<CR>
 
 function ToggleTerminal(height)
   if exists('t:term_bufnr') && bufwinnr(t:term_bufnr) > 0
@@ -655,6 +656,7 @@ nnoremap <silent><nowait> <space>m  :<C-u>CocList mru<CR>
 " nnoremap <silent><nowait> <space>b  :<C-u>CocList windows<CR>
 " Grep completion
 nnoremap <silent><nowait> <space>g  :<C-u>CocList -I grep -S -regex<CR>
+nnoremap <silent><nowait> <space>G  :<C-u>CocList -I grep -regex<CR>
 command! -nargs=0 Todos         CocList -A --normal grep -e TODO|FIXME
 
 " coc-explorer
