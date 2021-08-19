@@ -12,7 +12,7 @@ ts() {
       ~/.dotfiles/
       ~/.dotfiles/*/
     )
-    items=("${(u)items[@]}")
+    items=("${(u)items[@]}") #`
 
     selected=`printf "%s\n" "${items[@]}" | sort | fzf`
 
@@ -37,19 +37,18 @@ ts() {
 
   tmux new-session -s $dirname -d -c $selected 2>/dev/null
   if [[ $? -eq 0 ]]; then
+    if [[ $2 != "" ]]; then
+      tmux send-keys -t $dirname "$2" Enter
+    fi
     if [[ -v TMUX ]]; then
       tmux switch-client -t $dirname 2>/dev/null
     else
       tmux attach -t $dirname
     fi
-  else
-    tmux new -s $dirname -A -c $selected
   fi
-
-
 }
 
-# don't froget to rm ~/.zcompdump when you're finished
+# don't forget to rm ~/.zcompdump when you're finished
 
 alias tl="tmux ls"
 alias ta='tmux attach -t'

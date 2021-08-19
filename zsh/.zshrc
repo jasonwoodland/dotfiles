@@ -273,37 +273,9 @@
 
   # nvim-session {{{
 
-    nvim-session() {
-      if [[ $# -eq 1 ]]; then
-        selected=$1
-      else
-        items=(
-          ~/ispec/*/
-          ~/ispec/*/go/
-          ~/ispec/*/*/apps/*/
-          ~/projects/*/
-          ~/projects/cone/
-          ~/projects/cone/*/
-          ~/.dotfiles/
-          ~/.dotfiles/*/
-        )
-
-        selected=`printf "%s\n" "${items[@]}" | sort | fzf`
-
-        if [[ $selected == '' ]]; then
-          return
-        fi
-      fi
-
-      pushd $selected >/dev/null
-      # if [[ -f Session.vim ]]; then
-      #   nvim -S
-      # else
-      nvim -c ":pwd"
-      # fi
-      popd >/dev/null
+    vs() {
+      ts "" nvim
     }
-    alias v=nvim-session
 
   # }}}
 
