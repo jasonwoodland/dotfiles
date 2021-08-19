@@ -151,7 +151,8 @@ nnoremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
 set display=lastline
 
 " Minimum number of lines to keep above and below the cursor
-autocmd BufEnter * set scrolloff=8
+" autocmd BufEnter * set scrolloff=8
+set scrolloff=6
 
 " Minimum number of characters either side of the cursor
 set sidescrolloff=6
@@ -254,8 +255,7 @@ tnoremap <Esc> <C-\><C-n>
 tnoremap <C-v><Esc> <Esc>
 
 augroup Terminal
-  autocmd TermOpen * setlocal signcolumn=no nonumber
-  autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
+  autocmd TermOpen * setlocal signcolumn=no nonumber scrolloff=0 display=
 augroup END
 
 command -nargs=0 SplitTerminal :new|term
