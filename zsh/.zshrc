@@ -274,7 +274,7 @@
   # nvim-session {{{
 
     vs() {
-      ts $1 nvim
+      ts "$1" nvim
     }
 
   # }}}
