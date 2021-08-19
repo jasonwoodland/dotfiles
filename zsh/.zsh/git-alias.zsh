@@ -8,6 +8,7 @@ alias gbm='git branch --move'
 alias gca='git commit --amend'
 alias gcam="git commit --all -m"
 alias gcan='git commit --amend --no-edit'
+alias gc="git commit"
 alias gcm="git commit -m"
 alias gcl='git clean'
 alias gco='git checkout'
