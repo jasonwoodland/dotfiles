@@ -216,6 +216,12 @@
 
   # }}}
 
+  # fzf {{{
+
+    source ~/.zsh/fzf.zsh
+
+  # }}}
+
 # }}}
 
 # Functions {{{
