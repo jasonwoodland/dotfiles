@@ -254,21 +254,26 @@ set titlestring=%f
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-v><Esc> <Esc>
 
-augroup Terminal
+augroup ToggleTerminal
   autocmd TermOpen * setlocal signcolumn=no nonumber scrolloff=0 display=
+  let t:term_height = 25
+  autocmd TabNew * let t:term_height = 25
+  autocmd WinLeave * if exists('t:term_bufnr') | let t:term_height = winheight(bufwinnr(t:term_bufnr)) | endif
 augroup END
 
-command -nargs=0 SplitTerminal :new|term
-command -nargs=0 VsplitTerminal :vnew|term
-command -nargs=0 TabTerminal :tabnew|term
-call Alias("st", "SplitTerminal")
-call Alias("vt", "VsplitTerminal")
-call Alias("tt", "TabTerminal")
+command -nargs=0 TerminalSplit :new|term
+command -nargs=0 TerminalVsplit :vnew|term
+command -nargs=0 TerminalTab :tabnew|term
+command -nargs=0 TerminalReset :exe 'te'|bd!#|let t:term_bufnr = bufnr('%')
+call Alias("st", "TerminalSplit")
+call Alias("vt", "TerminalVsplit")
+call Alias("tt", "TerminalTab")
+call Alias("rt", "TerminalReset")
 
 nnoremap <silent> <leader>t :<c-u>call ToggleTerminal(v:count)<CR>
 nnoremap <silent> <space>t :<c-u>call ToggleTerminal(v:count)<CR>
 
-function ToggleTerminal(height)
+function! ToggleTerminal(height)
   if exists('t:term_bufnr') && bufwinnr(t:term_bufnr) > 0
     let t:term_height = winheight(bufwinnr(t:term_bufnr))
     exe bufwinnr(t:term_bufnr).'close'
@@ -277,7 +282,6 @@ function ToggleTerminal(height)
       exe 'sb'.t:term_bufnr
     else
       sp term://$SHELL
-      let t:term_height = 25
     endif
     if a:height > 1
       exe 'res'.a:height
