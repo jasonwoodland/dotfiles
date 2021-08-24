@@ -10,8 +10,40 @@
 [format]
 	pretty = oneline
 [alias]
+	a = add
+	aa = add --all
+	ap = add --patch
+	b = branch
+	bl = branch --list
+	bc = branch --show-current
+	bm = branch --move
+	c = commit
+	cam = commit --all -m
+	ca = commit --amend
+	can = commit --amend --no-edit
+	co = checkout
+	cob = checkout -b
+	d = diff
+	ds = diff --staged
+	dn = diff --name-only
         l = log --oneline --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
         lg = log --oneline --graph --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
+	ph = push
+	pl = pull
+	sh = stash
+	s = status
+	repo = !gh repo view --web
+	is = "!f() {  \
+		if [ \"$1\" ]; then \
+			gh issue view --web $1; \
+		else \
+			issueno=\"$(git branch --show-current | grep -o '[0-9]\\+')\"; \
+			if [ \"$issueno\" ]; then \
+				gh issue view --web $issueno; \
+			fi; \
+		fi; \
+	}; f"
+	pr = !gh pr view --web >/dev/null 2>&1 || gh pr create --web --assignee @me
 [push]
 	default = current
 [url "git@github.com:"]
