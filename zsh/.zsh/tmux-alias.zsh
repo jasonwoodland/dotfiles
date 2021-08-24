@@ -14,7 +14,7 @@ ts() {
     )
     items=("${(u)items[@]}") #`
 
-    selected=`printf "%s\n" "${items[@]}" | sort | fzf`
+    selected=`printf "%s\n" "${items[@]}" | sort | fzf --height 40%`
 
     if [[ $selected == '' ]]; then
       return
@@ -22,6 +22,7 @@ ts() {
   fi
 
   dirname=`basename $selected`
+  dirname=${dirname##.}
 
   if [[ -v TMUX ]]; then
     tmux switch-client -t $dirname 2>/dev/null
