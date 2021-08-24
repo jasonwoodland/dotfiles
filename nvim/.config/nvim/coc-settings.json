@@ -92,5 +92,6 @@
         "usePlaceholders": true
       }
     }
-  }
+  },
+  "suggest.removeDuplicateItems": true
 }
