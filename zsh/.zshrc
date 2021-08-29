@@ -166,13 +166,6 @@
   export EDITOR=nvim
   export REACT_EDITOR=none # don't open vim on development crash
 
-  export FZF_DEFAULT_OPTS='
-    --color=fg:-1,bg:-1,hl:-1
-    --color=fg+:regular:-1,bg+:#2d323b,hl+:-1
-    --color=info:-1,prompt:-1,pointer:-1
-    --color=marker:-1,spinner:-1,header:-1,gutter:-1
-  '
-
 # }}}
 
 # Aliases {{{
@@ -219,6 +212,12 @@
   # fzf {{{
 
     source ~/.zsh/fzf.zsh
+    export FZF_DEFAULT_OPTS='
+      --color=fg:-1,bg:-1,hl:-1:bold
+      --color=fg+:regular:7,bg+:#2d323b,hl+:-1:regular:-1:bold
+      --color=info:-1,prompt:-1,pointer:-1,input:regular
+      --color=marker:-1,spinner:-1,header:-1,gutter:-1
+    '
 
   # }}}
 
