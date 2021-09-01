@@ -31,7 +31,7 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'AndrewRadev/splitjoin.vim'
 
 " Only if coc-pairs disabled!!
-Plug 'rstacruz/vim-closer'
+" Plug 'rstacruz/vim-closer'
 
 " Colorschemes
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
@@ -394,7 +394,8 @@ set sessionoptions=buffers,curdir,help,resize,tabpages,winpos,winsize
   hi VertSplit guifg=#22262d
 
   hi SignColumn guibg=none
-  hi DiffChange cterm=none gui=none guifg=#e5c07b
+  hi clear DiffChange
+  hi link DiffChange LineNr
   hi DiffAdd cterm=none gui=none guifg=none guibg=#2d3828
   hi DiffDelete cterm=none gui=none guifg=#bf383a guibg=none
 
@@ -631,7 +632,7 @@ command! -nargs=0 OrganiseImport :call CocAction('runCommand', 'editor.action.or
 
 " Mappings for CoCList
 " Show all diagnostics.
-" nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>x  :<C-u>CocList extensions<cr>
 " Show commands.
@@ -721,34 +722,35 @@ function ToggleGit()
 endfunction
 
 call Alias("git", "Git")
-call Alias("ga", "Git add")
-call Alias("gaa", "Git add --all")
-call Alias("gbl", "Git blame")
-call Alias("gb", "Git branch")
-call Alias("gbl", "Git branch --list")
-call Alias("gcl", "Git clean")
-call Alias("gclo", "Git clone")
-call Alias("gclod", "Git clone --depth=1")
-call Alias("gc", "Git commit")
-call Alias("gca", "Git commit -v --amend")
-call Alias("gcam", "Git commit -v --amend -m")
-call Alias("gcan", "Git commit -v --amend --no-edit")
-call Alias("gcm", "Git commit -v -m")
-call Alias("gco", "Git checkout")
-call Alias("gcob", "Git checkout -b")
-call Alias("gd", "Git diff")
-call Alias("gdn", "Git diff --name-only")
-call Alias("gds", "Git diff --staged")
-call Alias("gdsn", "Git diff --staged --name-only")
-call Alias("gfe", "Git fetch")
-call Alias("gl", "Git log")
-call Alias("glg", "Git log --graph")
-call Alias("gme", "Git merge")
-call Alias("gph", "Dispatch! git push -u origin")
-call Alias("gpl", "Dispatch! git pull")
-call Alias("grst", "Git restore --staged")
-call Alias("gsh", "Git stash")
-call Alias("gs", "Git status")
+nnoremap g<space> :Git<space>
+" call Alias("ga", "Git add")
+" call Alias("gaa", "Git add --all")
+" call Alias("gbl", "Git blame")
+" call Alias("gb", "Git branch")
+" call Alias("gbl", "Git branch --list")
+" call Alias("gcl", "Git clean")
+" call Alias("gclo", "Git clone")
+" call Alias("gclod", "Git clone --depth=1")
+" call Alias("gc", "Git commit")
+" call Alias("gca", "Git commit -v --amend")
+" call Alias("gcam", "Git commit -v --amend -m")
+" call Alias("gcan", "Git commit -v --amend --no-edit")
+" call Alias("gcm", "Git commit -v -m")
+" call Alias("gco", "Git checkout")
+" call Alias("gcob", "Git checkout -b")
+" call Alias("gd", "Git diff")
+" call Alias("gdn", "Git diff --name-only")
+" call Alias("gds", "Git diff --staged")
+" call Alias("gdsn", "Git diff --staged --name-only")
+" call Alias("gfe", "Git fetch")
+" call Alias("gl", "Git log")
+" call Alias("glg", "Git log --graph")
+" call Alias("gme", "Git merge")
+" call Alias("gph", "Dispatch! git push -u origin")
+" call Alias("gpl", "Dispatch! git pull")
+" call Alias("grst", "Git restore --staged")
+" call Alias("gsh", "Git stash")
+" call Alias("gs", "Git status")
 
 command -nargs=0 GIssue :call system("gh issue view --web \`git branch --show-current \| grep -o '\\#[0-9]\\+'\`")
 command -nargs=0 GPullRequest :call system("gh pr view --web > /dev/null 2>&1 \|\| gh pr create --web --assignee @me")<
@@ -769,7 +771,7 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
   indent = {
-    enable = true,
+    enable = false,
   },
   textobjects = {
     select = {

@@ -14,26 +14,30 @@
 	aa = add --all
 	ap = add --patch
 	b = branch
-	bl = branch --list
 	bc = branch --show-current
+	bl = branch --list
 	bm = branch --move
 	c = commit
-	cam = commit --all -m
 	ca = commit --amend
+	cam = commit --all -m
 	can = commit --amend --no-edit
 	co = checkout
 	cob = checkout -b
 	d = diff
-	ds = diff --staged
 	dn = diff --name-only
-        l = log --oneline --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
-        lg = log --oneline --graph --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
-	ph = push
+	ds = diff --staged
+	l = log --oneline --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
+	lg = log --oneline --graph --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
+	ph = push -u origin
 	pl = pull
-	sh = stash
-	s = status
+	r = reset
+	rb = rebase
 	repo = !gh repo view --web
-	is = "!f() {  \
+	rs = restore
+	s = status
+	sh = stash
+	sw = switch
+	issue = "!f() {  \
 		if [ \"$1\" ]; then \
 			gh issue view --web $1; \
 		else \
@@ -43,6 +47,7 @@
 			fi; \
 		fi; \
 	}; f"
+	is = issue
 	pr = !gh pr view --web >/dev/null 2>&1 || gh pr create --web --assignee @me
 [push]
 	default = current
