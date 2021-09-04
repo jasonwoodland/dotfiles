@@ -30,10 +30,11 @@
 	lg = log --oneline --graph --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
 	ph = push -u origin
 	pl = pull
-	r = reset
+	re = reset
 	rb = rebase
 	repo = !gh repo view --web
-	rs = restore
+	rp = repo
+	rt = restore
 	s = status
 	sh = stash
 	sw = switch
