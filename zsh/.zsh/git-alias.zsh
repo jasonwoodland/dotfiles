@@ -16,7 +16,7 @@ function join(array, start, end, sep,    result, i)
 {
   split($0,a," ");
   if (length(a) > 5) {
-    print "alias g" a[1] "=git " a[1]
+    print "alias g" a[1] "=\"git " a[1] "\""
   } else if (length(a) >= 3) {
     print "alias g" a[1] "=\"git " join(a, 3, length(a), " ", cmd) "\""
   }
