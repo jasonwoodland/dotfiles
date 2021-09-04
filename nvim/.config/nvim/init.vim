@@ -723,42 +723,25 @@ endfunction
 
 call Alias("git", "Git")
 nnoremap g<space> :Git<space>
-" call Alias("ga", "Git add")
-" call Alias("gaa", "Git add --all")
-" call Alias("gbl", "Git blame")
-" call Alias("gb", "Git branch")
-" call Alias("gbl", "Git branch --list")
-" call Alias("gcl", "Git clean")
-" call Alias("gclo", "Git clone")
-" call Alias("gclod", "Git clone --depth=1")
-" call Alias("gc", "Git commit")
-" call Alias("gca", "Git commit -v --amend")
-" call Alias("gcam", "Git commit -v --amend -m")
-" call Alias("gcan", "Git commit -v --amend --no-edit")
-" call Alias("gcm", "Git commit -v -m")
-" call Alias("gco", "Git checkout")
-" call Alias("gcob", "Git checkout -b")
-" call Alias("gd", "Git diff")
-" call Alias("gdn", "Git diff --name-only")
-" call Alias("gds", "Git diff --staged")
-" call Alias("gdsn", "Git diff --staged --name-only")
-" call Alias("gfe", "Git fetch")
-" call Alias("gl", "Git log")
-" call Alias("glg", "Git log --graph")
-" call Alias("gme", "Git merge")
-" call Alias("gph", "Dispatch! git push -u origin")
-" call Alias("gpl", "Dispatch! git pull")
-" call Alias("grst", "Git restore --staged")
-" call Alias("gsh", "Git stash")
-" call Alias("gs", "Git status")
 
-command -nargs=0 GIssue :call system("gh issue view --web \`git branch --show-current \| grep -o '\\#[0-9]\\+'\`")
-command -nargs=0 GPullRequest :call system("gh pr view --web > /dev/null 2>&1 \|\| gh pr create --web --assignee @me")<
-command -nargs=0 GRepo :call system("gh repo view --web")
-
-call Alias("gis", "GIssue")
-call Alias("gpr", "GPullRequest")
-call Alias("gre", "GRepo")
+function! GitAliasCallback(j, d, e)
+  for l in a:d
+    let p = split(l, " ")
+    if len(p) > 5
+      call Alias("g".p[0], "Git ".p[0])
+    elseif len(p) >= 3
+      call Alias("g".p[0], "Git ".join(p[2:], " "))
+    endif
+    echom len(p)
+  endfor
+endfunction
+function! GitAliasExit(j, d, e)
+  cuna gph
+  cuna gpl
+  call Alias("gph", "Dispatch! git push -u origin")
+  call Alias("gpl", "Dispatch! git pull")
+endfunction
+call jobstart("git alias", {'on_stdout':'GitAliasCallback', 'on_exit':'GitAliasExit'})
 
 " }}}
 " treesitter {{{
