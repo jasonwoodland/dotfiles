@@ -268,7 +268,7 @@ command -nargs=0 TerminalReset :exe 'te'|bd!#|let t:term_bufnr = bufnr('%')
 call Alias("st", "TerminalSplit")
 call Alias("vt", "TerminalVsplit")
 call Alias("tt", "TerminalTab")
-call Alias("rt", "TerminalReset")
+call Alias("tr", "TerminalReset")
 
 nnoremap <silent> <leader>t :<c-u>call ToggleTerminal(v:count)<CR>
 nnoremap <silent> <space>t :<c-u>call ToggleTerminal(v:count)<CR>
