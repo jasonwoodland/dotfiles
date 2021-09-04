@@ -263,7 +263,7 @@ augroup END
 
 command -nargs=0 TerminalSplit :new|term
 command -nargs=0 TerminalVsplit :vnew|term
-command -nargs=0 TerminalTab :tabnew|term
+command -nargs=? TerminalTab :<args>tabnew|term
 command -nargs=0 TerminalReset :exe 'te'|bd!#|let t:term_bufnr = bufnr('%')
 call Alias("st", "TerminalSplit")
 call Alias("vt", "TerminalVsplit")
