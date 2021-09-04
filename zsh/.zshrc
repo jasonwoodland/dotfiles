@@ -187,6 +187,7 @@
     --colors path:none \
     --colors path:style:bold"
   alias t="track"
+  alias ls="ls --hyperlink=auto"
 
   alias sum="awk '{s+=\$1} END {print s}'"
   alias beep="(afplay /System/Library/Sounds/Hero.aiff &)"
