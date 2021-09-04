@@ -10,6 +10,7 @@
 [format]
 	pretty = oneline
 [alias]
+	alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 	a = add
 	aa = add --all
 	ap = add --patch
@@ -18,6 +19,7 @@
 	bl = branch --list
 	bm = branch --move
 	c = commit
+	cm = commit -m
 	ca = commit --amend
 	cam = commit --all -m
 	can = commit --amend --no-edit
