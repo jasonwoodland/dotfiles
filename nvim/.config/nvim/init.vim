@@ -126,11 +126,6 @@ xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
 
 cabbrev vsb vert sb
 
-" F10 to show the current highlighting group under the cursor
-nmap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-  \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-  \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
 " Trim whitespace
 function! TrimWhitespace()
   let l:save = winsaveview()
