@@ -732,7 +732,6 @@ function! GitAliasCallback(j, d, e)
     elseif len(p) >= 3
       call Alias("g".p[0], "Git ".join(p[2:], " "))
     endif
-    echom len(p)
   endfor
 endfunction
 function! GitAliasExit(j, d, e)
