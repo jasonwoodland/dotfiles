@@ -30,8 +30,7 @@ Plug 'jasonwoodland/vim-hyperstyle'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'AndrewRadev/splitjoin.vim'
 
-" Only if coc-pairs disabled!!
-" Plug 'rstacruz/vim-closer'
+Plug 'rstacruz/vim-closer' " Only if coc-pairs disabled!!
 
 " Colorschemes
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
@@ -772,12 +771,12 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-" lua <<EOF
-" local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-" parser_config.comment = {
-"   used_by = {"js", "ts", "jsx", "tsx", "c", "go", "vue"} -- additional filetypes that use this parser
-" }
-" EOF
+lua <<EOF
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.comment = {
+  used_by = {"js", "ts", "jsx", "tsx", "c", "go", "vue"} -- additional filetypes that use this parser
+}
+EOF
 
 " }}}
 " splitjoin.vim {{{
