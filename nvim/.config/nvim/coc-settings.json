@@ -21,6 +21,7 @@
   "git.addGBlameToVirtualText": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "javascript.suggestionActions.enabled": true, // false to hide commonjs warnings
   "tsserver.formatOnType": true,
   "coc.preferences.formatOnType": true, // true might be fucking with indenting
   "list.source.files.args": ["--hidden", "--files"],
