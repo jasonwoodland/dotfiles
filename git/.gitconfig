@@ -14,9 +14,10 @@
 	a = add
 	aa = add --all
 	ap = add --patch
+	bl = blame
 	b = branch
 	bc = branch --show-current
-	bl = branch --list
+	bd = branch --delete
 	bm = branch --move
 	c = commit
 	cm = commit -m
