@@ -107,22 +107,26 @@
 
 # Options {{{
 
+  # Auto correct
+  setopt correct_all
+
   # Auto chdir
   setopt auto_cd
   alias -- -="cd -"
 
   # History {{{
 
-    HISTFILE=~/.histfile
+    HISTFILE=~/.zsh_history
     HISTFILESIZE=100000
     HISTSIZE=100000
     SAVEHIST=100000
     setopt append_history
     setopt inc_append_history
     setopt share_history
-    setopt hist_find_no_dups
-    setopt hist_ignore_dups
     setopt hist_ignore_space
+    setopt hist_find_no_dups
+    setopt hist_expire_dups_first
+    setopt extended_history
 
   # }}}
 
