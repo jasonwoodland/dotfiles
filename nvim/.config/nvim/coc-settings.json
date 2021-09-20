@@ -39,10 +39,10 @@
   "diagnostic.enableHighlightLineNumber": false,
 
   // "coc.preferences.useQuickfixForLocations": true, // maybe causing gd in js to act weird
-  "git.addedSign.text": "▐",
-  "git.changedSign.text": "▐",
-  "git.removedSign.text": "▁",
-  "git.topRemovedSign.text": "▔",
+  "git.addedSign.text": "🮈",
+  "git.changedSign.text": "🮈",
+  "git.removedSign.text": "▂",
+  "git.topRemovedSign.text": "🮂",
   "diagnostic.warningSign": "",
   "diagnostic.infoSign": "",
   "diagnostic.errorSign": "",
