@@ -291,9 +291,6 @@ function! ToggleTerminal(height)
 endfunction
 
 function! PreviousTerminal()
-    if &buftype != "terminal"
-      return
-    endif
     :bprevious
     while &buftype != "terminal"
         :bprevious
@@ -301,9 +298,6 @@ function! PreviousTerminal()
 endfunction
 
 function! NextTerminal()
-    if &buftype != "terminal"
-      return
-    endif
     :bnext
     while &buftype != "terminal"
         :bnext
