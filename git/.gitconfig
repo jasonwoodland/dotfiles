@@ -8,7 +8,7 @@
 [color]
 	ui = true
 [format]
-	pretty = oneline
+	pretty = "%C(magenta)%h%C(blue)%d %C(reset)%s %C(dim white)(%an)%n         %C(green)%aD %C(dim white)(%ar)%C(reset)%n"
 [alias]
 	alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 	a = add
@@ -29,8 +29,11 @@
 	d = diff
 	dn = diff --name-only
 	ds = diff --staged
-	l = log --oneline --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
-	lg = log --oneline --graph --decorate --all --format=format:'%C(magenta)%h%C(yellow)%d %C(reset)%s %C(dim white)<%an>%n''         %C(cyan)%aD %C(green)(%ar)%C(reset)%n'
+	is = issue
+	l = log
+	la = log --all
+	lg = log --graph
+	lga = log --graph --all
 	me = merge
 	ph = push -u origin
 	pl = pull
@@ -52,7 +55,6 @@
 			fi; \
 		fi; \
 	}; f"
-	is = issue
 	pr = !gh pr view --web >/dev/null 2>&1 || gh pr create --web --assignee @me
 [push]
 	default = current
