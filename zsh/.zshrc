@@ -107,9 +107,6 @@
 
 # Options {{{
 
-  # Auto correct
-  setopt correct_all
-
   # Auto chdir
   setopt auto_cd
   alias -- -="cd -"
