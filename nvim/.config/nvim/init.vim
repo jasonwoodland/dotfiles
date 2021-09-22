@@ -209,9 +209,8 @@ set belloff=all
 " No visual bell
 set t_vb=
 
-" Wait 400ms for a key sequence to complete
-" set timeoutlen=400 ttimeoutlen=0
-set ttimeoutlen=0
+" Don't typeout key sequences
+set notimeout
 
 " Don't move cursor to matching parentheses
 set matchtime=0
