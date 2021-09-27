@@ -31,8 +31,10 @@
 	dn = diff --name-only
 	ds = diff --staged
 	is = issue
-	l = log --all
-	lg = log -all --graph
+	l = log
+	lg = log --graph
+	la = log --all
+	lag = log --all --graph
 	m = merge
 	ma = merge --abort
 	ph = push -u origin
