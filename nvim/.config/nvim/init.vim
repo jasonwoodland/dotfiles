@@ -268,12 +268,12 @@ nnoremap <silent> <space>t :<c-u>call ToggleTerminal(v:count)<CR>
 
 function! ToggleTerminal(height)
   if exists('t:term_winid') && win_id2win(t:term_winid) > 0
-    let t:term_bufnr = nvim_win_get_buf(t:term_winid)
-    let t:term_height = winheight(bufwinnr(t:term_bufnr))
-    exe bufwinnr(t:term_bufnr).'close'
+    let g:term_bufnr = nvim_win_get_buf(t:term_winid)
+    let t:term_height = winheight(bufwinnr(g:term_bufnr))
+    exe bufwinnr(g:term_bufnr).'close'
   else
-    if exists('t:term_bufnr') && bufexists(t:term_bufnr)
-      exe 'sb'.t:term_bufnr
+    if exists('g:term_bufnr') && bufexists(g:term_bufnr)
+      exe 'sb'.g:term_bufnr
       let t:term_winid = win_getid()
     else
       sp term://$SHELL
@@ -285,7 +285,7 @@ function! ToggleTerminal(height)
     endif
     exe 'set wfh'
     exe "normal! \<c-w>J"
-    let t:term_bufnr = bufnr()
+    let g:term_bufnr = bufnr()
     let t:term_winid = win_getid()
   endif
 endfunction
