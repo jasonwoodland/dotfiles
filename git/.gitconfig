@@ -83,6 +83,6 @@
 	algorithm = histogram
 [merge]
 	tool = nvim -d
-	conflictstyle = diff3
+	; conflictstyle = diff3
 [mergetool]
 	prompt = false
