@@ -290,22 +290,21 @@ function! ToggleTerminal(height)
   endif
 endfunction
 
-function! PreviousTerminal()
-    :bprevious
-    while &buftype != "terminal"
-        :bprevious
-    endw
+function! SwitchTerminal(delta)
+  let bufs = filter(range(1, bufnr("$")), "getbufvar(v:val, '&buftype', 'ERROR') == 'terminal'")
+  let i = index(bufs, bufnr())
+  if i == -1
+    let i = a:delta == 1 ? len(bufs) - 1 : 0
+  else
+    let i = i + a:delta
+  endif
+  let b = bufs[i % (len(bufs))]
+  echo b
+  exe 'buffer'.b
 endfunction
 
-function! NextTerminal()
-    :bnext
-    while &buftype != "terminal"
-        :bnext
-    endw
-endfunction
-
-nnoremap <silent> [t :call PreviousTerminal()<cr>
-nnoremap <silent> ]t :call NextTerminal()<cr>
+nnoremap <silent> [t :call SwitchTerminal(-1)<cr>
+nnoremap <silent> ]t :call SwitchTerminal(1)<cr>
 
 " }}}
 
