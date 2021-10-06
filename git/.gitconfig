@@ -30,6 +30,7 @@
 	d = diff
 	dn = diff --name-only
 	ds = diff --staged
+	f = fetch
 	is = issue
 	l = log
 	lg = log --graph
