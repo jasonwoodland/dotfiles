@@ -454,9 +454,19 @@ augroup GoLang
 augroup END
 
 " }}}
-" JavaScript {{{
+" Javascript {{{
 
-autocmd FileType javascript set ft=javascriptreact
+augroup Javascript
+  autocmd FileType javascript set ft=javascriptreact
+augroup END
+
+" }}}
+" Typescript {{{
+
+augroup Typescript
+  " doesnt insert comma, then prettier does, ugggghhhhhhh
+  " autocmd BufWritePre *.ts,*.tsx :silent call CocAction('runCommand', 'editor.action.organizeImport')
+augroup END
 
 " }}}
 " }}}
@@ -588,7 +598,7 @@ nmap <leader>fo <Plug>(coc-format-selected)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json,javascript,typescriptreact setl formatexpr=CocAction('formatSelected')
+  autocmd FileType json,javascript,javascriptreact,typescript,typescriptreact setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -624,12 +634,6 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select-backward)
-
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 nmap <silent> <leader>ff :<C-u>Format<cr>
@@ -638,7 +642,7 @@ nmap <silent> <leader>ff :<C-u>Format<cr>
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OrganiseImport :call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OrganizeImport :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
@@ -677,6 +681,9 @@ nnoremap <silent><nowait> <space>m  :<C-u>CocList mru<CR>
 " Grep completion
 nnoremap <silent><nowait> <space>g  :<C-u>CocList -I grep -S -regex<CR>
 nnoremap <silent><nowait> <space>G  :<C-u>CocList -I grep -regex<CR>
+
+nnoremap <silent><nowait> <space>a  :<C-u>CocList gstatus<CR>
+nnoremap <silent><nowait> <space>b  :<C-u>CocList branches<CR>
 command! -nargs=0 Todos         CocList -A --normal grep -e TODO|FIXME
 
 " coc-explorer
