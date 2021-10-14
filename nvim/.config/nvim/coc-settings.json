@@ -15,75 +15,57 @@
     "<C-v>": "action:vsplit",
     "<C-t>": "action:tabe"
   },
-  "translator.engines": ["google"], // fast
-  // "translator.engines": ["bing", "google", "youdao", "haici"],
-  "translator.toLang": "en",
-  "git.addGBlameToVirtualText": true,
+  "list.source.files.args": ["--hidden", "--files"],
+  "list.source.files.excludePatterns": ["**/.git/**", "**/__generated__/**"],
+  "list.source.mru.ignoreGitIgnore": true,
+  "list.source.grep.command": "rg",
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "javascript.suggestionActions.enabled": true, // false to hide commonjs warnings
-  "tsserver.formatOnType": true,
-  "coc.preferences.formatOnType": true, // true might be fucking with indenting
-  "list.source.files.args": ["--hidden", "--files"],
-  "list.source.files.excludePatterns": ["**/.git/**"],
-  "list.source.mru.ignoreGitIgnore": true, // we want to open .env et al. quickly
-  "list.source.grep.command": "rg",
   "tsserver.maxTsServerMemory": 2048,
-  "tsserver.watchOptions": {
-    // see https://www.typescriptlang.org/docs/handbook/configuring-watch.html
-    "watchFile": "useFsEvents",
-    "watchDirectory": "useFsEvents",
-    // Poll files for updates more frequently when they're updated a lot.
-    "fallbackPolling": "dynamicPriorityPolling"
-  },
   "diagnostic.enableHighlightLineNumber": false,
-
-  // "coc.preferences.useQuickfixForLocations": true, // maybe causing gd in js to act weird
   "git.addedSign.text": "🮈",
   "git.changedSign.text": "🮈",
   "git.removedSign.text": "▂",
   "git.topRemovedSign.text": "🮂",
+  "git.addGBlameToVirtualText": true,
   "diagnostic.warningSign": "",
   "diagnostic.infoSign": "",
   "diagnostic.errorSign": "",
   "diagnostic.hintSign": "",
-  "diagnostic.virtualText": false,
-  "diagnostic.virtualTextCurrentLineOnly": false,
-  /* "diagnostic.virtualTextLineSeparator": " \\ \\ \\ \\ \\ ", */
   "diagnostic.messageTarget": "float",
-  "git.enableGlobalStatus": false,
-  "eslint.codeAction.disableRuleComment": {
-    "enable": true,
-    "location": "separateLine"
-  },
-  "eslint.format.enable": true,
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnTypeFiletypes": [
+    "json",
+    "jsonc",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "jsonc",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "suggest.removeDuplicateItems": true,
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "eslint.autoFixOnSave": true,
   "explorer.width": 35,
   "explorer.icon.enableNerdfont": true,
   "explorer.openAction.strategy": "select",
+  "explorer.keyMappings.global": {
+    "v": "open:vsplit"
+  },
   "snippets.extends": {
     "javascriptreact": ["javascript"],
     "javascript.jsx": ["javascript"],
     "typescriptreact": ["typescript"],
     "typescript.tsx": ["typescript"]
   },
-  "explorer.keyMappings.global": {
-    "v": "open:vsplit"
-  },
-  "vetur.experimental.templateInterpolationService": true,
-  // "diagnostic.refreshOnInsertMode": false // maybe causes popups typing?
-  //  "snippets.loadFromExtensions": false
-  //  "languageserver": {
-  //    // Requires: yarn global add graphql-language-service-cli graphql
-  //    "graphql": {
-  //      "command": "graphql-lsp",
-  //      "args": ["server", "--method", "stream"],
-  //      "filetypes": ["javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "graphql"]
-  //    }
-  //  }
-  "html-css-support.enabledLanguages": [
-    "html",
-    "vue"
-  ],
   "languageserver": {
     "golang": {
       "command": "gopls",
@@ -92,7 +74,19 @@
       "initializationOptions": {
         "usePlaceholders": true
       }
+    },
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "graphql"
+      ]
     }
   },
-  "suggest.removeDuplicateItems": true
+  "translator.engines": ["google"],
+  "translator.toLang": "en"
 }
