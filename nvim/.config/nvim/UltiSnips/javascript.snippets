@@ -1,7 +1,15 @@
 snippet l "console.log"
-console.log($1)
+console.log($1);
+endsnippet
+
+snippet warn "console.warn"
+console.warn($1);
+endsnippet
+
+snippet err "console.error"
+console.error($1);
 endsnippet
 
 snippet rs "useState"
-const [$1, set${1/(.)(.*)/${1:/capitalize}$2/}] = useState($2)
+const [$1, set${1/(.)(.*)/${1:/capitalize}$2/}] = useState$2($3);
 endsnippet
