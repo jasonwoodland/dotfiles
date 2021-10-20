@@ -83,7 +83,7 @@ v() {
   dirname=`basename $selected`
   dirname=${dirname##.}
 
-  pushd $dirname
-  nvim
+  pushd $selected
+  abduco -A -e "^z" $dirname nvim
   popd
 }
