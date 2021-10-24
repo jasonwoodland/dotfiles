@@ -57,33 +57,3 @@ alias tad='tmux attach -d -t'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
 
-v() {
-  if [[ $# -eq 1 ]]; then
-    selected=$1
-  else
-    items=(
-      ~/ispec/*/
-      ~/ispec/*/go/
-      ~/ispec/*/*/apps/*/
-      ~/Projects/*/
-      ~/Projects/cone/
-      ~/Projects/cone/*/
-      ~/.dotfiles/
-      ~/.dotfiles/*/
-    )
-    items=("${(u)items[@]}") #`
-
-    selected=`printf "%s\n" "${items[@]}" | sort | fzf --height 40%`
-
-    if [[ $selected == '' ]]; then
-      return
-    fi
-  fi
-
-  dirname=`basename $selected`
-  dirname=${dirname##.}
-
-  pushd $selected
-  abduco -A -e "^z" $dirname nvim
-  popd
-}

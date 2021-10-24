@@ -172,7 +172,8 @@
 # Aliases {{{
 
   source ~/.zsh/git-alias.zsh
-  source ~/.zsh/tmux-alias.zsh
+  source ~/.zsh/tmux.zsh
+  source ~/.zsh/projdir.zsh
   source ~/.zsh/terraform.zsh
 
   alias vi=nvim
