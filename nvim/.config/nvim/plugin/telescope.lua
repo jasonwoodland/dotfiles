@@ -1,13 +1,11 @@
 local actions = require('telescope.actions')
 require('telescope').setup{
   defaults = {
-    -- Default configuration for telescope goes here:
-    -- config_key = value,
     winblend = 20,
     mappings = {
       i = {
         ["<C-h>"] = "which_key",
-        ["<esc>"] = "close"
+        ["<esc>"] = "close",
       }
     },
     layout_config = {
@@ -16,8 +14,10 @@ require('telescope').setup{
   },
   pickers = {
     find_files = {
+      hidden = true,
     },
     live_grep = {
+      hidden = true,
     },
   },
   extensions = {

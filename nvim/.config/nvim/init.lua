@@ -1,1 +1,1 @@
-require 'globals'
+require 'ktx.globals'
