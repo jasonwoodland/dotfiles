@@ -67,7 +67,6 @@ require'nvim-tree'.setup {
       custom_only = false,
       -- list of mappings to set on the tree manually
       list = {
-        { key = "<C-s>", cb = tree_cb("split") },
         { key = "h", cb = tree_cb("close_node") },
         { key = "l", cb = tree_cb("open_node") },
       }

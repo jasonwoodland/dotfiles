@@ -1,4 +1,4 @@
 augroup TypescriptDetect
   au!
-  au BufReadPost *.ts set filetype=typescriptreact
+  au BufReadPost *.ts setlocal filetype=typescriptreact
 augroup END

@@ -1,4 +1,4 @@
 augroup JavascriptDetect
   au!
-  au BufReadPost *.javascript set filetype=javascriptreact
+  au BufReadPost *.javascript setlocal filetype=javascriptreact
 augroup END
