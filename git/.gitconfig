@@ -17,7 +17,7 @@
 	b = branch
 	bl = blame
 	bc = branch --show-current
-	bd = branch --delete
+	bd = branch -d
 	bm = branch --move
 	c = commit
 	cm = commit -m
@@ -40,7 +40,7 @@
 	ma = merge --abort
 	ph = push -u origin
 	pl = pull
-	re = reset
+	r = reset
 	rb = rebase
 	rbo = rebase --onto
 	repo = !gh repo view --web
