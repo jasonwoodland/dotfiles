@@ -1,4 +1,6 @@
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+
+vim.g.nvim_tree_ignore = {".git", "node_modules", ".DS_Store"}
 require'nvim-tree'.setup {
   -- disables netrw completely
   disable_netrw       = false,

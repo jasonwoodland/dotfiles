@@ -10,15 +10,19 @@ require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
   use 'nvim-lua/plenary.nvim'
+  use 'jose-elias-alvarez/null-ls.nvim'
   use 'lewis6991/gitsigns.nvim'
 
   use 'hrsh7th/nvim-cmp'
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
-  use "hrsh7th/cmp-nvim-lua"
-  use "hrsh7th/cmp-nvim-lsp"
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'petertriho/cmp-git'
   use 'saadparwaiz1/cmp_luasnip'
-  use "tamago324/cmp-zsh"
+  use 'tamago324/cmp-zsh'
+
+  use 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
   use 'L3MON4D3/LuaSnip'
   use 'onsails/lspkind-nvim'

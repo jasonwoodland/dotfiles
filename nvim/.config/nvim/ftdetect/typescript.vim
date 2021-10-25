@@ -1,4 +1,1 @@
-augroup TypescriptDetect
-  au!
-  au BufReadPost *.ts setlocal filetype=typescriptreact
-augroup END
+autocmd BufNewFile,BufRead *.ts FileType typescript set filetype=typescriptreact

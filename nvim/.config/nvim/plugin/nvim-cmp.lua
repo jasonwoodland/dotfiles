@@ -37,8 +37,9 @@ cmp.setup {
   },
   sources = {
     { name = 'luasnip' },
-    { name = 'nvim_lua' },
+    { name = 'cmp_git' },
     { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
     { name = 'path' },
     { name = 'buffer', keyword_length = 3 },
   },
@@ -65,3 +66,5 @@ cmp.setup {
     ghost_text = true,
   },
 }
+
+require('cmp_git').setup()

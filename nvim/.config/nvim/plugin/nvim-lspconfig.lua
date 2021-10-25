@@ -2,7 +2,7 @@ local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(server) return function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -31,8 +31,59 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-end
+
+  if server.name == "tsserver" then
+    -- disable tsserver formatting if you plan on formatting via null-ls
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+
+    local ts_utils = require("nvim-lsp-ts-utils")
+
+    -- defaults
+    ts_utils.setup {
+      debug = false,
+      disable_commands = false,
+      enable_import_on_completion = true,
+      import_on_completion_timeout = 5000,
+
+      -- eslint
+      eslint_enable_code_actions = true,
+      eslint_bin = "eslint",
+      eslint_args = {"-f", "json", "--stdin", "--stdin-filename", "$FILENAME"},
+      eslint_enable_disable_comments = true,
+
+      -- experimental settings!
+      -- eslint diagnostics
+      eslint_enable_diagnostics = true,
+      eslint_diagnostics_debounce = 250,
+
+      -- formatting
+      enable_formatting = true,
+      formatter = "prettier",
+      formatter_args = {"--stdin-filepath", "$FILENAME"},
+      format_on_save = true,
+      no_save_after_format = false,
+
+      -- parentheses completion
+      complete_parens = false,
+      signature_help_in_parens = true,
+
+      -- update imports on file move
+      update_imports_on_move = false,
+      require_confirmation_on_move = false,
+      watch_dir = "/src",
+    }
+
+    -- required to enable ESLint code actions and formatting
+    ts_utils.setup_client(client)
+
+    -- no default maps, so you may want to define some here
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", {silent = true})
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "qq", ":TSLspFixCurrent<CR>", {silent = true})
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", {silent = true})
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", {silent = true})
+  end
+end end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -41,14 +92,14 @@ local lsp_installer = require("nvim-lsp-installer")
 
 lsp_installer.on_server_ready(function(server)
   local opts = {
-    on_attach = on_attach,
+    on_attach = on_attach(server),
     capabilities = capabilities
   }
 
   server:setup(opts)
   vim.cmd [[ do User LspAttachBuffers ]]
 end)
- 
+
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
 for type, icon in pairs(signs) do
@@ -61,3 +112,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     prefix = '', -- Could be '●', '▎', 'x'
   }
 })
+
+require('null-ls').config {}
+nvim_lsp['null-ls'].setup {}
+
+vim.cmd [[
+  " autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx TSLspOrganizeSync
+  autocmd BufWritePre *.go,*.js,*.jsx,*.ts,*.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
+]]

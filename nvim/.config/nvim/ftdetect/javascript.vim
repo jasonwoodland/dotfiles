@@ -1,4 +1,1 @@
-augroup JavascriptDetect
-  au!
-  au BufReadPost *.javascript setlocal filetype=javascriptreact
-augroup END
+autocmd FileType javascript set filetype=javascriptreact
