@@ -4,7 +4,7 @@
 [core]
 	editor = vim
 	excludesfile = /Users/jason/.gitignore_global
-	abbrev = 8
+	abbrev = 7
 [color]
 	ui = true
 [format]
