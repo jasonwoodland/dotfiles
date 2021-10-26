@@ -62,5 +62,3 @@ endfunction
 
 nnoremap <silent> [t :call SwitchTerminal(-1)<cr>
 nnoremap <silent> ]t :call SwitchTerminal(1)<cr>
-
-

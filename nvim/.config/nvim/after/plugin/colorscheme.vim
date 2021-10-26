@@ -108,3 +108,5 @@ hi DiagnosticUnderlineError gui=undercurl guisp=#be5046
 hi DiagnosticUnderlineWarning gui=undercurl guisp=#d19a66
 hi DiagnosticUnderlineInfo gui=undercurl guisp=#e5c07b
 hi DiagnosticUnderlineHint gui=undercurl guisp=#61afef
+
+hi link netrwTreeBar LineNr

@@ -1,1 +1,1 @@
-autocmd FileType javascript set filetype=javascriptreact
+autocmd BufNewFile,BufRead *.js set filetype=javascriptreact
