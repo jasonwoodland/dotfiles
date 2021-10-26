@@ -6,6 +6,7 @@ end
 
 local use = require('packer').use
 require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
   -- use 'sheerun/vim-polyglot'
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
@@ -21,10 +22,11 @@ require('packer').startup(function()
   use 'petertriho/cmp-git'
   use 'saadparwaiz1/cmp_luasnip'
   use 'tamago324/cmp-zsh'
+  use 'SirVer/ultisnips'
+  use 'quangnguyen30192/cmp-nvim-ultisnips'
 
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
-  use 'L3MON4D3/LuaSnip'
   use 'onsails/lspkind-nvim'
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'

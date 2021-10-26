@@ -1,51 +1,45 @@
-local lspkind = require 'lspkind' 
+local lspkind = require 'lspkind'
 local cmp = require 'cmp'
-local luasnip = require 'luasnip'
+
+local press = function(key)
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), "n", true)
+end
+
 cmp.setup {
   mapping = {
-    -- ['<C-p>'] = cmp.mapping.select_prev_item(),
-    -- ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<C-y>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    },
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
-        cmp.confirm {
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        }
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+        cmp.confirm()
+      elseif vim.fn.complete_info()["selected"] == -1 and vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
+        press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
+      elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+        press("<ESC>:call UltiSnips#JumpForwards()<CR>")
       else
         fallback()
       end
     end,
     ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+        press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
       else
         fallback()
       end
     end,
   },
   sources = {
-    { name = 'luasnip' },
+    { name = 'ultisnips' },
     { name = 'cmp_git' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'path' },
-    { name = 'buffer', keyword_length = 3 },
+    { name = 'buffer' },
   },
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      vim.fn["UltiSnips#Anon"](args.body)
     end,
   },
   formatting = {
