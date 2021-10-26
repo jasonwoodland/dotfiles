@@ -12,7 +12,9 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
-        cmp.confirm()
+        cmp.confirm {
+          select = true
+        }
       elseif vim.fn.complete_info()["selected"] == -1 and vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
         press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
       elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
