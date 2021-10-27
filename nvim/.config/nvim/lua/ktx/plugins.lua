@@ -26,6 +26,7 @@ require('packer').startup(function()
   use 'quangnguyen30192/cmp-nvim-ultisnips'
 
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+  use 'windwp/nvim-ts-autotag'
 
   use 'onsails/lspkind-nvim'
   use 'kyazdani42/nvim-web-devicons'

@@ -13,8 +13,8 @@ cmp.setup {
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.confirm({
-          select = true
-        }, vim.lsp.buf.signature_help)
+          select = true,
+        }) --, vim.lsp.buf.signature_help)
       elseif vim.fn.complete_info()["selected"] == -1 and vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
         press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
       elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
@@ -59,6 +59,6 @@ cmp.setup {
   },
   experimental = {
     native_menu = false,
-    ghost_text = true,
+    ghost_text = false,
   },
 }

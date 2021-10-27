@@ -9,5 +9,4 @@ nnoremap <space>gh <cmd>lua require('telescope.builtin').git_stash()<cr>
 nnoremap <space>m <cmd>lua require('telescope.builtin').oldfiles()<cr>
 nnoremap <space>df <cmd>lua require('ktx.telescope').dotfiles()<cr>
 inoremap <c-s> <cmd>lua vim.lsp.buf.signature_help()<cr>
-
 nnoremap <space>e <cmd>NvimTreeToggle<cr>
