@@ -33,6 +33,15 @@ local on_attach = function(server) return function(client, bufnr)
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   buf_set_keymap('v', '<leader>f', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
 
+  if client.resolved_capabilities.document_formatting then
+    vim.cmd [[
+      augroup Format
+        au! * <buffer>
+        au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
+      augroup END
+    ]]
+  end
+
   if server.name == "tsserver" then
     -- disable tsserver formatting if you plan on formatting via null-ls
     client.resolved_capabilities.document_formatting = false
@@ -88,15 +97,6 @@ local on_attach = function(server) return function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>qf", ":TSLspFixCurrent<CR>", {silent = true})
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rf", ":TSLspRenameFile<CR>", {silent = true})
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ia", ":TSLspImportAll<CR>", {silent = true})
-  end
-
-  if client.resolved_capabilities.document_formatting then
-    vim.cmd [[
-      augroup Format
-        au! * <buffer>
-        au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
-      augroup END
-    ]]
   end
 end end
 
