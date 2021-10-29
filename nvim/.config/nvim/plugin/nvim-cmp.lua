@@ -38,10 +38,10 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = 'ultisnips' },
-    { name = 'cmp_git' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
+    { name = 'ultisnips' },
+    { name = 'cmp_git' },
     { name = 'path' },
     { name = 'buffer' },
   },
@@ -54,17 +54,17 @@ cmp.setup {
     format = lspkind.cmp_format {
       with_text = true,
       menu = {
-        buffer = "[buf]",
         nvim_lsp = "[LSP]",
-        nvim_lua = "[api]",
-        path = "[path]",
-        luasnip = "[snip]",
-        gh_issues = "[issues]",
+        nvim_lua = "[Lua]",
+        ultisnips = "[UltiSnips]",
+        buffer = "[Buffer]",
+        path = "[Path]",
+        gh_issues = "[Issues]",
       },
     }
   },
   experimental = {
     native_menu = false,
-    ghost_text = false,
+    ghost_text = true,
   },
 }
