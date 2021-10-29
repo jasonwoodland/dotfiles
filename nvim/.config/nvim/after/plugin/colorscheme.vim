@@ -110,3 +110,5 @@ hi DiagnosticUnderlineInfo gui=undercurl
 hi DiagnosticUnderlineHint gui=undercurl
 
 hi link netrwTreeBar LineNr
+
+hi link GitSignsCurrentLineBlame LineNr
