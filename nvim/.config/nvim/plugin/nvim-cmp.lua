@@ -6,6 +6,12 @@ local press = function(key)
 end
 
 cmp.setup {
+  -- Always preselect first option
+  preselect = cmp.PreselectMode.None,
+  completion = {
+    completeopt = "menu,menuone,noinsert",
+  },
+
   mapping = {
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
