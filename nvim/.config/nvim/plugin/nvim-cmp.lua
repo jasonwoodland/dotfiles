@@ -43,7 +43,12 @@ cmp.setup {
     { name = 'ultisnips' },
     { name = 'cmp_git' },
     { name = 'path' },
-    { name = 'buffer' },
+    {
+      name = 'buffer',
+      get_bufnrs = function()
+        return vim.api.nvim_list_bufs()
+      end
+    },
   },
   snippet = {
     expand = function(args)
