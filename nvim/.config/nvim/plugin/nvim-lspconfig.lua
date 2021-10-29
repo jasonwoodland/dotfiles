@@ -86,8 +86,17 @@ local on_attach = function(server) return function(client, bufnr)
     -- no default maps, so you may want to define some here
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>or", ":TSLspOrganize<CR>", {silent = true})
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>qf", ":TSLspFixCurrent<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", ":TSLspRenameFile<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rf", ":TSLspRenameFile<CR>", {silent = true})
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ia", ":TSLspImportAll<CR>", {silent = true})
+  end
+
+  if client.resolved_capabilities.document_formatting then
+    vim.cmd [[
+      augroup Format
+        au! * <buffer>
+        au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
+      augroup END
+    ]]
   end
 end end
 
@@ -124,8 +133,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 
 require('null-ls').config {}
 nvim_lsp['null-ls'].setup {}
-
-vim.cmd [[
-  " autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx TSLspOrganizeSync
-  autocmd BufWritePre *.go,*.js,*.jsx,*.ts,*.tsx lua vim.lsp.buf.formatting_sync(nil, 1000)
-]]
