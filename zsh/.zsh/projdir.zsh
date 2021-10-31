@@ -3,8 +3,8 @@ _projdirs=(
   ~/ispec/*/go/
   ~/ispec/*/*/apps/*/
   ~/Projects/*/
-  ~/Projects/cone/
-  ~/Projects/cone/*/
+  ~/Projects/strivellc/
+  ~/Projects/strivellc/*/
   ~/.dotfiles/
   ~/.dotfiles/*/
 )
@@ -32,8 +32,8 @@ _projdir() {
     ~/ispec/*/go/
     ~/ispec/*/*/apps/*/
     ~/Projects/*/
-    ~/Projects/cone/
-    ~/Projects/cone/*/
+    ~/Projects/strivellc/
+    ~/Projects/strivellc/*/
     ~/.dotfiles/
     ~/.dotfiles/*/
   )
