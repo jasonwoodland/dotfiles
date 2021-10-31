@@ -95,7 +95,8 @@ hi TelescopeBorder guifg=#7A859B guibg=#22262d
 hi TelescopeNormal guibg=#22262d
 hi TelescopePreviewNormal guibg=#22262d
 
-hi CmpItemAbbrMatchFuzzy gui=italic
+hi link CmpItemAbbrMatch Special
+hi link CmpItemAbbrMatchFuzzy Special
 hi link CmpItemKind Question
 hi link CmpItemMenu LineNr
 hi link CmpItemMenuSbar PmenuSbar
