@@ -217,10 +217,9 @@
     source ~/.zsh/fzf.zsh
     export FZF_DEFAULT_OPTS='
       --no-bold
-      --pointer " "
-      --color=fg:-1,bg:-1,hl:-1
-      --color=fg+:-1,bg+:0,hl+:reverse:-1
-      --color=info:-1,prompt:-1,pointer:-1,input:regular
+      --color=fg:-1,bg:-1,hl:4
+      --color=fg+:-1,bg+:#3e4452,hl+:4
+      --color=info:-1,prompt:4,pointer:-1,input:regular
       --color=marker:-1,spinner:-1,header:-1,gutter:-1
     '
 
@@ -291,6 +290,7 @@
   # }}}
 
 # }}}
+
 
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -e "/Applications/kitty.app/Contents/Resources/kitty/shell-integration/kitty.zsh"; then source "/Applications/kitty.app/Contents/Resources/kitty/shell-integration/kitty.zsh"; fi
