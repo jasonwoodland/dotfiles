@@ -33,13 +33,8 @@ local on_attach = function(server) return function(client, bufnr)
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   buf_set_keymap('v', '<leader>f', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
 
-  if client.resolved_capabilities.document_formatting then
-    vim.cmd [[
-      augroup Format
-        au! * <buffer>
-        au BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
-      augroup END
-    ]]
+  if client.resolved_capabilities.document_formatting or server.name == "tsserver" then
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
   end
 
   if server.name == "tsserver" then
@@ -76,7 +71,7 @@ local on_attach = function(server) return function(client, bufnr)
 
       -- formatting
       enable_formatting = true,
-      formatter = "prettier",
+      formatter = "prettier_d_slim", -- prettier_d_slim uses local prettier which respects config
       formatter_opts = {},
 
       -- update imports on file move
