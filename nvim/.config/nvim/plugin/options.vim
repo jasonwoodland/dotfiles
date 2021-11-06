@@ -143,3 +143,6 @@ set matchtime=0
 
 set grepprg=rg\ --vimgrep
 set grepformat^=%f:%l:%c:%m
+
+set completeopt=menu,menuone,noselect
+
