@@ -26,4 +26,3 @@ xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
 xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
 
 cabbrev vsb vert sb
-
