@@ -59,7 +59,7 @@ local on_attach = function(server) return function(client, bufnr)
         buffer_content = 3, -- loaded buffer content
         buffers = 4, -- loaded buffer names
       },
-      import_all_scan_buffers = 100,
+      import_all_scan_buffers = 1000,
       import_all_select_source = true,
 
       -- eslint
@@ -88,10 +88,10 @@ local on_attach = function(server) return function(client, bufnr)
     ts_utils.setup_client(client)
 
     -- no default maps, so you may want to define some here
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>or", ":TSLspOrganize<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>qf", ":TSLspFixCurrent<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lo", ":TSLspOrganize<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", ":TSLspFixCurrent<CR>", {silent = true})
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rf", ":TSLspRenameFile<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ia", ":TSLspImportAll<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>li", ":TSLspImportAll<CR>", {silent = true})
   end
 end end
 
