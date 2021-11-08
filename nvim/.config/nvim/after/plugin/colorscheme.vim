@@ -106,7 +106,7 @@ hi clear DiagnosticError
 hi link DiagnosticError Error
 
 hi DiagnosticUnderlineError gui=undercurl guisp=#be5046
-hi DiagnosticUnderlineWarning gui=undercurl
+hi DiagnosticUnderlineWarn gui=undercurl
 hi DiagnosticUnderlineInfo gui=undercurl
 hi DiagnosticUnderlineHint gui=undercurl
 
