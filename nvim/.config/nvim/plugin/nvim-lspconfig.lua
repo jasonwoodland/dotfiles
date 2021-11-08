@@ -126,5 +126,36 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   }
 })
 
+local log = require'vim.lsp.log'
+local util = require'vim.lsp.util'
+
+-- override builtin location_handler and don't open the quickfix list
+-- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/handlers.lua#L273
+local function location_handler(_, result, ctx, _)
+  if result == nil or vim.tbl_isempty(result) then
+    local _ = log.info() and log.info(ctx.method, 'No location found')
+    return nil
+  end
+
+  -- textDocument/definition can return Location or Location[]
+  -- https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_definition
+
+  if vim.tbl_islist(result) then
+    util.jump_to_location(result[1])
+
+    if #result > 1 then
+      util.set_qflist(util.locations_to_items(result))
+      -- api.nvim_command("copen")
+    end
+  else
+    util.jump_to_location(result)
+  end
+end
+
+vim.lsp.handlers["textDocument/declaration"] = location_handler
+vim.lsp.handlers["textDocument/definition"] = location_handler
+vim.lsp.handlers["textDocument/typeDefinition"] = location_handler
+vim.lsp.handlers["textDocument/implementation"] = location_handler
+
 require('null-ls').config {}
 nvim_lsp['null-ls'].setup {}
