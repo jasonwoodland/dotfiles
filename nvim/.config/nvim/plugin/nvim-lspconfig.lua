@@ -71,7 +71,7 @@ local on_attach = function(server) return function(client, bufnr)
 
       -- formatting
       enable_formatting = true,
-      formatter = "prettier_d_slim", -- prettier_d_slim uses local prettier which respects config
+      formatter = "eslint_d", -- prettier_d_slim uses local prettier which respects config
       formatter_opts = {},
 
       -- update imports on file move
