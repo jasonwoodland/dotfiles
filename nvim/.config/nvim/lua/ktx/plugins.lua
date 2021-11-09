@@ -54,4 +54,5 @@ require('packer').startup(function()
   use 'AndrewRadev/splitjoin.vim'
   use 'rstacruz/vim-closer'
   use 'christianchiarulli/nvcode-color-schemes.vim'
+  use 'norcalli/nvim-colorizer.lua'
 end)
