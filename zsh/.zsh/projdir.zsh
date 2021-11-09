@@ -1,14 +1,20 @@
-_projdirs=(
-  ~/github.com/*/*
-  ~/github.com/ispec-inc/*/go/
-  ~/github.com/ispec-inc/*/*/apps/*/
-)
-_projdirs=("${(u)_projdirs[@]}") #`
+_getprojdirs() {
+  declare arr="$1"
+  dirs=(
+    ~/github.com/*/*/
+    ~/github.com/*/dotfiles/*/
+    ~/github.com/ispec-inc/*/go/
+    ~/github.com/ispec-inc/*/*/apps/*/
+  )
+  dirs=("${(u)dirs[@]}") #`
+  arr=$dirs
+}
 projdir() {
+  _getprojdirs dirs
   if [[ $# -eq 1 ]]; then
     selected=$1
   else
-    selected=`printf "%s\n" "${_projdirs[@]}" | sort | fzf`
+    selected=`printf "%s\n" "${dirs[@]}" | sort | fzf`
     if [[ $selected == '' ]]; then
       return
     fi
@@ -18,10 +24,11 @@ projdir() {
   cd $selected
 }
 tprojdir() {
+  _getprojdirs dirs
   if [[ $# -eq 1 ]]; then
     selected=$1
   else
-    selected=`printf "%s\n" "${_projdirs[@]}" | sort | fzf`
+    selected=`printf "%s\n" "${dirs[@]}" | sort | fzf`
     if [[ $selected == '' ]]; then
       return
     fi
@@ -59,13 +66,14 @@ zprojdir() {
   zle reset-prompt
 }
 _projdir() {
-  _describe 'parameters' _projdirs
+  _getprojdirs dirs
+  _describe 'parameters' dirs
   return
 }
 zle -N zprojdir
+compdef _projdir projdir
 bindkey -a '^[p' zprojdir
 bindkey '^[p' zprojdir
 bindkey -as '^[]' 'itprojdir\n'
 bindkey -s '^[]' '^utprojdir\n'
 alias p='projdir'
-compdef _projdir projdir
