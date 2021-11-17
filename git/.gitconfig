@@ -28,6 +28,9 @@
 	co = checkout
 	cob = checkout -b
 	cp = cherry-pick
+	cpc = cherry-pick --continue
+	cps = cherry-pick --skip
+	cpa = cherry-pick --abort
 	d = diff
 	dn = diff --name-only
 	ds = diff --staged
