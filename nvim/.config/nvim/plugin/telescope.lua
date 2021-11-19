@@ -1,7 +1,7 @@
 local actions = require('telescope.actions')
 require('telescope').setup{
   defaults = {
-    file_ignore_patterns = {"%.git/", "node_modules/"},
+    file_ignore_patterns = {"%.git/", "node_modules/", "__generated__/"},
     winblend = 20,
     mappings = {
       i = {
