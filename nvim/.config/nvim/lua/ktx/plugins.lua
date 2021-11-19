@@ -14,6 +14,9 @@ require('packer').startup(function()
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'lewis6991/gitsigns.nvim'
 
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-nvim-lua'
@@ -22,8 +25,8 @@ require('packer').startup(function()
   use 'petertriho/cmp-git'
   use 'hrsh7th/nvim-cmp'
 
-  use 'SirVer/ultisnips'
-  use 'quangnguyen30192/cmp-nvim-ultisnips'
+  -- use 'SirVer/ultisnips'
+  -- use 'quangnguyen30192/cmp-nvim-ultisnips'
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
   use 'windwp/nvim-ts-autotag'
 
