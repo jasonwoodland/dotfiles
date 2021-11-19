@@ -156,6 +156,7 @@ vim.lsp.handlers["textDocument/declaration"] = location_handler
 vim.lsp.handlers["textDocument/definition"] = location_handler
 vim.lsp.handlers["textDocument/typeDefinition"] = location_handler
 vim.lsp.handlers["textDocument/implementation"] = location_handler
+vim.lsp.handlers["textDocument/references"] = location_handler
 
 require('null-ls').config {}
 nvim_lsp['null-ls'].setup {}
