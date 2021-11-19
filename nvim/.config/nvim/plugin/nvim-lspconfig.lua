@@ -106,6 +106,11 @@ lsp_installer.on_server_ready(function(server)
     capabilities = capabilities,
     settings = {
       documentFormatting = true,
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' }
+        }
+      }
     }
   }
 
