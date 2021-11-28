@@ -152,8 +152,6 @@
 
 # Environment variables {{{
 
-  source ~/.acme.sh/acme.sh.env
-
   export GOPATH="$HOME/.go"
 
   PATH="/opt/homebrew/bin:$PATH"
