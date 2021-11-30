@@ -25,8 +25,6 @@ require('packer').startup(function()
   use 'petertriho/cmp-git'
   use 'hrsh7th/nvim-cmp'
 
-  -- use 'SirVer/ultisnips'
-  -- use 'quangnguyen30192/cmp-nvim-ultisnips'
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
   use 'windwp/nvim-ts-autotag'
 
