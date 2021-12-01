@@ -8,5 +8,9 @@ nnoremap <space>gs <cmd>lua require('telescope.builtin').git_status()<cr>
 nnoremap <space>gh <cmd>lua require('telescope.builtin').git_stash()<cr>
 nnoremap <space>m <cmd>lua require('telescope.builtin').oldfiles()<cr>
 nnoremap <space>df <cmd>lua require('ktx.telescope').dotfiles()<cr>
+nnoremap <space>gi <cmd>lua require('telescope').extensions.gh.issues()<cr>
+nnoremap <space>ga <cmd>lua require('telescope').extensions.gh.issues({ assignee="jasonwoodland" })<cr>
+nnoremap <space>gp <cmd>lua require('telescope').extensions.gh.pull_request()<cr>
+
 inoremap <c-s> <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <space>e <cmd>NvimTreeToggle<cr>
