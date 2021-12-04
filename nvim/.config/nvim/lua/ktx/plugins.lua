@@ -7,26 +7,28 @@ end
 local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
-  -- use 'sheerun/vim-polyglot'
+
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
   use 'nvim-lua/plenary.nvim'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'lewis6991/gitsigns.nvim'
 
-  use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/cmp-vsnip'
 
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-cmdline'
-  use 'petertriho/cmp-git'
+  use { 'petertriho/cmp-git', config = function() require('cmp_git').setup() end }
   use 'hrsh7th/nvim-cmp'
 
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
   use 'windwp/nvim-ts-autotag'
+
+  use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
 
   use 'onsails/lspkind-nvim'
   use 'kyazdani42/nvim-web-devicons'
@@ -36,10 +38,9 @@ require('packer').startup(function()
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
+
   use 'tpope/vim-sensible'
   use 'tpope/vim-surround'
-  use 'tpope/vim-commentary'
   use 'tpope/vim-abolish'
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-repeat'
@@ -51,6 +52,7 @@ require('packer').startup(function()
   use 'tpope/vim-vinegar'
   use 'tpope/vim-dispatch'
   use 'tpope/vim-obsession'
+
   use 'jasonwoodland/vim-hyperstyle'
   use 'michaeljsmith/vim-indent-object'
   use 'AndrewRadev/splitjoin.vim'
