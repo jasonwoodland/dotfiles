@@ -52,6 +52,9 @@ require('packer').startup(function()
   use 'tpope/vim-vinegar'
   use 'tpope/vim-dispatch'
   use 'tpope/vim-obsession'
+  use 'tpope/vim-endwise'
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-characterize'
 
   use 'jasonwoodland/vim-hyperstyle'
   use 'michaeljsmith/vim-indent-object'
