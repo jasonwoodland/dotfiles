@@ -13,6 +13,10 @@ require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'lewis6991/gitsigns.nvim'
+  use {
+    'folke/trouble.nvim',
+    requires = "kyazdani42/nvim-web-devicons",
+  }
 
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/cmp-vsnip'

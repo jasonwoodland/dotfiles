@@ -14,3 +14,10 @@ nnoremap <space>gp <cmd>lua require('telescope').extensions.gh.pull_request()<cr
 
 inoremap <c-s> <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <space>e <cmd>NvimTreeToggle<cr>
+
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
