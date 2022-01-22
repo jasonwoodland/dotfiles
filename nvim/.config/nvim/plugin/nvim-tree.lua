@@ -54,7 +54,7 @@ require'nvim-tree'.setup {
   },
 
   filters = {
-    custom = {".git", "node_modules", ".DS_Store"},
+    custom = {".git", ".DS_Store"},
   },
 
   view = {
