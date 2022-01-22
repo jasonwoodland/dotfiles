@@ -67,4 +67,5 @@ require('packer').startup(function()
   use 'rstacruz/vim-closer'
   use 'christianchiarulli/nvcode-color-schemes.vim'
   use 'norcalli/nvim-colorizer.lua'
+  use 'rebelot/kanagawa.nvim'
 end)
