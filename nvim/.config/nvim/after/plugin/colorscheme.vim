@@ -42,11 +42,12 @@ hi clear CocListPath
 hi link CocListMode StatusLine
 hi link CocListPath StatusLine
 
-hi NvimTreeNormal guibg=#22262d
-hi NvimTreeEndOfBuffer guifg=#22262d guibg=#22262d
-hi NvimTreeVertSplit guifg=#282c34 guibg=#282c34
-
-hi PanelNormal guibg=#22262d
+" slightly darker blue background
+hi NvimTreeNormal guibg=#212530
+hi NvimTreeEndOfBuffer guifg=#212530 guibg=#212530
+hi NvimTreeVertSplit guifg=bg guibg=bg
+hi Normal guibg=#272b38
+hi PanelNormal guibg=#21252e
 " autocmd FileType list,qf set winhighlight=Normal:PanelNormal
 autocmd FileType list,qf,help set signcolumn=auto
 
@@ -63,21 +64,21 @@ hi DiffAdd cterm=none gui=none guifg=none guibg=#2d3828
 hi DiffDelete cterm=none gui=none guifg=#bf383a guibg=none
 
 hi CocGitAddedSign guifg=#98c379
-hi CocGitRemovedSign guifg=#be5046 
+hi CocGitRemovedSign guifg=#be5046
 hi link CocGitTopRemovedSign CocGitRemovedSign
 
-hi Pmenu guibg=#22262d
+hi Pmenu guibg=#212530
 hi clear PmenuSel
 hi link PmenuSel Visual
 hi clear PmenuSbar
-hi PmenuSbar guibg=#32373e
-hi PmenuThumb guibg=#454b54
+hi PmenuSbar guibg=#212530
+hi PmenuThumb guibg=#3B4154
 
-hi StatusLine guibg=#22262d
-hi StatusLineNC guifg=#7A859B guibg=#22262d
-hi TabLineFill guibg=#22262d
-hi TabLine guibg=#22262d
-hi TabLineNC guibg=#22262d
+hi StatusLine guibg=#212530
+hi StatusLineNC guifg=#7A859B guibg=#212530
+hi TabLineFill guibg=#212530
+hi TabLine guibg=#212530
+hi TabLineNC guibg=#212530
 hi TabLineSel guibg=none
 
 hi clear SpecialKey " fixed unreadable diggraphs output
@@ -85,15 +86,16 @@ hi Special gui=none
 hi link SpecialKey Special
 
 hi link TermCursorNC Visual
+hi TermCursor guifg=#828aa8
 hi link netrwTreeBar LineNr
 
 hi link Space Search
 match Space /\s\+$/
 
 hi clear TelescopeBorder
-hi TelescopeBorder guifg=#7A859B guibg=#22262d
-hi TelescopeNormal guibg=#22262d
-hi TelescopePreviewNormal guibg=#22262d
+hi TelescopeBorder guifg=#7A859B guibg=#212530
+hi TelescopeNormal guibg=#212530
+hi TelescopePreviewNormal guibg=#212530
 
 hi link CmpItemAbbrMatch Special
 hi link CmpItemAbbrMatchFuzzy Special
