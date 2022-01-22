@@ -1,10 +1,10 @@
 _getprojdirs() {
   declare arr="$1"
   dirs=(
-    ~/github.com/*/*/
-    ~/github.com/*/dotfiles/*/
-    ~/github.com/ispec-inc/*/go/
-    ~/github.com/ispec-inc/*/*/apps/*/
+    ~/ghq/github.com/*/*/
+    ~/ghq/github.com/*/dotfiles/*/
+    ~/ghq/github.com/ispec-inc/*/go/
+    ~/ghq/github.com/ispec-inc/*/*/apps/*/
   )
   dirs=("${(u)dirs[@]}") #`
   arr=$dirs
