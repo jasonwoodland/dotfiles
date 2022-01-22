@@ -60,6 +60,7 @@ require('packer').startup(function()
   use 'tpope/vim-commentary'
   use 'tpope/vim-characterize'
 
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'jasonwoodland/vim-hyperstyle'
   use 'michaeljsmith/vim-indent-object'
   use 'AndrewRadev/splitjoin.vim'
