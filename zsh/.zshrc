@@ -157,7 +157,6 @@
   PATH="/opt/homebrew/bin:$PATH"
   PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
   PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-  PATH="/usr/local/bin:$PATH"
   PATH="$GOPATH/bin:$PATH"
   PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
   export PATH
