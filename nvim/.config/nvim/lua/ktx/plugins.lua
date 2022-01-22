@@ -28,7 +28,7 @@ require('packer').startup(function()
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
   use 'windwp/nvim-ts-autotag'
 
-  use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
+  use { 'ray-x/go.nvim', config = function() require('go').setup() end }
 
   use 'onsails/lspkind-nvim'
   use 'kyazdani42/nvim-web-devicons'
