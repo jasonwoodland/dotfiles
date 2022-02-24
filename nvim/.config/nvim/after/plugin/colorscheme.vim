@@ -115,3 +115,6 @@ hi DiagnosticUnderlineHint gui=undercurl
 hi link netrwTreeBar LineNr
 
 hi link GitSignsCurrentLineBlame LineNr
+
+" nvcode-color-schemes remove ugly magenta
+hi clear TSNamespace
