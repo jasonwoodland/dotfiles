@@ -5,6 +5,9 @@ require('telescope').setup{
     winblend = 20,
     mappings = {
       i = {
+        ["<C-a>"] = function()
+          vim.api.nvim_win_set_cursor(0, {1,1})
+        end,
         ["<C-h>"] = "which_key",
         ["<esc>"] = "close",
       }
