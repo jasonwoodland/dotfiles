@@ -56,7 +56,6 @@ function! SwitchTerminal(delta)
     let i = i + a:delta
   endif
   let b = bufs[i % (len(bufs))]
-  echo b
   exe 'buffer'.b
 endfunction
 
