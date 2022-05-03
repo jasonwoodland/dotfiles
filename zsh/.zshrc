@@ -159,6 +159,7 @@
   PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
   PATH="$GOPATH/bin:$PATH"
   PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+  PATH="$HOME/.cargo/bin:$PATH"
   export PATH
 
   export VISUAL=nvim
