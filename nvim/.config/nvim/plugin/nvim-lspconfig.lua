@@ -1,4 +1,6 @@
 local nvim_lsp = require('lspconfig')
+local null_ls = require("null-ls")
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -33,65 +35,14 @@ local on_attach = function(server) return function(client, bufnr)
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   buf_set_keymap('v', '<leader>f', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
 
-  if client.resolved_capabilities.document_formatting or server.name == "tsserver" then
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-  end
-
-  if server.name == "tsserver" then
-    -- disable tsserver formatting if you plan on formatting via null-ls
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-
-    local ts_utils = require("nvim-lsp-ts-utils")
-
-    -- defaults
-    ts_utils.setup {
-      debug = false,
-      disable_commands = false,
-      enable_import_on_completion = true,
-
-      -- import all
-      import_all_timeout = 5000, -- ms
-      -- lower numbers indicate higher priority
-      import_all_priorities = {
-        same_file = 1, -- add to existing import statement
-        local_files = 2, -- git files or files with relative path markers
-        buffer_content = 3, -- loaded buffer content
-        buffers = 4, -- loaded buffer names
-      },
-      import_all_scan_buffers = 1000,
-      import_all_select_source = true,
-
-      -- eslint
-      eslint_enable_code_actions = false,
-      eslint_enable_disable_comments = true,
-      eslint_bin = "eslint",
-      eslint_enable_diagnostics = false,
-      eslint_opts = {},
-
-      -- formatting
-      enable_formatting = true,
-      formatter = "eslint_d", -- prettier_d_slim uses local prettier which respects config
-      formatter_opts = {},
-
-      -- update imports on file move
-      update_imports_on_move = true,
-      require_confirmation_on_move = true,
-      watch_dir = nil,
-
-      -- filter diagnostics
-      filter_out_diagnostics_by_severity = {},
-      filter_out_diagnostics_by_code = {},
-    }
-
-    -- required to enable ESLint code actions and formatting
-    ts_utils.setup_client(client)
-
-    -- no default maps, so you may want to define some here
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lo", ":TSLspOrganize<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", ":TSLspFixCurrent<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rf", ":TSLspRenameFile<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>li", ":TSLspImportAll<CR>", {silent = true})
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      -- on 0.8, you should use vim.lsp.buf.format instead
+      callback = function() vim.lsp.buf.format({ sync = true }) end,
+    })
   end
 end end
 
@@ -163,11 +114,10 @@ vim.lsp.handlers["textDocument/typeDefinition"] = location_handler
 vim.lsp.handlers["textDocument/implementation"] = location_handler
 vim.lsp.handlers["textDocument/references"] = location_handler
 
-local null_ls = require("null-ls")
 
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.eslint_d,
-  }
+  },
 })
