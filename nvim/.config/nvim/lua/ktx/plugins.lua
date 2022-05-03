@@ -29,7 +29,6 @@ require('packer').startup(function()
   use { 'petertriho/cmp-git', config = function() require('cmp_git').setup() end }
   use 'hrsh7th/nvim-cmp'
 
-  use 'jose-elias-alvarez/nvim-lsp-ts-utils'
   use 'windwp/nvim-ts-autotag'
 
   use { 'ray-x/go.nvim', config = function() require('go').setup() end }
