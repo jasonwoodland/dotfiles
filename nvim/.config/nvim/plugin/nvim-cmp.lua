@@ -1,5 +1,8 @@
 local lspkind = require 'lspkind'
 local cmp = require 'cmp'
+local mapping = require 'cmp.config.mapping'
+local types = require 'cmp.types'
+local luasnip = require 'luasnip'
 
 local press = function(key)
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), "n", true)
@@ -16,12 +19,16 @@ end
 
 cmp.setup {
   -- Always preselect first option
-  preselect = cmp.PreselectMode.None,
+  preselect = cmp.PreselectMode.Item,
   completion = {
-    completeopt = "menu,menuone,noinsert",
+    completeopt = "menu,menuone,noselect",
   },
 
   mapping = {
+    ['<C-n>'] = mapping(mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }), { 'i', 'c' }),
+    ['<C-p>'] = mapping(mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }), { 'i', 'c' }),
+    ['<C-y>'] = mapping.confirm({ select = false }),
+    ['<C-e>'] = mapping.abort(),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -88,19 +95,33 @@ cmp.setup {
     }
   },
   experimental = {
-    native_menu = false,
+    -- native_menu = true,
     ghost_text = true,
   },
+  view = {
+    -- entries = "native",
+  },
 }
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+  }, {
+    { name = 'buffer' },
+  })
+})
 
+-- -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 -- cmp.setup.cmdline('/', {
+--   mapping = cmp.mapping.preset.cmdline(),
 --   sources = {
 --     { name = 'buffer' }
 --   }
 -- })
 
--- -- Use cmdline & path source for ':'.
+-- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 -- cmp.setup.cmdline(':', {
+--   mapping = cmp.mapping.preset.cmdline(),
 --   sources = cmp.config.sources({
 --     { name = 'path' }
 --   }, {
