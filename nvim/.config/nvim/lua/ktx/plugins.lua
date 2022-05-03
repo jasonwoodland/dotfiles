@@ -58,6 +58,7 @@ require('packer').startup(function()
   use 'tpope/vim-endwise'
   use 'tpope/vim-commentary'
   use 'tpope/vim-characterize'
+  use 'tpope/vim-capslock'
 
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'jasonwoodland/vim-hyperstyle'
