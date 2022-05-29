@@ -100,32 +100,11 @@
                         ]
                     },
                     {
-                        "description": "Command + 4 focuses Slack",
+                        "description": "Command + 4 focuses Discord",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "4",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open -aSlack"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Command + 5 focuses Discord",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "5",
                                     "modifiers": {
                                         "mandatory": [
                                             "command"
@@ -142,7 +121,28 @@
                         ]
                     },
                     {
-                        "description": "Command + 6 focuses Postman",
+                        "description": "Command + 5 focuses Finder",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "5",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -aFinder"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Command + 6 focuses Slack",
                         "manipulators": [
                             {
                                 "from": {
@@ -155,28 +155,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -aPostman"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Command + 7 focuses Finder",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "7",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open -aFinder"
+                                        "shell_command": "open -aSlack"
                                     }
                                 ],
                                 "type": "basic"
