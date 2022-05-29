@@ -63,7 +63,7 @@
 			fi; \
 		fi; \
 	}; f"
-	pr = !gh pr view --web >/dev/null 2>&1 || gh pr create --web --assignee @me
+	pr = !gh pr view --web >/dev/null 2>&1 || gh pr create --web
 [push]
 	default = current
 [log]
