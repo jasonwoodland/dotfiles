@@ -21,7 +21,7 @@ local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
 ls.config.setup({
-    update_events = 'TextChanged,TextChangedI'
+  update_events = "TextChanged,TextChangedI",
 })
 
 local title = function(index)
@@ -31,62 +31,62 @@ local title = function(index)
 end
 
 ls.add_snippets("javascript", {
-  s(
-    {
-      trig = "l",
-      name = "console.log",
-    },
-    fmt([[console.log({});]], { i(0) })
-  ),
-  s(
-    {
-      trig = "rs",
-      name = "useState",
-    },
-    fmt([[const [{}, set{}] = useState({});]], { i(1), title(1), i(2) })
-  ),
-  s(
-    {
-      trig = "rr",
-      name = "useRef",
-    },
-    fmt([[const {} = useRef({});]], { i(1), i(2) })
-  ),
+  s({
+    trig = "l",
+    name = "console.log",
+  }, fmt([[console.log({});]], { i(0) })),
+  s({
+    trig = "rs",
+    name = "useState",
+  }, fmt([[const [{}, set{}] = useState({});]], { i(1), title(1), i(2) })),
+  s({
+    trig = "rr",
+    name = "useRef",
+  }, fmt([[const {} = useRef({});]], { i(1), i(2) })),
   s(
     {
       trig = "re",
       name = "useEffect",
     },
-    fmt([[
+    fmt(
+      [[
       useEffect(() => {{
         {}
       }}, [{}]);
-    ]], { i(1), i(2) })
+    ]] ,
+      { i(1), i(2) }
+    )
   ),
   s(
     {
       trig = "rm",
       name = "useMemo",
     },
-    fmt([[
+    fmt(
+      [[
       const {} = useMemo(() => {{
         {}
       }}, [{}]);
-    ]], { i(1), i(2), i(3) })
+    ]] ,
+      { i(1), i(2), i(3) }
+    )
   ),
   s(
     {
       trig = "rc",
       name = "useCallback",
     },
-    fmt([[
+    fmt(
+      [[
       const {} = useCallback(() => {{
         {}
       }}, [{}]);
-    ]], { i(1), i(2), i(3) })
+    ]] ,
+      { i(1), i(2), i(3) }
+    )
   ),
 })
 
-ls.filetype_extend("typescript", {"javascript"})
-ls.filetype_extend("javascriptreact", {"javascript"})
-ls.filetype_extend("typescriptreact", {"javascript"})
+ls.filetype_extend("typescript", { "javascript" })
+ls.filetype_extend("javascriptreact", { "javascript" })
+ls.filetype_extend("typescriptreact", { "javascript" })
