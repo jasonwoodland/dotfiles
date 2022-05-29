@@ -1,20 +1,20 @@
-local actions = require('telescope.actions')
-require('telescope').setup{
+local actions = require("telescope.actions")
+require("telescope").setup({
   defaults = {
-    file_ignore_patterns = {"%.git/", "node_modules/", "__generated__/"},
+    file_ignore_patterns = { "%.git/", "node_modules/", "__generated__/", ".npm", ".next" },
     winblend = 20,
     mappings = {
       i = {
         ["<C-a>"] = function()
-          vim.api.nvim_win_set_cursor(0, {1,1})
+          vim.api.nvim_win_set_cursor(0, { 1, 1 })
         end,
         ["<C-h>"] = "which_key",
         ["<esc>"] = "close",
-      }
+      },
     },
     layout_config = {
-      vertical = { width = 0.5 }
-    }
+      vertical = { width = 0.5 },
+    },
   },
   pickers = {
     find_files = {
@@ -30,7 +30,7 @@ require('telescope').setup{
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
-  }
-}
-require('telescope').load_extension('fzf')
-require('telescope').load_extension('gh')
+  },
+})
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("gh")
