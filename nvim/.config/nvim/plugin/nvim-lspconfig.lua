@@ -2,6 +2,15 @@ local nvim_lsp = require("lspconfig")
 local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+function LspRenameFile()
+	local curName = vim.fn.expand("%")
+	local newName = vim.fn.input("New Filename: ", curName)
+	if newName == "" then
+		return
+	end
+	vim.lsp.util.rename(curName, newName)
+end
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(server)
@@ -32,12 +41,7 @@ local on_attach = function(server)
 		buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 		buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 		buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-		buf_set_keymap(
-			"n",
-			"<leader>rf",
-			'<cmd>lua vim.lsp.util.rename(vim.fn.expand("%"), vim.fn.input("New Filename: ", vim.fn.expand("%")))<CR>',
-			opts
-		)
+		buf_set_keymap("n", "<leader>rf", "<cmd>lua LspRenameFile()<CR>", opts)
 		buf_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 		-- buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 		buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
