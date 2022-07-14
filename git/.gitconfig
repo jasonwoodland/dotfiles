@@ -22,9 +22,14 @@
 	c = commit
 	cl = clean
 	cm = commit -m
+	cn = commit -n
+	cnm = commit -nm
 	ca = commit --amend
+	can = commit --amend -n
 	cam = commit --amend -m
-	can = commit --amend --no-edit
+	canm = commit --amend -nm
+	ce = commit --amend --no-edit
+	cen = commit --amend --no-edit -n
 	co = checkout
 	cob = checkout -b
 	cp = cherry-pick
@@ -47,6 +52,7 @@
 	r = reset
 	rb = rebase
 	rbo = rebase --onto
+	ref = reflog
 	repo = !gh repo view --web
 	rp = repo
 	rs = restore
