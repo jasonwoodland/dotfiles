@@ -30,6 +30,12 @@ local title = function(index)
   end, { index })
 end
 
+local basename = function(index)
+  return f(function(arg)
+    return vim.fn.expand("%:t:r")
+  end, { index })
+end
+
 ls.add_snippets("javascript", {
   s({
     trig = "l",
@@ -87,6 +93,34 @@ ls.add_snippets("javascript", {
   ),
 })
 
+ls.add_snippets("vue", {
+  s(
+    {
+      trig = "vue",
+      name = "Satellite Vue Component",
+    },
+    fmt(
+      [[
+      <template src="./{}.html"></template>
+
+      <script lang="ts">
+      import Vue from 'vue'
+
+      export default Vue.extend({{{}
+      </script>
+
+      <style scoped lang="less" src="./{}.less"></style>
+    ]] ,
+      {
+      basename(1),
+      i(1),
+      basename(1),
+    }
+    )
+  ),
+})
+
 ls.filetype_extend("typescript", { "javascript" })
 ls.filetype_extend("javascriptreact", { "javascript" })
 ls.filetype_extend("typescriptreact", { "javascript" })
+ls.filetype_extend("vue", { "javascript" })
