@@ -116,7 +116,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 
 local log = require("vim.lsp.log")
 local util = require("vim.lsp.util")
-local api = vim.api
 
 -- override builtin location_handler and don't open the quickfix list
 -- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/handlers.lua#L273
