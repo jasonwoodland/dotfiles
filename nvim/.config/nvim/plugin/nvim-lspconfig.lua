@@ -157,8 +157,7 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.fixjson,
-		-- null_ls.builtins.formatting.prettier_d_slim, -- all projects use prettier eslint plugin, so it's unused
-		-- null_ls.builtins.formatting.eslint_d,
-		null_ls.builtins.formatting.eslint, -- it is slow
+		null_ls.builtins.formatting.prettierd, -- all projects use prettier eslint plugin, so it's unused, but we need it for css/less!
+		null_ls.builtins.formatting.eslint_d,
 	},
 })
