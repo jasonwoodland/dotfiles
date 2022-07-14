@@ -61,3 +61,29 @@ endfunction
 
 nnoremap <silent> [t :call SwitchTerminal(-1)<cr>
 nnoremap <silent> ]t :call SwitchTerminal(1)<cr>
+
+
+function! TerminalJob(cmd)
+  bot new +resize10
+  call termopen(a:cmd, {'on_exit': 'OnExit'})
+  let g:terminal_job_bufnr = bufnr()
+  wincmd p
+  " startinsert
+  " tmap <buffer> : <esc>:
+endfunction
+
+command -nargs=1 -complete=shellcmd TerminalJob :call TerminalJob(<q-args>)
+command TerminalJobClose :call TerminalJobClose()
+
+cabbrev tj TerminalJob
+cabbrev tjc TerminalJobClose
+
+function! TerminalJobClose()
+  exe "bd!".g:terminal_job_bufnr
+endfunction
+
+function! OnExit(job_id, code, event) dict
+  if a:code == 0
+    exe "bd".g:terminal_job_bufnr
+  endif
+endfunction

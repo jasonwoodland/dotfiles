@@ -37,17 +37,3 @@ function! GitAliasExit(j, d, e)
   call Alias("gpl", "TerminalJob git pull")
 endfunction
 call jobstart("git alias", {'on_stdout':'GitAliasCallback', 'on_exit':'GitAliasExit'})
-
-function! TerminalJob(cmd)
-  bot new +resize10
-  call termopen(a:cmd, {'on_exit': 'OnExit'})
-  startinsert
-endfunction
-
-command -nargs=1 -complete=shellcmd TerminalJob :call TerminalJob(<q-args>)
-
-function! OnExit(job_id, code, event) dict
-  if a:code == 0
-    bdelete
-  endif
-endfunction
