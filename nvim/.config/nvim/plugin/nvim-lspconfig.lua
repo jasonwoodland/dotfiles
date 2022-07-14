@@ -50,30 +50,29 @@ local on_attach = function(server)
 		buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 		buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
-		if client.supports_method("textDocument/formatting") then
-			-- print(vim.inspect(client))
-			-- client.server_capabilities.documentFormattingProvider = false
-			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = augroup,
-				buffer = bufnr,
-				-- on 0.8, you should use vim.lsp.buf.format instead
-				callback = function()
-					vim.lsp.buf.format({
-						sync = true,
-						filter = function(clients)
-							return vim.tbl_filter(function(client)
-								-- print(client.name)
-								return client.name ~= "tsserver"
-								    and client.name ~= "html"
-								    and client.name ~= "eslint"
-								    and client.name ~= "volar"
-							end, clients)
-						end,
-					})
-				end,
-			})
-		end
+		-- if client.supports_method("textDocument/formatting") then
+		-- print(vim.inspect(client))
+		client.server_capabilities.documentFormattingProvider = false
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			-- on 0.8, you should use vim.lsp.buf.format instead
+			callback = function()
+				vim.lsp.buf.format({
+					-- sync = true,
+					-- filter = function(clients)
+					-- 	return vim.tbl_filter(function(c)
+					-- 		print(c.name)
+					-- 		return client.name == "null-ls"
+					-- 		-- return client.name ~= "tsserver" and client.name ~= "html" and client.name ~= "null-ls"
+					-- 		-- and client.name ~= "volar"
+					-- 	end, clients)
+					-- end,
+				})
+			end,
+		})
+		-- end
 	end
 end
 
