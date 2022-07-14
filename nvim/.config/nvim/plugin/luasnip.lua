@@ -36,16 +36,16 @@ ls.add_snippets("javascript", {
     name = "console.log",
   }, fmt([[console.log({});]], { i(0) })),
   s({
-    trig = "rs",
+    trig = "us",
     name = "useState",
   }, fmt([[const [{}, set{}] = useState({});]], { i(1), title(1), i(2) })),
   s({
-    trig = "rr",
+    trig = "ur",
     name = "useRef",
   }, fmt([[const {} = useRef({});]], { i(1), i(2) })),
   s(
     {
-      trig = "re",
+      trig = "ue",
       name = "useEffect",
     },
     fmt(
@@ -59,7 +59,7 @@ ls.add_snippets("javascript", {
   ),
   s(
     {
-      trig = "rm",
+      trig = "um",
       name = "useMemo",
     },
     fmt(
@@ -73,7 +73,7 @@ ls.add_snippets("javascript", {
   ),
   s(
     {
-      trig = "rc",
+      trig = "uc",
       name = "useCallback",
     },
     fmt(
