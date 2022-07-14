@@ -295,3 +295,8 @@
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -e "/Applications/kitty.app/Contents/Resources/kitty/shell-integration/kitty.zsh"; then source "/Applications/kitty.app/Contents/Resources/kitty/shell-integration/kitty.zsh"; fi
 # END_KITTY_SHELL_INTEGRATION
+
+# pnpm
+export PNPM_HOME="/Users/jason/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
