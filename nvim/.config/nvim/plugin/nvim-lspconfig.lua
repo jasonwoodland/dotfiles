@@ -107,9 +107,11 @@ for type, icon in pairs(signs) do
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	virtual_text = {
-		prefix = "", -- Could be '●', '▎', 'x'
-	},
+	virtual_text = false,
+	-- virtual_text = {
+	-- 	prefix = "▪", -- Could be '●', '▎', 'x'
+	-- 	spacing = 1,
+	-- },
 })
 
 local log = require("vim.lsp.log")
