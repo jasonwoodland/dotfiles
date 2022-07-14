@@ -1,4 +1,3 @@
-
 let g:user='Jason Woodland'
 let g:email='me@jasonwoodland.com'
 
@@ -146,3 +145,5 @@ set grepformat^=%f:%l:%c:%m
 
 set completeopt=menu,menuone,noselect
 
+" Disable matchup offscreen statusline thing
+let g:matchup_matchparen_offscreen = {}
