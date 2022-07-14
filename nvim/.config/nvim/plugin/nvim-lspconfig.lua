@@ -116,27 +116,34 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 
 local log = require("vim.lsp.log")
 local util = require("vim.lsp.util")
+local api = vim.api
 
 -- override builtin location_handler and don't open the quickfix list
 -- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/handlers.lua#L273
-local function location_handler(_, result, ctx, _)
+local function location_handler(_, result, ctx, config)
 	if result == nil or vim.tbl_isempty(result) then
 		local _ = log.info() and log.info(ctx.method, "No location found")
 		return nil
 	end
+	local client = vim.lsp.get_client_by_id(ctx.client_id)
+
+	config = config or {}
 
 	-- textDocument/definition can return Location or Location[]
 	-- https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_definition
 
 	if vim.tbl_islist(result) then
-		util.jump_to_location(result[1])
+		util.jump_to_location(result[1], client.offset_encoding, config.reuse_win)
 
 		if #result > 1 then
-			util.set_qflist(util.locations_to_items(result))
-			-- api.nvim_command("copen")
+			vim.fn.setqflist({}, " ", {
+				title = "LSP locations",
+				items = util.locations_to_items(result, client.offset_encoding),
+			})
+			-- api.nvim_command('botright copen')
 		end
 	else
-		util.jump_to_location(result)
+		util.jump_to_location(result, client.offset_encoding, config.reuse_win)
 	end
 end
 
