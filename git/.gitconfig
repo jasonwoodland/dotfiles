@@ -8,7 +8,7 @@
 [color]
 	ui = true
 [format]
-	pretty = "%C(magenta)%h%C(blue)%d %C(reset)%s %C(dim white)(%an)%n         %C(green)%aD %C(dim white)(%ar)%C(reset)%n"
+	pretty = "%C(magenta)%h%C(blue)%d %C(reset)%s %C(dim white)(%an)%n        %C(green)%aD %C(dim white)(%ar)%C(reset)%n"
 [alias]
 	alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 	a = add
