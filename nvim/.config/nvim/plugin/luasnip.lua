@@ -21,103 +21,110 @@ local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
 ls.config.setup({
-  update_events = "TextChanged,TextChangedI",
+	update_events = "TextChanged,TextChangedI",
 })
 
 local title = function(index)
-  return f(function(arg)
-    return string.gsub(arg[1][1], "^.", string.upper)
-  end, { index })
+	return f(function(arg)
+		return string.gsub(arg[1][1], "^.", string.upper)
+	end, { index })
 end
 
-local basename = function(index)
-  return f(function(arg)
-    return vim.fn.expand("%:t:r")
-  end, { index })
+local basename_or_dirname = function(index)
+	return f(function()
+		-- for file basename:
+		local basename = vim.fn.expand("%:t:r")
+		if basename:match("^%u") then
+			return basename
+		end
+		return vim.fn.expand("%:h:t")
+	end, { index })
 end
 
 ls.add_snippets("javascript", {
-  s({
-    trig = "l",
-    name = "console.log",
-  }, fmt([[console.log({});]], { i(0) })),
-  s({
-    trig = "us",
-    name = "useState",
-  }, fmt([[const [{}, set{}] = useState({});]], { i(1), title(1), i(2) })),
-  s({
-    trig = "ur",
-    name = "useRef",
-  }, fmt([[const {} = useRef({});]], { i(1), i(2) })),
-  s(
-    {
-      trig = "ue",
-      name = "useEffect",
-    },
-    fmt(
-      [[
-      useEffect(() => {{
-        {}
-      }}, [{}]);
-    ]] ,
-      { i(1), i(2) }
-    )
-  ),
-  s(
-    {
-      trig = "um",
-      name = "useMemo",
-    },
-    fmt(
-      [[
-      const {} = useMemo(() => {{
-        {}
-      }}, [{}]);
-    ]] ,
-      { i(1), i(2), i(3) }
-    )
-  ),
-  s(
-    {
-      trig = "uc",
-      name = "useCallback",
-    },
-    fmt(
-      [[
-      const {} = useCallback(() => {{
-        {}
-      }}, [{}]);
-    ]] ,
-      { i(1), i(2), i(3) }
-    )
-  ),
+	s({
+		trig = "l",
+		name = "console.log",
+	}, fmt([[console.log({});]], { i(0) })),
+	s({
+		trig = "us",
+		name = "useState",
+	}, fmt([[const [{}, set{}] = useState({});]], { i(1), title(1), i(2) })),
+	s({
+		trig = "ur",
+		name = "useRef",
+	}, fmt([[const {} = useRef({});]], { i(1), i(2) })),
+	s(
+		{
+			trig = "ue",
+			name = "useEffect",
+		},
+		fmt(
+			[[
+                          useEffect(() => {{
+                            {}
+                          }}, [{}]);
+                        ]],
+			{ i(1), i(2) }
+		)
+	),
+	s(
+		{
+			trig = "um",
+			name = "useMemo",
+		},
+		fmt(
+			[[
+                          const {} = useMemo(() => {{
+                            {}
+                          }}, [{}]);
+                        ]],
+			{ i(1), i(2), i(3) }
+		)
+	),
+	s(
+		{
+			trig = "uc",
+			name = "useCallback",
+		},
+		fmt(
+			[[
+                          const {} = useCallback(() => {{
+                            {}
+                          }}, [{}]);
+                        ]],
+			{ i(1), i(2), i(3) }
+		)
+	),
 })
 
 ls.add_snippets("vue", {
-  s(
-    {
-      trig = "vue",
-      name = "Satellite Vue Component",
-    },
-    fmt(
-      [[
-      <template src="./{}.html"></template>
+	s(
+		{
+			trig = "vue",
+			name = "Satellite Vue Component",
+		},
+		fmt(
+			[[
+                          <template src="./{}.html"></template>
 
-      <script lang="ts">
-      import Vue from 'vue'
+                          <script lang="ts">
+                          import Vue from 'vue'
 
-      export default Vue.extend({{{}
-      </script>
+                          export default Vue.extend({{
+                            {}
+                          }})
+                          </script>
 
-      <style scoped lang="less" src="./{}.less"></style>
-    ]] ,
-      {
-      basename(1),
-      i(1),
-      basename(1),
-    }
-    )
-  ),
+                          <style scoped lang="less" src="./{}.less"></style>
+                        ]],
+			{
+				basename_or_dirname(),
+				i(0),
+				basename_or_dirname(),
+			}
+		)
+	),
 })
 
 ls.filetype_extend("typescript", { "javascript" })
