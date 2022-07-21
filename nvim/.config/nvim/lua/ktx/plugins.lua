@@ -83,7 +83,12 @@ require("packer").startup(function()
 	use("jasonwoodland/vim-hyperstyle")
 	use("michaeljsmith/vim-indent-object")
 	use("AndrewRadev/splitjoin.vim")
-	use("rstacruz/vim-closer")
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
 	use("christianchiarulli/nvcode-color-schemes.vim")
 	use("norcalli/nvim-colorizer.lua")
 	use("rebelot/kanagawa.nvim")
