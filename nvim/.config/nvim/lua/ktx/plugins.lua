@@ -8,8 +8,10 @@ local use = require("packer").use
 require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer")
+	-- use("williamboman/nvim-lsp-installer")
 	use("nvim-lua/plenary.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("lewis6991/gitsigns.nvim")

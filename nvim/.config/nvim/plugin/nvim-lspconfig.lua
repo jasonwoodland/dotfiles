@@ -1,4 +1,4 @@
-local nvim_lsp = require("lspconfig")
+local lspconfig = require("lspconfig")
 local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -11,9 +11,7 @@ function LspRenameFile()
 	vim.lsp.util.rename(curName, newName)
 end
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(server)
+local on_attach = function(server_name)
 	return function(client, bufnr)
 		local function buf_set_keymap(...)
 			vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -43,61 +41,49 @@ local on_attach = function(server)
 		buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 		buf_set_keymap("n", "<leader>rf", "<cmd>lua LspRenameFile()<CR>", opts)
 		buf_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-		-- buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 		buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 		buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 		buf_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setqflist()<CR>", opts)
 		buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 		buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
-		-- if client.supports_method("textDocument/formatting") then
-		-- print(vim.inspect(client))
 		client.server_capabilities.documentFormattingProvider = false
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = augroup,
 			buffer = bufnr,
-			-- on 0.8, you should use vim.lsp.buf.format instead
 			callback = function()
-				vim.lsp.buf.format({
-					-- sync = true,
-					-- filter = function(clients)
-					-- 	return vim.tbl_filter(function(c)
-					-- 		print(c.name)
-					-- 		return client.name == "null-ls"
-					-- 		-- return client.name ~= "tsserver" and client.name ~= "html" and client.name ~= "null-ls"
-					-- 		-- and client.name ~= "volar"
-					-- 	end, clients)
-					-- end,
-				})
+				-- TODO: only works properly with formatting_sync
+				vim.lsp.buf.format({})
 			end,
 		})
-		-- end
 	end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-local lsp_installer = require("nvim-lsp-installer")
-
-lsp_installer.on_server_ready(function(server)
-	local opts = {
-		on_attach = on_attach(server),
-		capabilities = capabilities,
-		settings = {
-			documentFormatting = true,
-			Lua = {
-				diagnostics = {
-					globals = { "vim" },
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("mason-lspconfig").setup_handlers({
+	function(server_name)
+		lspconfig[server_name].setup({
+			on_attach = on_attach(server_name),
+			capabilities = capabilities,
+			settings = {
+				documentFormatting = true,
+				Lua = {
+					diagnostics = {
+						globals = { "vim" }
+					}
 				},
-			},
-		},
-	}
-
-	server:setup(opts)
-	vim.cmd([[ do User LspAttachBuffers ]])
-end)
+				format = {
+					enable = true
+				}
+			}
+		})
+	end
+})
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
@@ -155,13 +141,13 @@ vim.lsp.handlers["textDocument/typeDefinition"] = location_handler
 vim.lsp.handlers["textDocument/implementation"] = location_handler
 vim.lsp.handlers["textDocument/references"] = location_handler
 
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.fixjson,
-		null_ls.builtins.formatting.prettierd, -- all projects use prettier eslint plugin, so it's unused, but we need it for css/less!
-		null_ls.builtins.formatting.eslint_d,
-		null_ls.builtins.diagnostics.eslint_d,
-	},
-	on_attach = on_attach,
-})
+-- null_ls.setup({
+-- 	sources = {
+-- 		-- null_ls.builtins.formatting.stylua,
+-- 		null_ls.builtins.formatting.fixjson,
+-- 		-- null_ls.builtins.formatting.prettierd, -- all projects use prettier eslint plugin, so it's unused, but we need it for css/less!
+-- 		-- null_ls.builtins.formatting.eslint_d,
+-- 		-- null_ls.builtins.diagnostics.eslint_d,
+-- 	},
+-- 	on_attach = on_attach,
+-- })
