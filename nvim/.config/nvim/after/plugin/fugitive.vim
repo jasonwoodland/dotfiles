@@ -10,10 +10,10 @@ let g:fugitive_pty = 0
 nnoremap <silent> <leader>g :call ToggleGit()<CR>
 
 function ToggleGit()
-  if bufwinnr(".git/index") == -1
+  if bufwinnr(".git//$") == -1
     Git
   else
-    exe "bd".bufnr(".git/index")
+    exe "bd".bufnr(".git//$")
   endif
 endfunction
 
