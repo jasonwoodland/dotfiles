@@ -47,14 +47,24 @@ local on_attach = function(server_name)
 		buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 		buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
-		client.server_capabilities.documentFormattingProvider = false
+		-- client.server_capabilities.documentFormattingProvider = false
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = augroup,
 			buffer = bufnr,
+			-- on 0.8, you should use vim.lsp.buf.format instead
 			callback = function()
-				-- TODO: only works properly with formatting_sync
-				vim.lsp.buf.format({})
+				vim.lsp.buf.format({
+					-- sync = true,
+					-- filter = function(clients)
+					-- 	return vim.tbl_filter(function(c)
+					-- 		print(c.name)
+					-- 		return client.name == "null-ls"
+					-- 		-- return client.name ~= "tsserver" and client.name ~= "html" and client.name ~= "null-ls"
+					-- 		-- and client.name ~= "volar"
+					-- 	end, clients)
+					-- end,
+				})
 			end,
 		})
 	end
@@ -71,17 +81,27 @@ require("mason-lspconfig").setup_handlers({
 			on_attach = on_attach(server_name),
 			capabilities = capabilities,
 			settings = {
-				documentFormatting = true,
 				Lua = {
 					diagnostics = {
 						globals = { "vim" }
 					}
 				},
-				format = {
-					enable = true
-				}
 			}
 		})
+	end,
+	["html"] = function()
+		-- TODO: won't preserveNewLines
+		-- lspconfig.html.setup({
+		-- 	-- on_attach = on_attach(server_name),
+		-- 	-- capabilities = capabilities,
+		-- 	settings = {
+		-- 		html = {
+		-- 			format = {
+		-- 				enable = false
+		-- 			}
+		-- 		}
+		-- 	}
+		-- })
 	end
 })
 
@@ -141,13 +161,14 @@ vim.lsp.handlers["textDocument/typeDefinition"] = location_handler
 vim.lsp.handlers["textDocument/implementation"] = location_handler
 vim.lsp.handlers["textDocument/references"] = location_handler
 
--- null_ls.setup({
--- 	sources = {
--- 		-- null_ls.builtins.formatting.stylua,
--- 		null_ls.builtins.formatting.fixjson,
--- 		-- null_ls.builtins.formatting.prettierd, -- all projects use prettier eslint plugin, so it's unused, but we need it for css/less!
--- 		-- null_ls.builtins.formatting.eslint_d,
--- 		-- null_ls.builtins.diagnostics.eslint_d,
--- 	},
--- 	on_attach = on_attach,
--- })
+null_ls.setup({
+	sources = {
+		-- null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.fixjson,
+		null_ls.builtins.formatting.prettierd,
+		null_ls.builtins.formatting.eslint_d,
+		null_ls.builtins.diagnostics.eslint_d,
+	},
+	on_attach = on_attach,
+	capabilities = capabilities
+})
