@@ -1,5 +1,6 @@
 local lspkind = require("lspkind")
 local cmp = require("cmp")
+local cmp_buffer = require("cmp_buffer")
 local mapping = require("cmp.config.mapping")
 local types = require("cmp.types")
 local luasnip = require("luasnip")
@@ -56,7 +57,6 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	sources = {
-		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "cmp_git" },
@@ -73,6 +73,7 @@ cmp.setup({
 				end,
 			},
 		},
+		{ name = "luasnip" },
 	},
 	snippet = {
 		expand = function(args)
@@ -109,6 +110,12 @@ cmp.setup.filetype("gitcommit", {
 	}, {
 		{ name = "buffer" },
 	}),
+	sorting = {
+		comparators = {
+			function(...) return cmp_buffer:compare_locality(...) end,
+			-- The rest of your comparators...
+		}
+	}
 })
 
 -- -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
