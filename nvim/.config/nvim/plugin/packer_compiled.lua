@@ -121,11 +121,6 @@ _G.packer_plugins = {
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/go.nvim",
     url = "https://github.com/ray-x/go.nvim"
   },
-  ["kanagawa.nvim"] = {
-    loaded = true,
-    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
-    url = "https://github.com/rebelot/kanagawa.nvim"
-  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
@@ -265,7 +260,7 @@ _G.packer_plugins = {
   ["vim-closer"] = {
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/vim-closer",
-    url = "https://github.com/rstacruz/vim-closer"
+    url = "https://github.com/jasonwoodland/vim-closer"
   },
   ["vim-commentary"] = {
     loaded = true,
@@ -276,6 +271,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/vim-dispatch",
     url = "https://github.com/tpope/vim-dispatch"
+  },
+  ["vim-endwise"] = {
+    loaded = true,
+    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/vim-endwise",
+    url = "https://github.com/tpope/vim-endwise"
+  },
+  ["vim-eunuch"] = {
+    loaded = true,
+    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/vim-eunuch",
+    url = "https://github.com/tpope/vim-eunuch"
   },
   ["vim-fugitive"] = {
     loaded = true,
