@@ -147,4 +147,3 @@ set completeopt=menu,menuone,noselect
 
 " Disable matchup offscreen statusline thing
 let g:matchup_matchparen_offscreen = {}
-let g:eunuch_no_maps = 1
