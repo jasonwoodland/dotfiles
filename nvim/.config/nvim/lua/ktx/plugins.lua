@@ -81,18 +81,12 @@ require("packer").startup(function()
 	use("tpope/vim-characterize")
 	use("tpope/vim-capslock")
 
+	-- use("jasonwoodland/vim-hyperstyle")
+	use("jasonwoodland/vim-closer")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
-	use("jasonwoodland/vim-hyperstyle")
 	use("michaeljsmith/vim-indent-object")
 	use("AndrewRadev/splitjoin.vim")
-	use({
-		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	})
 	use("christianchiarulli/nvcode-color-schemes.vim")
 	use("norcalli/nvim-colorizer.lua")
-	use("rebelot/kanagawa.nvim")
 	use("andymass/vim-matchup")
 end)
