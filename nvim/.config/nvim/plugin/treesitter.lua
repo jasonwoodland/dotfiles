@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   ensure_installed = {
     "bash",
     "c",
@@ -20,16 +20,18 @@ require'nvim-treesitter.configs'.setup {
     "scss",
     "tsx",
     "typescript",
-    "vim",
     "vue",
     "yaml",
+  },
+  ignore_installing = {
+    "vim",
   },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
   indent = {
-    enable = false,
+    enable = true,
   },
   textobjects = {
     select = {
@@ -54,5 +56,5 @@ require'nvim-treesitter.configs'.setup {
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.comment = {
-  used_by = {"js", "ts", "jsx", "tsx", "c", "go", "vue"} -- additional filetypes that use this parser
+  used_by = { "js", "ts", "jsx", "tsx", "c", "go", "vue" } -- additional filetypes that use this parser
 }
