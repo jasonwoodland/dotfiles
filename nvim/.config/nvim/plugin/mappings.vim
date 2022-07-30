@@ -12,7 +12,6 @@ nnoremap <space>ia <cmd>lua require('telescope').extensions.gh.issues({ assignee
 nnoremap <space>ip <cmd>lua require('telescope').extensions.gh.pull_request()<cr>
 nnoremap <space>df <cmd>lua require('ktx.telescope').dotfiles()<cr>
 
-inoremap <c-s> <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <space>e <cmd>NvimTreeToggle<cr>
 
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
