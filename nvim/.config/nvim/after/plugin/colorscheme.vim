@@ -88,6 +88,7 @@ hi link SpecialKey Special
 hi link TermCursorNC Visual
 hi TermCursor guifg=#828aa8
 hi link netrwTreeBar LineNr
+hi link netrwMarkFile Visual
 
 hi link Space Search
 match Space /\s\+$/
