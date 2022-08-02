@@ -16,7 +16,7 @@ set wildmode=full
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+set wildignore=.DS_Store
 
 " Ignore case when completing file names and directories
 set wildignorecase
@@ -90,6 +90,7 @@ set sidescrolloff=6
 
 " Files, backups and undo
 set backup
+set backupdir-=.
 
 " / - remember 1000 items of search history
 " : - remember 1000 items of command-line history
