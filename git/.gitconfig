@@ -2,7 +2,7 @@
 	name = Jason Woodland
 	email = me@jasonwoodland.com
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = /Users/jason/.gitignore_global
 	abbrev = 7
 [color]
