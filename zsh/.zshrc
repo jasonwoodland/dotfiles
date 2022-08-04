@@ -164,6 +164,7 @@
 
   export VISUAL=nvim
   export EDITOR=nvim
+  export MANPAGER="nvim +Man!"
   export REACT_EDITOR=none # don't open vim on development crash
 
 # }}}
