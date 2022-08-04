@@ -11,14 +11,16 @@ augroup ToggleTerminal
   autocmd WinLeave * if exists('t:term_bufnr') | let t:term_height = winheight(bufwinnr(t:term_bufnr)) | endif
 augroup END
 
-command -nargs=0 TerminalSplit :new|term
-command -nargs=0 TerminalVsplit :vnew|term
-command -nargs=? TerminalTab :<args>tabnew|term
-command -nargs=0 TerminalReset :exe 'te'|bd!#|let t:term_bufnr = bufnr('%')
+command! -nargs=0 TerminalSplit :new|term
+command! -nargs=0 TerminalVsplit :vnew|term
+command! -nargs=? TerminalTab :<args>tabnew|term
+command! -nargs=0 TerminalClose :call CloseTerminal()
+command! -nargs=0 TerminalReset :exe 'te'|bd!#|let t:term_bufnr = bufnr('%')
+
 call Alias("st", "TerminalSplit")
 call Alias("vt", "TerminalVsplit")
 call Alias("tt", "TerminalTab")
-call Alias("tr", "TerminalReset")
+call Alias("tc", "TerminalClose")
 
 nnoremap <silent> <leader>t :<c-u>call ToggleTerminal(v:count)<CR>
 nnoremap <silent> <space>t :<c-u>call ToggleTerminal(v:count)<CR>
@@ -59,6 +61,19 @@ function! SwitchTerminal(delta)
   exe 'buffer'.b
 endfunction
 
+function! CloseTerminal()
+  if &buftype != "terminal"
+    return
+  endif
+  call SwitchTerminal(-1) 
+  if g:term_bufnr != bufnr('%')
+    bdelete! #
+    let g:term_bufnr = bufnr('%')
+  else
+    bdelete!
+  endif
+endfunction
+
 nnoremap <silent> [t :call SwitchTerminal(-1)<cr>
 nnoremap <silent> ]t :call SwitchTerminal(1)<cr>
 
@@ -72,8 +87,8 @@ function! TerminalJob(cmd)
   " tmap <buffer> : <esc>:
 endfunction
 
-command -nargs=1 -complete=shellcmd TerminalJob :call TerminalJob(<q-args>)
-command TerminalJobClose :call TerminalJobClose()
+command! -nargs=1 -complete=shellcmd TerminalJob :call TerminalJob(<q-args>)
+command! TerminalJobClose :call TerminalJobClose()
 
 cabbrev tj TerminalJob
 cabbrev tjc TerminalJobClose
