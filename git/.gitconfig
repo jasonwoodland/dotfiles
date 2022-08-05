@@ -51,6 +51,7 @@
 	ph = push -u origin
 	phf = push -u origin --force
 	pl = pull
+	plr = pull --rebase
 	r = reset
 	rb = rebase
 	rbi = rebase --interactive
