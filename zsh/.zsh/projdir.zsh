@@ -3,8 +3,6 @@ _getprojdirs() {
   dirs=(
     ~/ghq/github.com/*/*/
     ~/ghq/github.com/*/dotfiles/*/
-    ~/ghq/github.com/ispec-inc/*/go/
-    ~/ghq/github.com/ispec-inc/*/*/apps/*/
   )
   dirs=("${(u)dirs[@]}") #`
   arr=$dirs
