@@ -43,11 +43,11 @@ hi link CocListMode StatusLine
 hi link CocListPath StatusLine
 
 " slightly darker blue background
-hi NvimTreeNormal guibg=#212530
-hi NvimTreeEndOfBuffer guifg=#212530 guibg=#212530
+hi NvimTreeNormal guibg=#1e2229
+hi NvimTreeEndOfBuffer guifg=#1e2229 guibg=#1e2229
 hi NvimTreeVertSplit guifg=bg guibg=bg
-hi Normal guibg=#272b38
-hi PanelNormal guibg=#21252e
+hi Normal guibg=#242832
+hi PanelNormal guibg=#21252b
 " autocmd FileType list,qf set winhighlight=Normal:PanelNormal
 autocmd FileType list,qf,help set signcolumn=auto
 
@@ -55,7 +55,7 @@ hi clear Cursor
 hi link Cursor lCursor
 
 hi clear VertSplit
-hi VertSplit guifg=#22262d
+hi VertSplit guifg=#1e2229
 
 hi SignColumn guibg=none
 hi clear DiffChange
@@ -67,18 +67,18 @@ hi CocGitAddedSign guifg=#98c379
 hi CocGitRemovedSign guifg=#be5046
 hi link CocGitTopRemovedSign CocGitRemovedSign
 
-hi Pmenu guibg=#212530
+hi Pmenu guibg=#1e2229
 hi clear PmenuSel
 hi link PmenuSel Visual
 hi clear PmenuSbar
-hi PmenuSbar guibg=#212530
+hi PmenuSbar guibg=#1e2229
 hi PmenuThumb guibg=#3B4154
 
-hi StatusLine guibg=#212530
-hi StatusLineNC guifg=#7A859B guibg=#212530
-hi TabLineFill guibg=#212530
-hi TabLine guibg=#212530
-hi TabLineNC guibg=#212530
+hi StatusLine guibg=#1e2229
+hi StatusLineNC guifg=#7A859B guibg=#1e2229
+hi TabLineFill guibg=#1e2229
+hi TabLine guibg=#1e2229
+hi TabLineNC guibg=#1e2229
 hi TabLineSel guibg=none
 
 hi clear SpecialKey " fixed unreadable diggraphs output
@@ -94,9 +94,9 @@ hi link Space Search
 match Space /\s\+$/
 
 hi clear TelescopeBorder
-hi TelescopeBorder guifg=#7A859B guibg=#212530
-hi TelescopeNormal guibg=#212530
-hi TelescopePreviewNormal guibg=#212530
+hi TelescopeBorder guifg=#7A859B guibg=#1e2229
+hi TelescopeNormal guibg=#1e2229
+hi TelescopePreviewNormal guibg=#1e2229
 
 hi link CmpItemAbbrMatch Special
 hi link CmpItemAbbrMatchFuzzy Special
