@@ -70,8 +70,5 @@ _projdir() {
 }
 zle -N zprojdir
 compdef _projdir projdir
-bindkey -a '^[p' zprojdir
-bindkey '^[p' zprojdir
-bindkey -as '^[]' 'itprojdir\n'
-bindkey -s '^[]' '^utprojdir\n'
-alias p='projdir'
+bindkey '^ ' zprojdir
+bindkey -a '^ ' zprojdir
