@@ -23,3 +23,16 @@ nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 nnoremap <S-ScrollWheelUp> zh
 nnoremap <S-ScrollWheelDown> zl
+
+nnoremap Q <nop>
+
+onoremap <silent> i/ <cmd>normal! T/vt/<CR>
+onoremap <silent> a/ <cmd>normal! F/vf/<CR>
+xnoremap <silent> i/ <cmd>normal! T/vt/<CR>
+xnoremap <silent> a/ <cmd>normal! F/vf/<CR>
+
+nnoremap <silent> <leader>vv <cmd>exe 'edit '.expand('%:r').'.vue'<cr>
+nnoremap <silent> <leader>vc <cmd>exe 'edit '.expand('%:r').'.css'<cr>
+nnoremap <silent> <leader>vl <cmd>exe 'edit '.expand('%:r').'.less'<cr>
+nnoremap <silent> <leader>vs <cmd>exe 'edit '.expand('%:r').'.scss'<cr>
+nnoremap <silent> <leader>vh <cmd>exe 'edit '.expand('%:r').'.html'<cr>

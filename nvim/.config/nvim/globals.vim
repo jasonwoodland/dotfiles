@@ -18,11 +18,4 @@ endfunction
 
 command -nargs=0 -bang Bdelete :call Bdelete('<bang>' == '!')
 
-nnoremap Q <nop>
-
-onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
-onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
-xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
-xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
-
 cabbrev vsb vert sb
