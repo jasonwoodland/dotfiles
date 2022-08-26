@@ -23,9 +23,12 @@ nnoremap g<space> :Git<space>
 function! GitAliasCallback(j, d, e)
   for l in a:d
     let p = split(l, " ")
-    if len(p) > 5
+    if len(p) < 3
+      continue
+    endif
+    if p[2][0] == '!'
       call Alias("g".p[0], "Git ".p[0])
-    elseif len(p) >= 3
+    else
       call Alias("g".p[0], "Git ".join(p[2:], " "))
     endif
   endfor
