@@ -23,7 +23,7 @@ nnoremap g<space> :Git<space>
 function! GitAliasCallback(j, d, e)
   for l in a:d
     let p = split(l, " ")
-    if len(p) < 3
+    if len(p) < 2
       continue
     endif
     if p[2][0] == '!'
