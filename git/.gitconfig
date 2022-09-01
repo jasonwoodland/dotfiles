@@ -110,3 +110,5 @@
 	; conflictstyle = diff3
 [mergetool]
 	prompt = false
+[http]
+	postBuffer = 524288000
