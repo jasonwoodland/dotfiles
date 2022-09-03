@@ -36,3 +36,5 @@ nnoremap <silent> <leader>vc <cmd>exe 'edit '.expand('%:r').'.css'<cr>
 nnoremap <silent> <leader>vl <cmd>exe 'edit '.expand('%:r').'.less'<cr>
 nnoremap <silent> <leader>vs <cmd>exe 'edit '.expand('%:r').'.scss'<cr>
 nnoremap <silent> <leader>vh <cmd>exe 'edit '.expand('%:r').'.html'<cr>
+
+nnoremap <F3> <cmd>SynGroup<CR>
