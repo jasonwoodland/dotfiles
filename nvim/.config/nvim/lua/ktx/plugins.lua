@@ -11,7 +11,6 @@ require("packer").startup(function()
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
-	-- use("williamboman/nvim-lsp-installer")
 	use("nvim-lua/plenary.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("lewis6991/gitsigns.nvim")
@@ -36,8 +35,6 @@ require("packer").startup(function()
 	})
 	use("hrsh7th/nvim-cmp")
 
-	use("windwp/nvim-ts-autotag")
-
 	use({
 		"ray-x/go.nvim",
 		config = function()
@@ -48,20 +45,16 @@ require("packer").startup(function()
 	use("onsails/lspkind-nvim")
 	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
+
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-github.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use({
-		"nvim-telescope/telescope-frecency.nvim",
-		config = function()
-			require("telescope").load_extension("frecency")
-		end,
-		requires = { "tami5/sqlite.lua" },
-	})
 	use("cljoly/telescope-repo.nvim")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("nvim-treesitter/playground")
+	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	use("tpope/vim-sensible")
 	use("tpope/vim-surround")
@@ -81,9 +74,11 @@ require("packer").startup(function()
 	use("tpope/vim-characterize")
 	use("tpope/vim-capslock")
 
+	use("tjdevries/colorbuddy.vim")
+	use("~/ghq/github.com/jasonwoodland/onejson")
+
 	-- use("jasonwoodland/vim-hyperstyle")
 	use("jasonwoodland/vim-closer")
-	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("michaeljsmith/vim-indent-object")
 	use("AndrewRadev/splitjoin.vim")
 	use("christianchiarulli/nvcode-color-schemes.vim")
