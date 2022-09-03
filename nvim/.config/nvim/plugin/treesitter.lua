@@ -17,6 +17,7 @@ require 'nvim-treesitter.configs'.setup {
     "make",
     "python",
     "regex",
+    "rust",
     "scss",
     "tsx",
     "typescript",
