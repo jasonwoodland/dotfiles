@@ -9,7 +9,7 @@ let g:fugitive_pty = 0
 
 nnoremap <silent> <leader>g :call ToggleGit()<CR>
 
-function ToggleGit()
+function! ToggleGit()
   if bufwinnr(".git//$") == -1
     Git
   else
@@ -33,10 +33,12 @@ function! GitAliasCallback(j, d, e)
     endif
   endfor
 endfunction
+
 function! GitAliasExit(j, d, e)
   cuna gph
   cuna gpl
   call Alias("gph", "TerminalJob git push -u origin")
   call Alias("gpl", "TerminalJob git pull")
 endfunction
+
 call jobstart("git alias", {'on_stdout':'GitAliasCallback', 'on_exit':'GitAliasExit'})
