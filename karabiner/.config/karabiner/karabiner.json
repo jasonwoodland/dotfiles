@@ -142,7 +142,7 @@
                         ]
                     },
                     {
-                        "description": "Command + 6 focuses Slack",
+                        "description": "Command + 6 focuses Mail",
                         "manipulators": [
                             {
                                 "from": {
@@ -155,7 +155,49 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -aSlack"
+                                        "shell_command": "open -aMail"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Command + 7 focuses Anki",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "7",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -aAnki"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Command + 8 focuses Brave",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "8",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -aBrave\\ Browser"
                                     }
                                 ],
                                 "type": "basic"
