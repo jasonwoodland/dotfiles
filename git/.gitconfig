@@ -61,6 +61,7 @@
 	rbq = rebase --quit
 	rbe = rebase --edit-todo
 	rbo = rebase --onto
+	rl = reflog
 	ref = reflog
 	repo = !gh repo view --web
 	rp = repo
@@ -68,6 +69,7 @@
 	sh = show
 	s = status
 	sh = stash
+	shm = stash --message
 	shl = stash list
 	shs = stash show
 	shd = stash drop
