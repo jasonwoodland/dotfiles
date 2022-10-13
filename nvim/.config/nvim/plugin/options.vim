@@ -23,7 +23,7 @@ set completeopt+=menu,menuone,noselect
 set scrolloff=5
 set sidescrolloff=5
 
-set mousescroll=ver:1,hor:1
+set mousescroll=ver:1,hor:0
 
 set jumpoptions+=view
 
