@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+
 local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -13,58 +14,41 @@ end
 
 local on_attach = function(server_name)
 	return function(client, bufnr)
-		local function buf_set_keymap(...)
-			vim.api.nvim_buf_set_keymap(bufnr, ...)
-		end
-
-		local function buf_set_option(...)
-			vim.api.nvim_buf_set_option(bufnr, ...)
-		end
-
 		-- Enable completion triggered by <c-x><c-o>
-		buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+		vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 		-- Mappings.
-		local opts = { noremap = true, silent = true }
-
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
-		buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-		buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-		buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-		buf_set_keymap("n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-		buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-		buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-		buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-		buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-		buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-		buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-		buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-		buf_set_keymap("n", "<leader>rf", "<cmd>lua LspRenameFile()<CR>", opts)
-		buf_set_keymap("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-		buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-		buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-		buf_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setqflist()<CR>", opts)
-		buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
-		buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+		local bufopts = { noremap = true, silent = true, buffer = bufnr }
+		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+		vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, bufopts)
+		vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+		vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+		vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+		vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+		vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+		vim.keymap.set('n', '<leader>wl', function()
+			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		end, bufopts)
+		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+		vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
+		vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
+		vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
+
+		vim.keymap.set('n', '<leader>rf', LspRenameFile, bufopts)
+		vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
+		vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
+		vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist, bufopts)
 
 		-- client.server_capabilities.documentFormattingProvider = false
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = augroup,
 			buffer = bufnr,
-			-- on 0.8, you should use vim.lsp.buf.format instead
 			callback = function()
-				vim.lsp.buf.format({
-					-- sync = true,
-					-- filter = function(clients)
-					-- 	return vim.tbl_filter(function(c)
-					-- 		print(c.name)
-					-- 		return client.name == "null-ls"
-					-- 		-- return client.name ~= "tsserver" and client.name ~= "html" and client.name ~= "null-ls"
-					-- 		-- and client.name ~= "volar"
-					-- 	end, clients)
-					-- end,
-				})
+				vim.lsp.buf.format()
 			end,
 		})
 	end
@@ -163,11 +147,10 @@ vim.lsp.handlers["textDocument/references"] = location_handler
 
 null_ls.setup({
 	sources = {
-		-- null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.fixjson,
-		null_ls.builtins.formatting.prettierd,
-		null_ls.builtins.formatting.eslint_d,
 		null_ls.builtins.diagnostics.eslint_d,
+		null_ls.builtins.formatting.eslint_d,
+		null_ls.builtins.formatting.prettierd,
 	},
 	on_attach = on_attach,
 	capabilities = capabilities
