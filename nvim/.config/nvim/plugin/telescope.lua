@@ -21,6 +21,10 @@ require("telescope").setup({
     },
     live_grep = {
       hidden = true,
+      file_ignore_patterns = { 'node_modules', '.git' },
+      additional_args = function(opts)
+        return { "--hidden" }
+      end
     },
   },
 })
