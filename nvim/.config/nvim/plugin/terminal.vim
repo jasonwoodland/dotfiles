@@ -5,7 +5,7 @@ tnoremap <Esc> <C-\><C-n>
 tnoremap <C-v><Esc> <Esc>
 
 augroup ToggleTerminal
-  autocmd TermOpen * setlocal signcolumn=no nonumber scrolloff=0 display=
+  autocmd TermOpen * setlocal signcolumn=no nonumber norelativenumber scrolloff=0 display=
   let t:term_height = 25
   autocmd TabNew * let t:term_height = 25
   autocmd WinLeave * if exists('t:term_bufnr') | let t:term_height = winheight(bufwinnr(t:term_bufnr)) | endif
@@ -81,6 +81,7 @@ nnoremap <silent> ]t :call SwitchTerminal(1)<cr>
 function! TerminalJob(cmd)
   bot new +resize10
   call termopen(a:cmd, {'on_exit': 'OnExit'})
+  norm G
   let g:terminal_job_bufnr = bufnr()
   wincmd p
   " startinsert
@@ -100,5 +101,8 @@ endfunction
 function! OnExit(job_id, code, event) dict
   if a:code == 0
     exe "bd".g:terminal_job_bufnr
+  else
+    wincmd p
+    startinsert
   endif
 endfunction
