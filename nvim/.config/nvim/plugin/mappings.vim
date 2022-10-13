@@ -21,9 +21,6 @@ nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
-nnoremap <S-ScrollWheelUp> zh
-nnoremap <S-ScrollWheelDown> zl
-
 nnoremap Q <nop>
 
 onoremap <silent> i/ <cmd>normal! T/vt/<CR>
