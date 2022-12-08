@@ -21,6 +21,7 @@
 	bd = branch -d
 	bm = branch --move
 	cl = clean
+	cldf = clean -df
 	c = commit
 	ca = commit --amend
 	cav = commit --amend --no-verify
@@ -53,6 +54,8 @@
 	pl = pull
 	plr = pull --rebase
 	r = reset
+	rh = reset hard
+	rhh = reset --hard HEAD
 	rb = rebase
 	rbi = rebase --interactive
 	rbc = rebase --continue
@@ -72,6 +75,7 @@
 	shm = stash --message
 	shl = stash list
 	shs = stash show
+	shsp = stash show -p
 	shd = stash drop
 	shp = stash pop
 	sha = stash apply
