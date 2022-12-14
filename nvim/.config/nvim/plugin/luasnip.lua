@@ -20,6 +20,8 @@ local fmta = require("luasnip.extras.fmt").fmta
 local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
+ls.cleanup()
+
 ls.config.setup({
 	update_events = "TextChanged,TextChangedI",
 })
@@ -45,7 +47,7 @@ ls.add_snippets("javascript", {
 	s({
 		trig = "l",
 		name = "console.log",
-	}, fmt([[console.log({});]], { i(0) })),
+	}, fmt([[console.log({})]], { i(0) })),
 	s({
 		trig = "us",
 		name = "useState",
