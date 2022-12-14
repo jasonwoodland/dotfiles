@@ -103,6 +103,7 @@ function! OnExit(job_id, code, event) dict
     exe "bd".g:terminal_job_bufnr
   else
     wincmd p
+    resize25
     startinsert
   endif
 endfunction
