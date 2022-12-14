@@ -23,6 +23,9 @@ require("packer").startup({
 		use({ "L3MON4D3/LuaSnip" })
 		use({ "saadparwaiz1/cmp_luasnip" })
 
+		use { "zbirenbaum/copilot.lua" }
+		use { "zbirenbaum/copilot-cmp" }
+
 		use("hrsh7th/cmp-buffer")
 		use("hrsh7th/cmp-path")
 		use("hrsh7th/cmp-nvim-lua")
