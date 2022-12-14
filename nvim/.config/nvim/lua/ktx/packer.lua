@@ -82,8 +82,17 @@ require("packer").startup({
 
 		use("tjdevries/colorbuddy.vim")
 		use("~/ghq/github.com/jasonwoodland/onejson")
+		use("morhetz/gruvbox")
+		use {
+			"mcchrish/zenbones.nvim",
+			requires = "rktjmp/lush.nvim",
+		}
 
-		-- use("jasonwoodland/vim-hyperstyle")
+		use {
+			"meliora-theme/neovim",
+			requires = { "rktjmp/lush.nvim" }
+		}
+
 		use("jasonwoodland/vim-closer")
 		use("michaeljsmith/vim-indent-object")
 		use("AndrewRadev/splitjoin.vim")
