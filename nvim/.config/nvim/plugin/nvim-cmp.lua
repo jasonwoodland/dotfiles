@@ -5,6 +5,22 @@ local mapping = require("cmp.config.mapping")
 local types = require("cmp.types")
 local luasnip = require("luasnip")
 
+lspkind.init({
+	symbol_map = {
+		Copilot = "",
+	},
+})
+
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+
+require("copilot").setup()
+require("copilot_cmp").setup({
+	-- method = "getPanelCompletions",
+	formatters = {
+		preview = require("copilot_cmp.format").deindent,
+	}
+})
+
 local press = function(key)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), "n", true)
 end
@@ -30,15 +46,18 @@ cmp.setup({
 		["<C-p>"] = mapping(mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }), { "i", "c" }),
 		["<C-y>"] = mapping.confirm({ select = false }),
 		["<C-e>"] = mapping.abort(),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
+		["<CR>"] = cmp.mapping.confirm { select = false },
+		["<Right>"] = cmp.mapping.confirm { select = true },
 
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
 			elseif cmp.visible() then
 				cmp.confirm({
+					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
 				})
 			elseif has_words_before() then
@@ -57,12 +76,15 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
-		{ name = "cmp_git" },
-		{ name = "path" },
+		{ name = "copilot", group_index = 1 },
+		{ name = "nvim_lsp", group_index = 1 },
+		{ name = "nvim_lua", group_index = 1 },
+		{ name = "cmp_git", group_index = 1 },
+		{ name = "path", group_index = 1 },
+		{ name = "luasnip", group_index = 1 },
 		{
 			name = "buffer",
+			group_index = 2,
 			option = {
 				keyword_length = 3,
 				get_bufnrs = function()
@@ -74,12 +96,19 @@ cmp.setup({
 				end,
 			},
 		},
-		{ name = "luasnip" },
 	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
 		end,
+	},
+	window = {
+		-- compltion = cmp.config.window.bordered({
+		-- 	winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+		-- }),
+		-- documentation = cmp.config.window.bordered({
+		-- 	winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None'
+		-- }),
 	},
 	formatting = {
 		format = lspkind.cmp_format({
@@ -93,11 +122,11 @@ cmp.setup({
 				buffer = "[Buffer]",
 				path = "[Path]",
 				gh_issues = "[Issue]",
+				copilot = "[Copilot]",
 			},
 		}),
 	},
 	experimental = {
-		-- native_menu = true,
 		ghost_text = true,
 	},
 	view = {
@@ -118,21 +147,3 @@ cmp.setup.filetype("gitcommit", {
 		}
 	}
 })
-
--- -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline('/', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = {
---     { name = 'buffer' }
---   }
--- })
-
--- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline(':', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources({
---     { name = 'path' }
---   }, {
---     { name = 'cmdline' }
---   })
--- })
