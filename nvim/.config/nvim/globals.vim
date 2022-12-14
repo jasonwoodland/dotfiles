@@ -25,3 +25,8 @@ endfun
 
 command! -nargs=0 SynGroup :call SynGroup()
 cabbrev vsb vert sb
+
+autocmd BufReadPost *
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
