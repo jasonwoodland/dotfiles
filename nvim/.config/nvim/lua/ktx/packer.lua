@@ -50,14 +50,14 @@ require("packer").startup({
 		use("kyazdani42/nvim-web-devicons")
 		use("kyazdani42/nvim-tree.lua")
 
-		use("nvim-telescope/telescope.nvim")
+		use({ "nvim-telescope/telescope.nvim", tag = "0.1.0" })
 		use("nvim-telescope/telescope-github.nvim")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use("cljoly/telescope-repo.nvim")
 
 		-- use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 		use("nvim-treesitter/nvim-treesitter")
-		use("nvim-treesitter/nvim-treesitter-textobjects")
+		-- use("nvim-treesitter/nvim-treesitter-textobjects") -- error on editing rust files?
 		use("nvim-treesitter/playground")
 		-- use 'nvim-treesitter/nvim-treesitter-context'
 		use("JoosepAlviste/nvim-ts-context-commentstring")
@@ -100,12 +100,33 @@ require("packer").startup({
 		use("norcalli/nvim-colorizer.lua")
 		use("andymass/vim-matchup")
 
-		use { 'akinsho/git-conflict.nvim', tag = "*", config = function()
+		use { "https://gitlab.com/yorickpeterse/nvim-pqf.git", config = function()
+			require('pqf').setup()
+		end }
+
+		-- use 'rhysd/conflict-marker.vim'
+
+		use { 'akinsho/git-conflict.nvim', config = function()
 			require('git-conflict').setup({
 				default_mappings = false, -- disable buffer local mapping created by this plugin
 				disable_diagnostics = true, -- This will disable the diagnostics in a buffer whilst it is conflicted
+				highlights = { -- They must have background color, otherwise the default color will be used
+					incoming = 'DiffText',
+					current = 'DiffAdd',
+				}
 			})
+
+			vim.keymap.set('n', 'gco', '<Plug>(git-conflict-ours)')
+			vim.keymap.set('n', 'gct', '<Plug>(git-conflict-theirs)')
+			vim.keymap.set('n', 'gcb', '<Plug>(git-conflict-both)')
+			vim.keymap.set('n', 'gc0', '<Plug>(git-conflict-none)')
+			vim.keymap.set('n', '[g', '<Plug>(git-conflict-prev-conflict)')
+			vim.keymap.set('n', ']g', '<Plug>(git-conflict-next-conflict)')
+			vim.keymap.set('n', 'gcq', '<cmd>GitConflictListQf<cr>')
 		end }
+
+		use 'simrat39/rust-tools.nvim'
+		use 'uga-rosa/ccc.nvim'
 
 		-- use({
 		-- 	"aarondiel/spread.nvim",
