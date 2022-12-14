@@ -1,4 +1,6 @@
 local lspconfig = require("lspconfig")
+local rt = require("rust-tools")
+
 lspconfig.sourcekit.setup {}
 
 local null_ls = require("null-ls")
@@ -35,6 +37,7 @@ local on_attach = function(server_name)
 		end, bufopts)
 		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 		vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
+		vim.keymap.set('n', '<leader>A', rt.hover_actions.hover_actions, bufopts)
 		vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
 		vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
 
@@ -56,7 +59,7 @@ local on_attach = function(server_name)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -152,7 +155,15 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.eslint_d,
 		null_ls.builtins.formatting.eslint_d,
 		null_ls.builtins.formatting.prettierd,
+		null_ls.builtins.formatting.rustfmt,
 	},
 	on_attach = on_attach,
 	capabilities = capabilities
+})
+
+rt.setup({
+	server = {
+		on_attach = on_attach,
+		capabilities = capabilities
+	}
 })
