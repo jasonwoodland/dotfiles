@@ -45,51 +45,64 @@ end
 
 function M.projects(opts)
   opts = opts or {}
-  vim.fn.jobstart("ls -1d ~/ghq/*/*/*/ ~/ghq/*/*/dotfiles/*/", {
-    stdout_buffered = true,
-    on_stdout = function(_, data)
-      pickers.new(opts, {
-        prompt_title = "Projects",
-        finder = finders.new_table {
-          results = data,
-        },
-        attach_mappings = function(prompt_bufnr, map)
-          actions.select_default:replace(function()
-            actions.close(prompt_bufnr)
-            local path = action_state.get_selected_entry()[1]
-            vim.api.nvim_command("edit " .. path)
-            vim.api.nvim_command("lcd " .. path)
-          end)
-          actions.select_horizontal:replace(function()
-            actions.close(prompt_bufnr)
-            local path = action_state.get_selected_entry()[1]
-            vim.api.nvim_command("split " .. path)
-            vim.api.nvim_command("lcd " .. path)
-          end)
-          actions.select_vertical:replace(function()
-            actions.close(prompt_bufnr)
-            local path = action_state.get_selected_entry()[1]
-            vim.api.nvim_command("vertical split " .. path)
-            vim.api.nvim_command("lcd " .. path)
-          end)
-          actions.select_tab:replace(function()
-            actions.close(prompt_bufnr)
-            local path = action_state.get_selected_entry()[1]
-            vim.api.nvim_command("tabedit " .. path)
-            vim.api.nvim_command("lcd " .. path)
-          end)
-          map("i", "<tab>", function()
-            actions.close(prompt_bufnr)
-            local path = action_state.get_selected_entry()[1]
-            project_files(path)
-          end)
-          return true
-        end,
-        previewer = previewers.vim_buffer_cat.new(opts),
-        sorter = conf.generic_sorter(opts),
-      }):find()
-    end
-  })
+  local command = "ls -1d ~/ghq/*/*/*/ ~/ghq/*/jasonwoodland/dotfiles/*/"
+  local handle = io.popen(command)
+
+  if (handle == nil) then
+    print('could not run specified command:' .. command)
+    return
+  end
+
+  local result = handle:read("a")
+
+  handle:close()
+
+  local files = {}
+
+  for token in string.gmatch(result, "[^%c]+") do
+    table.insert(files, token)
+  end
+  print(vim.inspect(files))
+  pickers.new({
+    prompt_title = "Projects",
+    finder = finders.new_table {
+      results = files,
+    },
+    attach_mappings = function(prompt_bufnr, map)
+      actions.select_default:replace(function()
+        actions.close(prompt_bufnr)
+        local path = action_state.get_selected_entry()[1]
+        vim.api.nvim_command("edit " .. path)
+        vim.api.nvim_command("lcd " .. path)
+      end)
+      actions.select_horizontal:replace(function()
+        actions.close(prompt_bufnr)
+        local path = action_state.get_selected_entry()[1]
+        vim.api.nvim_command("split " .. path)
+        vim.api.nvim_command("lcd " .. path)
+      end)
+      actions.select_vertical:replace(function()
+        actions.close(prompt_bufnr)
+        local path = action_state.get_selected_entry()[1]
+        vim.api.nvim_command("vertical split " .. path)
+        vim.api.nvim_command("lcd " .. path)
+      end)
+      actions.select_tab:replace(function()
+        actions.close(prompt_bufnr)
+        local path = action_state.get_selected_entry()[1]
+        vim.api.nvim_command("tabedit " .. path)
+        vim.api.nvim_command("lcd " .. path)
+      end)
+      map("i", "<tab>", function()
+        actions.close(prompt_bufnr)
+        local path = action_state.get_selected_entry()[1]
+        project_files(path)
+      end)
+      return true
+    end,
+    -- previewer = previewers.vim_buffer_cat.new(opts),
+    sorter = conf.generic_sorter(opts),
+  }):find()
 end
 
 return M
