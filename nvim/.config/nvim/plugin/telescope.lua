@@ -1,14 +1,17 @@
+local actions = require("telescope.actions")
+
 require("telescope").setup({
   defaults = {
-    file_ignore_patterns = { "%.git/", "node_modules/", "__generated__/", ".npm", ".next" },
+    file_ignore_patterns = { "%.git/", "node_modules/", "__generated__/", "\\.npm" },
     winblend = 10,
     mappings = {
       i = {
-        ["<C-a>"] = function()
-          vim.api.nvim_win_set_cursor(0, { 1, 1 })
-        end,
+        ["<C-a>"] = false,
         ["<C-h>"] = "which_key",
         ["<esc>"] = "close",
+        ["<C-i>"] = actions.cycle_previewers_next,
+        ["<C-o>"] = actions.cycle_previewers_prev,
+
       },
     },
     layout_config = {
@@ -26,6 +29,9 @@ require("telescope").setup({
         return { "--hidden" }
       end
     },
+    colorscheme = {
+      enable_preview = true
+    }
   },
 })
 
