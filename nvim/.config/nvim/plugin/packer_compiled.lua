@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["ccc.nvim"] = {
+    loaded = true,
+    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/ccc.nvim",
+    url = "https://github.com/uga-rosa/ccc.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -120,8 +125,18 @@ _G.packer_plugins = {
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/colorbuddy.vim",
     url = "https://github.com/tjdevries/colorbuddy.vim"
   },
+  ["copilot-cmp"] = {
+    loaded = true,
+    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/copilot-cmp",
+    url = "https://github.com/zbirenbaum/copilot-cmp"
+  },
+  ["copilot.lua"] = {
+    loaded = true,
+    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/copilot.lua",
+    url = "https://github.com/zbirenbaum/copilot.lua"
+  },
   ["git-conflict.nvim"] = {
-    config = { "\27LJ\2\nh\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\21default_mappings\1\24disable_diagnostics\2\nsetup\17git-conflict\frequire\0" },
+    config = { "\27LJ\2\nÚ\4\0\0\5\0\24\0:6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\f\0'\4\r\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\14\0'\4\15\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\16\0'\4\17\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\18\0'\4\19\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\20\0'\4\21\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\22\0'\4\23\0B\0\4\1K\0\1\0\31<cmd>GitConflictListQf<cr>\bgcq'<Plug>(git-conflict-next-conflict)\a]g'<Plug>(git-conflict-prev-conflict)\a[g\30<Plug>(git-conflict-none)\bgc0\30<Plug>(git-conflict-both)\bgcb <Plug>(git-conflict-theirs)\bgct\30<Plug>(git-conflict-ours)\bgco\6n\bset\vkeymap\bvim\15highlights\1\0\2\fcurrent\fDiffAdd\rincoming\rDiffText\1\0\2\21default_mappings\1\24disable_diagnostics\2\nsetup\17git-conflict\frequire\0" },
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/git-conflict.nvim",
     url = "https://github.com/akinsho/git-conflict.nvim"
@@ -137,10 +152,20 @@ _G.packer_plugins = {
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/go.nvim",
     url = "https://github.com/ray-x/go.nvim"
   },
+  gruvbox = {
+    loaded = true,
+    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/gruvbox",
+    url = "https://github.com/morhetz/gruvbox"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
+  },
+  ["lush.nvim"] = {
+    loaded = true,
+    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/lush.nvim",
+    url = "https://github.com/rktjmp/lush.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -151,6 +176,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  neovim = {
+    loaded = true,
+    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/neovim",
+    url = "https://github.com/meliora-theme/neovim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -177,6 +207,12 @@ _G.packer_plugins = {
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-pqf.git"] = {
+    config = { "\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bpqf\frequire\0" },
+    loaded = true,
+    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/nvim-pqf.git",
+    url = "https://gitlab.com/yorickpeterse/nvim-pqf"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -186,16 +222,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
-  },
-  ["nvim-treesitter-context"] = {
-    loaded = true,
-    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
-  },
-  ["nvim-treesitter-textobjects"] = {
-    loaded = true,
-    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
   },
   ["nvim-ts-context-commentstring"] = {
     loaded = true,
@@ -226,6 +252,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
   },
   ["splitjoin.vim"] = {
     loaded = true,
@@ -356,22 +387,31 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/vim-vinegar",
     url = "https://github.com/tpope/vim-vinegar"
+  },
+  ["zenbones.nvim"] = {
+    loaded = true,
+    path = "/Users/jason/.local/share/nvim/site/pack/packer/start/zenbones.nvim",
+    url = "https://github.com/mcchrish/zenbones.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: git-conflict.nvim
-time([[Config for git-conflict.nvim]], true)
-try_loadstring("\27LJ\2\nh\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\21default_mappings\1\24disable_diagnostics\2\nsetup\17git-conflict\frequire\0", "config", "git-conflict.nvim")
-time([[Config for git-conflict.nvim]], false)
 -- Config for: cmp-git
 time([[Config for cmp-git]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fcmp_git\frequire\0", "config", "cmp-git")
 time([[Config for cmp-git]], false)
+-- Config for: nvim-pqf.git
+time([[Config for nvim-pqf.git]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bpqf\frequire\0", "config", "nvim-pqf.git")
+time([[Config for nvim-pqf.git]], false)
 -- Config for: go.nvim
 time([[Config for go.nvim]], true)
 try_loadstring("\27LJ\2\n0\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ago\frequire\0", "config", "go.nvim")
 time([[Config for go.nvim]], false)
+-- Config for: git-conflict.nvim
+time([[Config for git-conflict.nvim]], true)
+try_loadstring("\27LJ\2\nÚ\4\0\0\5\0\24\0:6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\f\0'\4\r\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\14\0'\4\15\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\16\0'\4\17\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\18\0'\4\19\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\20\0'\4\21\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\22\0'\4\23\0B\0\4\1K\0\1\0\31<cmd>GitConflictListQf<cr>\bgcq'<Plug>(git-conflict-next-conflict)\a]g'<Plug>(git-conflict-prev-conflict)\a[g\30<Plug>(git-conflict-none)\bgc0\30<Plug>(git-conflict-both)\bgcb <Plug>(git-conflict-theirs)\bgct\30<Plug>(git-conflict-ours)\bgco\6n\bset\vkeymap\bvim\15highlights\1\0\2\fcurrent\fDiffAdd\rincoming\rDiffText\1\0\2\21default_mappings\1\24disable_diagnostics\2\nsetup\17git-conflict\frequire\0", "config", "git-conflict.nvim")
+time([[Config for git-conflict.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
