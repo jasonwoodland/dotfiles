@@ -2,6 +2,7 @@ nnoremap <space>f  <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <space>g  <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <space>r  <cmd>lua require('telescope.builtin').resume()<cr>
 nnoremap <space>o  <cmd>lua require('telescope.builtin').oldfiles()<cr>
+nnoremap <space>c  <cmd>lua require('telescope.builtin').colorscheme()<cr>
 nnoremap <space>ic <cmd>lua require('telescope.builtin').git_commits()<cr>
 nnoremap <space>ib <cmd>lua require('telescope.builtin').git_branches()<cr>
 nnoremap <space>is <cmd>lua require('telescope.builtin').git_status()<cr>
