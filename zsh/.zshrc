@@ -166,6 +166,7 @@
   export EDITOR=nvim
   export MANPAGER="nvim +Man!"
   export REACT_EDITOR=none # don't open vim on development crash
+  export IRCSERVER="fileputcontents.com:6697"
 
 # }}}
 
@@ -252,35 +253,6 @@
   pj_task() {
     echo $(basename `git rev-parse --show-toplevel`) $(git branch --show-current)
   }
-
-  # irc {{{
-
-    irc() {
-      if [[ -v TMUX ]]; then
-        tmux switch-client -t irc 2>/dev/null
-        if [[ $? -eq 0 ]]; then
-          return
-        fi
-      fi
-
-      tmux attach -t irc 2>/dev/null
-      if [[ $? -eq 0 ]]; then
-        return
-      fi
-
-      tmux new-session -s irc -d 'weechat' \; set status off 2>/dev/null
-      if [[ $? -eq 0 ]]; then
-        if [[ -v TMUX ]]; then
-          tmux switch-client -t irc 2>/dev/null
-        else
-          tmux attach -t irc
-        fi
-      else
-        tmux new -s irc -A 'weechat' \; set status off
-      fi
-    }
-
-  # }}}
 
   # nvim-session {{{
 
