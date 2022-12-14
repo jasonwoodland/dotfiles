@@ -219,9 +219,9 @@
     source ~/.zsh/fzf.zsh
     export FZF_DEFAULT_OPTS='
       --no-bold
-      --color=fg:-1,bg:-1,hl:4
-      --color=fg+:-1,bg+:#3e4452,hl+:4
-      --color=info:-1,prompt:4,pointer:-1,input:regular
+      --color=fg:-1,bg:-1,hl:11
+      --color=fg+:-1,bg+:8,hl+:11
+      --color=info:-1,prompt:12,pointer:-1,input:regular
       --color=marker:-1,spinner:-1,header:-1,gutter:-1
     '
 
