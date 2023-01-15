@@ -128,6 +128,8 @@ require("packer").startup({
 		use 'simrat39/rust-tools.nvim'
 		use 'uga-rosa/ccc.nvim'
 
+		use 'Eandrju/cellular-automaton.nvim'
+
 		-- use({
 		-- 	"aarondiel/spread.nvim",
 		-- 	after = "nvim-treesitter",

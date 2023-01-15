@@ -24,6 +24,8 @@ ls.cleanup()
 
 ls.config.setup({
 	update_events = "TextChanged,TextChangedI",
+	region_check_events = 'InsertEnter',
+	delete_check_events = 'InsertLeave',
 })
 
 local title = function(index)
