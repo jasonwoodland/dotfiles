@@ -37,10 +37,10 @@ set fillchars+=vert:│
 set nowrap
 set whichwrap+=<,>,[,]
 
-set modeline
+set modelines=1
 set exrc
 
-set shortmess+=I
+" set shortmess+=I
 
 set backup
 set backupdir-=.
