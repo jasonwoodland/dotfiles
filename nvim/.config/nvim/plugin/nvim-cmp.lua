@@ -13,7 +13,10 @@ lspkind.init({
 
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
-require("copilot").setup()
+require("copilot").setup({
+	suggestion = { enabled = false },
+	panel = { enabled = false },
+})
 require("copilot_cmp").setup({
 	-- method = "getPanelCompletions",
 	formatters = {
@@ -34,6 +37,11 @@ local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
+local t = function(str)
+	local a = vim.api.nvim_replace_termcodes(str, true, true, true)
+	return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
 cmp.setup({
 	-- Always preselect first option
 	preselect = cmp.PreselectMode.Item,
@@ -49,10 +57,13 @@ cmp.setup({
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
-		["<CR>"] = cmp.mapping.confirm { select = false },
+		["<CR>"] = cmp.mapping.confirm {
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = false,
+		},
 		["<Right>"] = cmp.mapping.confirm { select = true },
 
-		["<Tab>"] = cmp.mapping(function(fallback)
+		["<Tab>"] = vim.schedule_wrap(function(fallback)
 			if luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
 			elseif cmp.visible() then
@@ -60,8 +71,6 @@ cmp.setup({
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
 				})
-			elseif has_words_before() then
-				cmp.complete()
 			else
 				fallback()
 			end
@@ -76,7 +85,7 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	sources = {
-		{ name = "copilot", group_index = 1 },
+		{ name = "copilot", group_index = 2 },
 		{ name = "nvim_lsp", group_index = 1 },
 		{ name = "nvim_lua", group_index = 1 },
 		{ name = "cmp_git", group_index = 1 },
