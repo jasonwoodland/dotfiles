@@ -141,7 +141,7 @@ _G.packer_plugins = {
     url = "https://github.com/zbirenbaum/copilot.lua"
   },
   ["git-conflict.nvim"] = {
-    config = { "\27LJ\2\nÚ\4\0\0\5\0\24\0:6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\f\0'\4\r\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\14\0'\4\15\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\16\0'\4\17\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\18\0'\4\19\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\20\0'\4\21\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\22\0'\4\23\0B\0\4\1K\0\1\0\31<cmd>GitConflictListQf<cr>\bgcq'<Plug>(git-conflict-next-conflict)\a]g'<Plug>(git-conflict-prev-conflict)\a[g\30<Plug>(git-conflict-none)\bgc0\30<Plug>(git-conflict-both)\bgcb <Plug>(git-conflict-theirs)\bgct\30<Plug>(git-conflict-ours)\bgco\6n\bset\vkeymap\bvim\15highlights\1\0\2\fcurrent\fDiffAdd\rincoming\rDiffText\1\0\2\24disable_diagnostics\2\21default_mappings\1\nsetup\17git-conflict\frequire\0" },
+    config = { "\27LJ\2\nÚ\4\0\0\5\0\24\0:6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\f\0'\4\r\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\14\0'\4\15\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\16\0'\4\17\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\18\0'\4\19\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\20\0'\4\21\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\22\0'\4\23\0B\0\4\1K\0\1\0\31<cmd>GitConflictListQf<cr>\bgcq'<Plug>(git-conflict-next-conflict)\a]g'<Plug>(git-conflict-prev-conflict)\a[g\30<Plug>(git-conflict-none)\bgc0\30<Plug>(git-conflict-both)\bgcb <Plug>(git-conflict-theirs)\bgct\30<Plug>(git-conflict-ours)\bgco\6n\bset\vkeymap\bvim\15highlights\1\0\2\rincoming\rDiffText\fcurrent\fDiffAdd\1\0\2\24disable_diagnostics\2\21default_mappings\1\nsetup\17git-conflict\frequire\0" },
     loaded = true,
     path = "/Users/jason/.local/share/nvim/site/pack/packer/start/git-conflict.nvim",
     url = "https://github.com/akinsho/git-conflict.nvim"
@@ -401,6 +401,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: git-conflict.nvim
+time([[Config for git-conflict.nvim]], true)
+try_loadstring("\27LJ\2\nÚ\4\0\0\5\0\24\0:6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\f\0'\4\r\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\14\0'\4\15\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\16\0'\4\17\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\18\0'\4\19\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\20\0'\4\21\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\22\0'\4\23\0B\0\4\1K\0\1\0\31<cmd>GitConflictListQf<cr>\bgcq'<Plug>(git-conflict-next-conflict)\a]g'<Plug>(git-conflict-prev-conflict)\a[g\30<Plug>(git-conflict-none)\bgc0\30<Plug>(git-conflict-both)\bgcb <Plug>(git-conflict-theirs)\bgct\30<Plug>(git-conflict-ours)\bgco\6n\bset\vkeymap\bvim\15highlights\1\0\2\rincoming\rDiffText\fcurrent\fDiffAdd\1\0\2\24disable_diagnostics\2\21default_mappings\1\nsetup\17git-conflict\frequire\0", "config", "git-conflict.nvim")
+time([[Config for git-conflict.nvim]], false)
+-- Config for: cmp-git
+time([[Config for cmp-git]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fcmp_git\frequire\0", "config", "cmp-git")
+time([[Config for cmp-git]], false)
 -- Config for: nvim-pqf.git
 time([[Config for nvim-pqf.git]], true)
 try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bpqf\frequire\0", "config", "nvim-pqf.git")
@@ -409,14 +417,6 @@ time([[Config for nvim-pqf.git]], false)
 time([[Config for go.nvim]], true)
 try_loadstring("\27LJ\2\n0\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ago\frequire\0", "config", "go.nvim")
 time([[Config for go.nvim]], false)
--- Config for: git-conflict.nvim
-time([[Config for git-conflict.nvim]], true)
-try_loadstring("\27LJ\2\nÚ\4\0\0\5\0\24\0:6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\n\0'\4\v\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\f\0'\4\r\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\14\0'\4\15\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\16\0'\4\17\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\18\0'\4\19\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\20\0'\4\21\0B\0\4\0016\0\6\0009\0\a\0009\0\b\0'\2\t\0'\3\22\0'\4\23\0B\0\4\1K\0\1\0\31<cmd>GitConflictListQf<cr>\bgcq'<Plug>(git-conflict-next-conflict)\a]g'<Plug>(git-conflict-prev-conflict)\a[g\30<Plug>(git-conflict-none)\bgc0\30<Plug>(git-conflict-both)\bgcb <Plug>(git-conflict-theirs)\bgct\30<Plug>(git-conflict-ours)\bgco\6n\bset\vkeymap\bvim\15highlights\1\0\2\fcurrent\fDiffAdd\rincoming\rDiffText\1\0\2\24disable_diagnostics\2\21default_mappings\1\nsetup\17git-conflict\frequire\0", "config", "git-conflict.nvim")
-time([[Config for git-conflict.nvim]], false)
--- Config for: cmp-git
-time([[Config for cmp-git]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fcmp_git\frequire\0", "config", "cmp-git")
-time([[Config for cmp-git]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
