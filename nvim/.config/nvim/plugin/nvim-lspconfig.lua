@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local rt = require("rust-tools")
+-- local rt = require("rust-tools")
 
 lspconfig.sourcekit.setup {}
 
@@ -37,7 +37,7 @@ local on_attach = function(server_name)
 		end, bufopts)
 		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 		vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
-		vim.keymap.set('n', '<leader>A', rt.hover_actions.hover_actions, bufopts)
+		-- vim.keymap.set('n', '<leader>A', rt.hover_actions.hover_actions, bufopts)
 		vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
 		vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, bufopts)
 
@@ -149,21 +149,21 @@ vim.lsp.handlers["textDocument/typeDefinition"] = location_handler
 vim.lsp.handlers["textDocument/implementation"] = location_handler
 vim.lsp.handlers["textDocument/references"] = location_handler
 
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.fixjson,
-		null_ls.builtins.diagnostics.eslint_d,
-		null_ls.builtins.formatting.eslint_d,
-		null_ls.builtins.formatting.prettierd,
-		null_ls.builtins.formatting.rustfmt,
-	},
-	on_attach = on_attach,
-	capabilities = capabilities
-})
+-- null_ls.setup({
+-- 	sources = {
+-- 		null_ls.builtins.formatting.fixjson,
+-- 		null_ls.builtins.diagnostics.eslint_d,
+-- 		null_ls.builtins.formatting.eslint_d,
+-- 		null_ls.builtins.formatting.prettierd,
+-- 		null_ls.builtins.formatting.rustfmt,
+-- 	},
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities
+-- })
 
-rt.setup({
-	server = {
-		on_attach = on_attach,
-		capabilities = capabilities
-	}
-})
+-- rt.setup({
+-- 	server = {
+-- 		on_attach = on_attach,
+-- 		capabilities = capabilities
+-- 	}
+-- })
