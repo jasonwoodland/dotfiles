@@ -35,9 +35,6 @@
     # Clear wordchars so all symbols break words when ^W'ing
     WORDCHARS=
 
-    # Change cursor shape for different vi modes
-    source ~/.zsh/vi-mode.zsh
-
     # j and k to move up/down lines in normal mode
     bindkey -a "j" down-line
     bindkey -a "k" up-line
@@ -139,17 +136,6 @@
 
 # }}}
 
-# Window title {{{
-
-  # Use CWD as terminal title
-  _update_terminal_title() {
-    echo -ne "\033]0;${PWD##*/}\007"
-  }
-  autoload -U add-zsh-hook
-  add-zsh-hook precmd _update_terminal_title
-
-# }}}
-
 # Environment variables {{{
 
   export GOPATH="$HOME/.go"
@@ -164,7 +150,6 @@
 
   export VISUAL=nvim
   export EDITOR=nvim
-  export MANPAGER="nvim +Man!"
   export REACT_EDITOR=none # don't open vim on development crash
   export IRCSERVER="fileputcontents.com:6697"
 
@@ -173,7 +158,6 @@
 # Aliases {{{
 
   source ~/.zsh/git-alias.zsh
-  source ~/.zsh/tmux.zsh
   source ~/.zsh/projdir.zsh
   source ~/.zsh/terraform.zsh
 
@@ -192,8 +176,6 @@
   alias t="track"
   alias ls="ls --hyperlink=auto"
   alias icat="kitty +kitten icat"
-
-  alias sum="awk '{s+=\$1} END {print s}'"
   alias beep="(afplay /System/Library/Sounds/Hero.aiff &)"
 
 # }}}
@@ -253,14 +235,6 @@
   pj_task() {
     echo $(basename `git rev-parse --show-toplevel`) $(git branch --show-current)
   }
-
-  # nvim-session {{{
-
-    vs() {
-      ts "$1" nvim
-    }
-
-  # }}}
 
 # }}}
 
