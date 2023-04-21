@@ -1,8 +1,5 @@
-set title
-set titlestring=%f
-
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-v><Esc> <Esc>
+" tnoremap <Esc> <C-\><C-n>
+" tnoremap <C-v><Esc> <Esc>
 
 augroup ToggleTerminal
   autocmd TermOpen * setlocal signcolumn=no nonumber norelativenumber scrolloff=0 display=
@@ -23,7 +20,6 @@ call Alias("tt", "TerminalTab")
 call Alias("tc", "TerminalClose")
 
 nnoremap <silent> <leader>t :<c-u>call ToggleTerminal(v:count)<CR>
-nnoremap <silent> <space>t :<c-u>call ToggleTerminal(v:count)<CR>
 
 function! ToggleTerminal(height)
   if exists('t:term_winid') && win_id2win(t:term_winid) > 0
@@ -77,7 +73,6 @@ endfunction
 nnoremap <silent> [t :call SwitchTerminal(-1)<cr>
 nnoremap <silent> ]t :call SwitchTerminal(1)<cr>
 
-
 function! TerminalJob(cmd)
   bot new +resize10
   call termopen(a:cmd, {'on_exit': 'OnExit'})
@@ -91,8 +86,8 @@ endfunction
 command! -nargs=1 -complete=shellcmd TerminalJob :call TerminalJob(<q-args>)
 command! TerminalJobClose :call TerminalJobClose()
 
-cabbrev tj TerminalJob
-cabbrev tjc TerminalJobClose
+" cabbrev tj TerminalJob
+" cabbrev tjc TerminalJobClose
 
 function! TerminalJobClose()
   exe "bd!".g:terminal_job_bufnr

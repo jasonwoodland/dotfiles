@@ -7,6 +7,7 @@ set breakindent
 set virtualedit=block
 
 set number
+set signcolumn=yes
 
 set shiftwidth=2
 set softtabstop=2
@@ -51,5 +52,8 @@ set shada+=/1000,:1000
 set clipboard=unnamed
 
 set grepprg="rg --vimgrep --no-heading --smart-case"
+
+set title
+" set titlestring=%f
 
 autocmd BufEnter * set formatoptions-=o
