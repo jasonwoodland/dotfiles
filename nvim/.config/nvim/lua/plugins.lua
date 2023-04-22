@@ -4,17 +4,17 @@ local plugins = {
     branch = 'v1.x',
     dependencies = {
       -- LSP Support
-      { 'neovim/nvim-lspconfig' }, -- Required
-      { 'williamboman/mason.nvim' }, -- Optional
+      { 'neovim/nvim-lspconfig' },             -- Required
+      { 'williamboman/mason.nvim' },           -- Optional
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' }, -- Required
-      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-      { 'hrsh7th/cmp-buffer' }, -- Optional
-      { 'hrsh7th/cmp-path' }, -- Optional
+      { 'hrsh7th/nvim-cmp' },         -- Required
+      { 'hrsh7th/cmp-nvim-lsp' },     -- Required
+      { 'hrsh7th/cmp-buffer' },       -- Optional
+      { 'hrsh7th/cmp-path' },         -- Optional
       { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-      { 'hrsh7th/cmp-nvim-lua' }, -- Optional
+      { 'hrsh7th/cmp-nvim-lua' },     -- Optional
 
       -- Snippets
       { 'L3MON4D3/LuaSnip' }, -- Required
@@ -42,9 +42,10 @@ local plugins = {
     'akinsho/git-conflict.nvim',
     config = function()
       require('git-conflict').setup({
-        default_mappings = false, -- disable buffer local mapping created by this plugin
+        default_mappings = false,   -- disable buffer local mapping created by this plugin
         disable_diagnostics = true, -- This will disable the diagnostics in a buffer whilst it is conflicted
-        highlights = { -- They must have background color, otherwise the default color will be used
+        highlights = {
+          -- They must have background color, otherwise the default color will be used
           incoming = 'DiffText',
           current = 'DiffAdd',
         }
@@ -62,7 +63,8 @@ local plugins = {
   -- { 'eandrju/cellular-automaton.nvim' },
 
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.1',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
   { "nvim-telescope/telescope-github.nvim" },
