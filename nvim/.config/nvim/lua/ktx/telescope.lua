@@ -62,7 +62,6 @@ function M.projects(opts)
   for token in string.gmatch(result, "[^%c]+") do
     table.insert(files, token)
   end
-  print(vim.inspect(files))
   pickers.new({
     prompt_title = "Projects",
     finder = finders.new_table {
