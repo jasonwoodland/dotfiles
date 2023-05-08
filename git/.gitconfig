@@ -89,10 +89,12 @@
 			issueno=\"$(git branch --show-current | grep -o '[0-9]\\+')\"; \
 			if [ \"$issueno\" ]; then \
 				gh issue view --web $issueno; \
+			else \
+				gh issue create -a @me --web -t '' -b ''; \
 			fi; \
 		fi; \
 	}; f"
-	pr = !gh pr view --web >/dev/null 2>&1 || gh pr create --web
+	pr = !gh pr view --web >/dev/null 2>&1 || gh pr create -a @me --web
 [push]
 	default = current
 [log]
