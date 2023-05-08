@@ -19,7 +19,9 @@ call Alias("vt", "TerminalVsplit")
 call Alias("tt", "TerminalTab")
 call Alias("tc", "TerminalClose")
 
-nnoremap <silent> <leader>t :<c-u>call ToggleTerminal(v:count)<CR>
+nnoremap <silent> <c-@> :<c-u>call ToggleTerminal(v:count)<CR>
+tnoremap <silent> <c-@> <c-\><c-n>:<c-u>call ToggleTerminal(v:count)<CR>
+tnoremap <silent> <c-\> <c-\><c-n>
 
 function! ToggleTerminal(height)
   if exists('t:term_winid') && win_id2win(t:term_winid) > 0
@@ -42,6 +44,7 @@ function! ToggleTerminal(height)
     exe "normal! \<c-w>J"
     let g:term_bufnr = bufnr()
     let t:term_winid = win_getid()
+    startinsert
   endif
 endfunction
 
