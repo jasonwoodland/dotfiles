@@ -8,6 +8,7 @@ augroup END
 let g:fugitive_pty = 0
 
 nnoremap <silent> <leader>g :call ToggleGit()<CR>
+nnoremap <silent> <c-/> :call ToggleGit()<CR>
 
 function! ToggleGit()
   if bufwinnr(".git//$") == -1
