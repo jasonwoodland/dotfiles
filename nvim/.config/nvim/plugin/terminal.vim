@@ -19,9 +19,11 @@ call Alias("vt", "TerminalVsplit")
 call Alias("tt", "TerminalTab")
 call Alias("tc", "TerminalClose")
 
-nnoremap <silent> <c-@> :<c-u>call ToggleTerminal(v:count)<CR>
-tnoremap <silent> <c-@> <c-\><c-n>:<c-u>call ToggleTerminal(v:count)<CR>
+nnoremap <silent> <c-bs> :<c-u>call ToggleTerminal(v:count)<CR>
+tnoremap <silent> <c-bs> <c-\><c-n>:<c-u>call ToggleTerminal(v:count)<CR>
 tnoremap <silent> <c-\> <c-\><c-n>
+tnoremap <silent> <c-pageup> <c-\><c-n><c-pageup>
+tnoremap <silent> <c-pagedown> <c-\><c-n><c-pagedown>
 
 function! ToggleTerminal(height)
   if exists('t:term_winid') && win_id2win(t:term_winid) > 0
@@ -34,6 +36,7 @@ function! ToggleTerminal(height)
       let t:term_winid = win_getid()
     else
       sp term://$SHELL
+      autocmd TermClose <buffer> execute 'bdelete! ' . expand('<abuf>')
     endif
     if a:height > 1
       exe 'res'.a:height
