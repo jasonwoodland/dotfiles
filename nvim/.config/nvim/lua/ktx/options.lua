@@ -80,6 +80,7 @@ noremap("n", "<space>f", '<cmd>lua require("telescope.builtin").find_files()<cr>
 noremap("n", "<space>g", '<cmd>lua require("telescope.builtin").live_grep()<cr>')
 noremap("n", "<space>r", '<cmd>lua require("telescope.builtin").resume()<cr>')
 noremap("n", "<space>o", '<cmd>lua require("telescope.builtin").oldfiles()<cr>')
+noremap("n", "<space>b", '<cmd>lua require("telescope.builtin").buffers()<cr>')
 noremap("n", "<space>c", '<cmd>lua require("telescope.builtin").colorscheme()<cr>')
 noremap("n", "<space>ic", '<cmd>lua require("telescope.builtin").git_commits()<cr>')
 noremap("n", "<space>ib", '<cmd>lua require("telescope.builtin").git_branches()<cr>')
@@ -90,8 +91,6 @@ noremap("n", "<space>ia", '<cmd>lua require("telescope").extensions.gh.issues({ 
 noremap("n", "<space>ip", '<cmd>lua require("telescope").extensions.gh.pull_request()<cr>')
 noremap("n", "<space>d", '<cmd>lua require("ktx.telescope").dotfiles()<cr>')
 noremap("n", "<space>p", '<cmd>lua require("ktx.telescope").projects()<cr>')
-
-noremap("n", "<space>e", "<cmd>NvimTreeToggle<cr>")
 
 noremap("n", "<leader>xx", "<cmd>TroubleToggle<cr>")
 noremap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
