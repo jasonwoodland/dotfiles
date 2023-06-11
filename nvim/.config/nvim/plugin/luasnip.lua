@@ -49,7 +49,15 @@ ls.add_snippets("javascript", {
 	s({
 		trig = "l",
 		name = "console.log",
-	}, fmt([[console.log({})]], { i(0) })),
+	}, fmt([[console.log({});]], { i(1) })),
+	s({
+		trig = "e",
+		name = "console.error",
+	}, fmt([[console.error({});]], { i(1) })),
+	s({
+		trig = "r",
+		name = "return",
+	}, fmt([[return ]], { })),
 	s({
 		trig = "us",
 		name = "useState",
