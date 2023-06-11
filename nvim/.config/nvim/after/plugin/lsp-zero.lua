@@ -9,10 +9,10 @@ lsp.preset({
   manage_nvim_cmp = true,
   suggest_lsp_servers = true,
   sign_icons = {
-    error = "",
-    warn = "",
-    hint = "",
-    info = "",
+    error = '✘',
+    warn = '▲',
+    hint = '⚑',
+    info = '»'
   },
 })
 
