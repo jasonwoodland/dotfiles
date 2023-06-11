@@ -131,13 +131,13 @@ lsp.setup_nvim_cmp({
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({ buffer = bufnr })
   -- this filter doesnt seem to work, so lets get null-ls to handle formatting on save for all lsps
-  -- lsp.buffer_autoformat(
-  --   client,
-  --   bufnr,
-  --   {
-  --     filter = function(c) return c.name ~= "tsserver" end
-  --   }
-  -- )
+  lsp.buffer_autoformat(
+    client,
+    bufnr,
+    {
+      filter = function(c) return c.name ~= "tsserver" end
+    }
+  )
 end)
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
