@@ -5,18 +5,7 @@ augroup Fugitive
 augroup END
 
 " Fix git hook output on commit (see: https://github.com/tpope/vim-fugitive/issues/1446)
-let g:fugitive_pty = 0
-
-nnoremap <silent> <leader>g :call ToggleGit()<CR>
-nnoremap <silent> <c-/> :call ToggleGit()<CR>
-
-function! ToggleGit()
-  if bufwinnr(".git//$") == -1
-    Git
-  else
-    exe "bd".bufnr(".git//$")
-  endif
-endfunction
+" let g:fugitive_pty = 0
 
 call Alias("git", "Git")
 nnoremap g<space> :Git<space>
