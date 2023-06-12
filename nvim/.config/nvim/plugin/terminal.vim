@@ -14,6 +14,10 @@ command! -nargs=? TerminalTab :<args>tabnew|term
 command! -nargs=0 TerminalClose :call CloseTerminal()
 command! -nargs=0 TerminalReset :exe 'te'|bd!#|let t:term_bufnr = bufnr('%')
 
+function! Alias(lhs, rhs)
+  exe printf('cnoreabbrev <expr> %s (getcmdtype() == ":" && getcmdline() =~ "^%s$") ? "%s" : "%s"', a:lhs, a:lhs, a:rhs, a:lhs)
+endfunction
+
 call Alias("st", "TerminalSplit")
 call Alias("vt", "TerminalVsplit")
 call Alias("tt", "TerminalTab")
