@@ -221,6 +221,15 @@
     LC_CTYPE=C tr -dc '[:print:]' < /dev/urandom | tr -d "'\"\\" | head -c${1:-32} | xargs -0 echo
   }
 
+  tgid() {
+    echo -ne ${1} | base64 | tee >(tr -d '\n' | pbcopy)
+  }
+
+  fgid() {
+    echo -ne ${1} | base64 -d; echo
+    
+  }
+
   csb() {
     clear && printf '\e[3J'
   }
