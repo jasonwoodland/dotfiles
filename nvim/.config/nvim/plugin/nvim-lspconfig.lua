@@ -1,4 +1,4 @@
--- local lspconfig = require("lspconfig")
+local lspconfig = require("lspconfig")
 -- -- local rt = require("rust-tools")
 
 -- lspconfig.sourcekit.setup {}
@@ -61,37 +61,37 @@
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
--- require("mason").setup()
--- require("mason-lspconfig").setup()
--- require("mason-lspconfig").setup_handlers({
--- 	function(server_name)
--- 		lspconfig[server_name].setup({
--- 			on_attach = on_attach(server_name),
--- 			capabilities = capabilities,
--- 			settings = {
--- 				Lua = {
--- 					diagnostics = {
--- 						globals = { "vim" }
--- 					}
--- 				},
--- 			}
--- 		})
--- 	end,
--- 	["html"] = function()
--- 		-- TODO: won't preserveNewLines
--- 		-- lspconfig.html.setup({
--- 		-- 	-- on_attach = on_attach(server_name),
--- 		-- 	-- capabilities = capabilities,
--- 		-- 	settings = {
--- 		-- 		html = {
--- 		-- 			format = {
--- 		-- 				enable = false
--- 		-- 			}
--- 		-- 		}
--- 		-- 	}
--- 		-- })
--- 	end
--- })
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("mason-lspconfig").setup_handlers({
+	function(server_name)
+		lspconfig[server_name].setup({
+			-- on_attach = on_attach(server_name),
+			-- capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" }
+					}
+				},
+			}
+		})
+	end,
+	-- ["html"] = function()
+	-- TODO: won't preserveNewLines
+	-- lspconfig.html.setup({
+	-- 	-- on_attach = on_attach(server_name),
+	-- 	-- capabilities = capabilities,
+	-- 	settings = {
+	-- 		html = {
+	-- 			format = {
+	-- 				enable = false
+	-- 			}
+	-- 		}
+	-- 	}
+	-- })
+	-- end
+})
 
 -- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
