@@ -116,6 +116,10 @@ local plugins = {
   -- { "sainnhe/everforest" },
 
   { "nvim-treesitter/nvim-treesitter" },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = { "nvim-treesitter" },
+  },
   { "JoosepAlviste/nvim-ts-context-commentstring" },
   { "Rawnly/gist.nvim" },
 }
