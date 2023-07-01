@@ -54,7 +54,7 @@
 	pl = pull
 	plr = pull --rebase
 	r = reset
-	rh = reset hard
+	rh = reset --hard
 	rhh = reset --hard HEAD
 	rb = rebase
 	rbi = rebase --interactive
