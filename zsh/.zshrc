@@ -177,6 +177,7 @@
   alias ls="ls --hyperlink=auto"
   alias icat="kitty +kitten icat"
   alias beep="(afplay /System/Library/Sounds/Hero.aiff &)"
+  alias cl="clockify-cli"
 
 # }}}
 
@@ -206,6 +207,13 @@
       --color=info:-1,prompt:12,pointer:-1,input:regular
       --color=marker:-1,spinner:-1,header:-1,gutter:-1
     '
+
+  # }}}
+
+  # clockify-cli {{{
+
+    source ~/.zsh/clockify-cli-completion.zsh
+    CL_WORKSPACE=64ab5cdc067d213321e3000c
 
   # }}}
 
