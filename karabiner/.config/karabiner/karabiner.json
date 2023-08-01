@@ -22,14 +22,9 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "spacebar",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ]
-                                    }
+                                    "key_code": "right_command"
                                 },
-                                "to": [
+                                "to_if_alone": [
                                     {
                                         "select_input_source": {
                                             "input_source_id": "^com\\.apple\\.keylayout\\.Australian$"
@@ -45,15 +40,9 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "spacebar",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control",
-                                            "left_option"
-                                        ]
-                                    }
+                                    "key_code": "right_option"
                                 },
-                                "to": [
+                                "to_if_alone": [
                                     {
                                         "select_input_source": {
                                             "input_source_id": "^com\\.apple\\.inputmethod\\.SCIM\\.ITABC$"
