@@ -17,7 +17,7 @@ vim.opt.smartcase = true
 vim.opt.wildignore = { ".DS_Store" }
 vim.opt.wildignorecase = true
 
-vim.opt.completeopt:append({ "menu", "menuone", "noselect" })
+-- vim.opt.completeopt:append({ "menu", "menuone", "noselect" })
 
 vim.opt.scrolloff = 5
 vim.opt.sidescrolloff = 5
@@ -87,10 +87,16 @@ noremap("n", "<space>ib", require("telescope.builtin").git_branches)
 noremap("n", "<space>is", require("telescope.builtin").git_status)
 noremap("n", "<space>ih", require("telescope.builtin").git_stash)
 noremap("n", "<space>ii", require("telescope").extensions.gh.issues)
-noremap("n", "<space>ia", function() require("telescope").extensions.gh.issues({ assignee="jasonwoodland" }) end)
+noremap("n", "<space>ia", function() require("telescope").extensions.gh.issues({ assignee = "jasonwoodland" }) end)
 noremap("n", "<space>ip", require("telescope").extensions.gh.pull_request)
 noremap("n", "<space>d", require("ktx.telescope").dotfiles)
 noremap("n", "<space>p", require("ktx.telescope").projects)
+noremap("n", "<space>lr", require("telescope.builtin").lsp_references)
+noremap("n", "<space>ld", require("telescope.builtin").lsp_definitions)
+noremap("n", "<space>li", require("telescope.builtin").lsp_implementations)
+noremap("n", "<space>ls", require("telescope.builtin").lsp_document_symbols)
+noremap("n", "<space>lt", require("telescope.builtin").lsp_type_definitions)
+noremap("n", "<space>lw", require("telescope.builtin").lsp_dynamic_workspace_symbols)
 
 noremap("n", "<leader>xx", "<cmd>TroubleToggle<cr>")
 noremap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
