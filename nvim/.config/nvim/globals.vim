@@ -18,13 +18,6 @@ endfunction
 
 command! -nargs=0 -bang Bdelete :call Bdelete('<bang>' == '!')
 
-" function! SynGroup()
-"     let l:s = synID(line('.'), col('.'), 1)
-"     echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-" endfun
-
-" command! -nargs=0 SynGroup :call SynGroup()
-
 cabbrev vsb vert sb
 
 autocmd BufReadPost *
