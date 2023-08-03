@@ -25,18 +25,17 @@ local plugins = {
       { 'L3MON4D3/LuaSnip' }, -- Required
     }
   },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-    },
-    -- config = function()
-    --   require("your.null-ls.config") -- require your null-ls config here (example below)
-    -- end,
-  },
-
+  -- {
+  --   "jay-babu/mason-null-ls.nvim",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   dependencies = {
+  --     "williamboman/mason.nvim",
+  --     "jose-elias-alvarez/null-ls.nvim",
+  --   },
+  --   -- config = function()
+  --   --   require("your.null-ls.config") -- require your null-ls config here (example below)
+  --   -- end,
+  -- },
   { 'jose-elias-alvarez/null-ls.nvim' },
   { 'lewis6991/gitsigns.nvim' },
   {
@@ -60,7 +59,18 @@ local plugins = {
 
   { 'jasonwoodland/vim-closer' },
   { 'michaeljsmith/vim-indent-object' },
-  { 'AndrewRadev/splitjoin.vim' },
+  -- { 'AndrewRadev/splitjoin.vim' },
+  {
+    'Wansmer/treesj',
+    keys = { 'gm', 'gJ', 'gS' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('treesj').setup({ use_default_keymaps = false })
+      vim.keymap.set('n', 'gM', require('treesj').toggle)
+      vim.keymap.set('n', 'gS', require('treesj').split)
+      vim.keymap.set('n', 'gJ', require('treesj').join)
+    end,
+  },
   { 'andymass/vim-matchup' },
   {
     'akinsho/git-conflict.nvim',
@@ -91,7 +101,7 @@ local plugins = {
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
   { "nvim-telescope/telescope-github.nvim" },
-  { "nvim-telescope/telescope-fzf-native.nvim",   build = "make" },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   { "cljoly/telescope-repo.nvim" },
 
   { 'tpope/vim-sensible' },
@@ -113,6 +123,8 @@ local plugins = {
   { 'tpope/vim-capslock' },
 
   { "morhetz/gruvbox" },
+  { "glepnir/oceanic-material" },
+  { "navarasu/onedark.nvim" },
   -- { "sainnhe/everforest" },
 
   { "nvim-treesitter/nvim-treesitter" },
@@ -122,6 +134,23 @@ local plugins = {
   },
   { "JoosepAlviste/nvim-ts-context-commentstring" },
   { "Rawnly/gist.nvim" },
+  {
+    'glacambre/firenvim',
+
+    -- Lazy load firenvim
+    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
+    cond = not not vim.g.started_by_firenvim,
+    build = function()
+      require("lazy").load({ plugins = "firenvim", wait = true })
+      vim.fn["firenvim#install"](0)
+    end
+  },
+  {
+    "weilbith/nvim-code-action-menu",
+    config = function()
+      vim.keymap.set('n', '<leader>a', '<cmd>CodeActionMenu<cr>')
+    end
+  },
 }
 
 return plugins
