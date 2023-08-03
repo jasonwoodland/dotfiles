@@ -17,7 +17,7 @@ lsp.preset({
 })
 
 -- -- (Optional) Configure lua language server for neovim
--- lsp.nvim_workspace()
+lsp.nvim_workspace()
 
 local cmp = require("cmp")
 local mapping = require("cmp.config.mapping")
@@ -39,17 +39,17 @@ require("copilot").setup({
 })
 require("copilot_cmp").setup({
   -- method = "getPanelCompletions",
-  formatters = {
-    preview = require("copilot_cmp.format").deindent,
-    insert_text = require("copilot_cmp.format").remove_existing,
-  },
+  -- formatters = {
+  --   preview = require("copilot_cmp.format").deindent,
+  --   insert_text = require("copilot_cmp.format").remove_existing,
+  -- },
 })
 
 lsp.setup_nvim_cmp({
-  preselect = cmp.PreselectMode.Item,
-  completion = {
-    completeopt = "menu,menuone,noinsert,noselect",
-  },
+  -- preselect = cmp.PreselectMode.Item,
+  -- completion = {
+  --   completeopt = "menu,menuone,noinsert,noselect",
+  -- },
   mapping = {
     ["<C-n>"] = mapping(mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }), { "i", "c" }),
     ["<C-p>"] = mapping(mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }), { "i", "c" }),
@@ -58,10 +58,10 @@ lsp.setup_nvim_cmp({
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
-    }),
+    -- ["<CR>"] = cmp.mapping.confirm({
+    --   behavior = cmp.ConfirmBehavior.Replace,
+    --   select = false,
+    -- }),
     ["<Right>"] = cmp.mapping.confirm({ select = true }),
     ["<Tab>"] = vim.schedule_wrap(function(fallback)
       if luasnip.expand_or_jumpable() then
@@ -84,15 +84,14 @@ lsp.setup_nvim_cmp({
     end, { "i", "s" }),
   },
   sources = {
-    { name = "copilot",  group_index = 2 },
-    { name = "nvim_lsp", group_index = 2 },
-    { name = "nvim_lua", group_index = 2 },
-    { name = "cmp_git",  group_index = 2 },
-    { name = "path",     group_index = 2 },
-    { name = "luasnip",  group_index = 2 },
+    { name = "copilot", },
+    { name = "nvim_lsp", },
+    { name = "nvim_lua", },
+    { name = "cmp_git", },
+    { name = "path", },
+    { name = "luasnip", },
     {
       name = "buffer",
-      group_index = 2,
       option = {
         keyword_length = 3,
         get_bufnrs = function()
@@ -123,21 +122,35 @@ lsp.setup_nvim_cmp({
       },
     }),
   },
-  experimental = {
-    ghost_text = true,
-  },
+  -- sorting = {
+  --   priority_weight = 2,
+  --   comparators = {
+  --     require("copilot_cmp.comparators").prioritize,
+
+  --     -- Below is the default comparitor list and order for nvim-cmp
+  --     cmp.config.compare.offset,
+  --     -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+  --     cmp.config.compare.exact,
+  --     cmp.config.compare.score,
+  --     cmp.config.compare.recently_used,
+  --     cmp.config.compare.locality,
+  --     cmp.config.compare.kind,
+  --     cmp.config.compare.sort_text,
+  --     cmp.config.compare.length,
+  --     cmp.config.compare.order,
+  --   },
+  -- },
+  -- experimental = {
+  --   ghost_text = true,
+  -- },
 })
 
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({ buffer = bufnr })
-  -- this filter doesnt seem to work, so lets get null-ls to handle formatting on save for all lsps
-  lsp.buffer_autoformat(
-    client,
-    bufnr,
-    {
-      filter = function(c) return c.name ~= "tsserver" end
-    }
-  )
+  -- lsp.buffer_autoformat(
+  --   client,
+  --   bufnr
+  -- )
 end)
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -157,7 +170,7 @@ null_ls.setup({
     -- null_ls.builtins.formatting.eslint_d,
     -- null_ls.builtins.formatting.prettier,
     -- null_ls.builtins.formatting.rustfmt,
-    null_ls.builtins.code_actions.gitsigns,
+    -- null_ls.builtins.code_actions.gitsigns,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
