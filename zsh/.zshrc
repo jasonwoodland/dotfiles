@@ -229,11 +229,11 @@
     LC_CTYPE=C tr -dc '[:print:]' < /dev/urandom | tr -d "'\"\\" | head -c${1:-32} | xargs -0 echo
   }
 
-  tgid() {
+  btoa() {
     echo -ne ${1} | base64 | tee >(tr -d '\n' | pbcopy)
   }
 
-  fgid() {
+  atob() {
     echo -ne ${1} | base64 -d; echo
     
   }
