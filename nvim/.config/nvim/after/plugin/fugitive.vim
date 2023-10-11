@@ -7,8 +7,11 @@ augroup END
 " Fix git hook output on commit (see: https://github.com/tpope/vim-fugitive/issues/1446)
 " let g:fugitive_pty = 0
 
+function! Alias(lhs, rhs)
+  exe printf('cnoreabbrev <expr> %s (getcmdtype() == ":" && getcmdline() =~ "^%s$") ? "%s" : "%s"', a:lhs, a:lhs, a:rhs, a:lhs)
+endfunction
+
 call Alias("git", "Git")
-nnoremap g<space> :Git<space>
 
 function! GitAliasCallback(j, d, e)
   for l in a:d
@@ -27,8 +30,8 @@ endfunction
 function! GitAliasExit(j, d, e)
   cuna gph
   cuna gpl
-  call Alias("gph", "TerminalJob git push -u origin")
-  call Alias("gpl", "TerminalJob git pull")
+  call Alias("gph", "Git! push")
+  call Alias("gpl", "Git! pull")
 endfunction
 
 call jobstart("git alias", {'on_stdout':'GitAliasCallback', 'on_exit':'GitAliasExit'})
