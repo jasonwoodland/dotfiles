@@ -601,7 +601,8 @@
                                         "key_code": "tab"
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "nop",
+                                "typeold": "basic"
                             },
                             {
                                 "conditions": [
@@ -1778,7 +1779,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "mission_control"
+                            "apple_vendor_keyboard_key_code": "mission_control"
                         }
                     ]
                 },
@@ -1798,7 +1799,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "f5"
+                            "consumer_key_code": "dictation"
                         }
                     ]
                 },
@@ -1878,7 +1879,18 @@
                 "delay_milliseconds_before_open_device": 5000
             },
             "selected": true,
-            "simple_modifications": [],
+            "simple_modifications": [
+                {
+                    "from": {
+                        "key_code": "power"
+                    },
+                    "to": [
+                        {
+                            "consumer_key_code": "al_terminal_lock_or_screensaver"
+                        }
+                    ]
+                }
+            ],
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "indicate_sticky_modifier_keys_state": true,
