@@ -39,7 +39,7 @@
                         ]
                     },
                     {
-                        "description": "Command + 1 focuses Chrome",
+                        "description": "Command + 1 focuses Firefox",
                         "manipulators": [
                             {
                                 "from": {
@@ -52,7 +52,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -aGoogle\\ Chrome"
+                                        "shell_command": "open -aFirefox"
                                     }
                                 ],
                                 "type": "basic"
