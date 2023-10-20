@@ -1,7 +1,3 @@
-function! Alias(lhs, rhs)
-  exe printf('cnoreabbrev <expr> %s (getcmdtype() == ":" && getcmdline() =~ "^%s$") ? "%s" : "%s"', a:lhs, a:lhs, a:rhs, a:lhs)
-endfunction
-
 function! Bdelete(force)
   let l:alt=@#
   enew
@@ -17,12 +13,5 @@ function! Bdelete(force)
 endfunction
 
 command! -nargs=0 -bang Bdelete :call Bdelete('<bang>' == '!')
-
 cabbrev vsb vert sb
-
-autocmd BufReadPost *
-  \ if line("'\"") >= 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
-
 cabbrev %% %:h
