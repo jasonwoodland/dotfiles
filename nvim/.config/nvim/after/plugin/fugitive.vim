@@ -30,8 +30,8 @@ endfunction
 function! GitAliasExit(j, d, e)
   cuna gph
   cuna gpl
-  call Alias("gph", "Git! push")
-  call Alias("gpl", "Git! pull")
+  call Alias("gph", "FugitiveJob git push -u origin")
+  call Alias("gpl", "FugitiveJob git pull")
 endfunction
 
 call jobstart("git alias", {'on_stdout':'GitAliasCallback', 'on_exit':'GitAliasExit'})
