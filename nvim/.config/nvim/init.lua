@@ -11,7 +11,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  dev = {
+    path = "~/ghq/github.com/jasonwoodland",
+    patterns = { "jasonwoodland" },
+    fallback = false,
+  }
+})
 
 require("ktx.globals")
 require("ktx.options")
