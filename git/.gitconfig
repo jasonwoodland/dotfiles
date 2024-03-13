@@ -1,6 +1,7 @@
 [user]
 	name = Jason Woodland
 	email = me@jasonwoodland.com
+	signingkey = F2C866EAC5CE6A74
 [core]
 	editor = nvim
 	excludesfile = /Users/jason/.gitignore_global
