@@ -56,7 +56,7 @@
 	plr = pull --rebase
 	r = reset
 	rh = reset --hard
-	rhh = reset --hard HEAD
+	rs = reset --soft
 	rb = rebase
 	rbi = rebase --interactive
 	rbc = rebase --continue
@@ -69,7 +69,8 @@
 	ref = reflog
 	repo = !gh repo view --web
 	rp = repo
-	rs = restore
+	rt = restore
+	rv = revert
 	sh = show
 	s = status
 	sh = stash
@@ -83,6 +84,7 @@
 	shb = stash branch
 	shph = stash push
 	sw = switch
+	t = tag
 	issue = "!f() {  \
 		if [ \"$1\" ]; then \
 			gh issue view --web $1; \
