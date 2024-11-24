@@ -1,0 +1,4 @@
+#macos-titlebar-style = tabs
+theme = gruvbox-dark
+mouse-hide-while-typing = true
+font-size = 11
