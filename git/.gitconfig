@@ -126,7 +126,7 @@
 [log]
 	abbrevcommit = yes
 [branch]
-	autosetupmerge = always
+	autoSetupMerge = always
 [pull]
 	default = current
 	rebase = false
