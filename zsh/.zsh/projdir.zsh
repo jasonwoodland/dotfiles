@@ -72,3 +72,5 @@ zle -N zprojdir
 compdef _projdir projdir
 bindkey '^ ' zprojdir
 bindkey -a '^ ' zprojdir
+bindkey '^\' zprojdir
+bindkey -a '^\' zprojdir
