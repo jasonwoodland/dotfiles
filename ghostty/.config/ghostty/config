@@ -1,4 +1,26 @@
-#macos-titlebar-style = tabs
-theme = gruvbox-dark
+theme = dark:gruvbox-dark,light:gruvbox-light
 mouse-hide-while-typing = true
-font-size = 11
+font-size = 12
+# native, transparent, tabs, hidden
+macos-titlebar-style = native
+# font-family = "JetBrains Mono"
+font-family = "SF Mono Medium"
+# font-family = "Berkeley Mono"
+adjust-cell-height = 5%
+font-thicken = true
+font-feature = -calt
+mouse-scroll-multiplier = 1
+adjust-cursor-thickness = 2
+adjust-box-thickness = 2
+
+macos-option-as-alt = true
+
+# macos-icon = custom-style
+# aluminum beige plastic chrome
+# macos-icon-frame = chrome
+# macos-icon-screen-color = #000000
+# macos-icon-ghost-color = #ffffff
+macos-icon = xray
+
+window-width = 80
+window-height = 24

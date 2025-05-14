@@ -1,0 +1,24 @@
+background = #f9f5d7
+foreground = #1d2021
+# selection-foreground = none
+# selection-background = #bdae93
+cursor-color = #1d2021
+cursor-text = #f9f5d7
+palette = 0=#bdae93
+palette = 1=#9d0006
+palette = 2=#79740e
+palette = 3=#b57614
+palette = 4=#076678
+palette = 5=#8f3f71
+palette = 6=#427b58
+palette = 7=#3c3836
+palette = 8=#928374
+palette = 9=#9d0006
+palette = 10=#79740e
+palette = 11=#b57614
+palette = 12=#076678
+palette = 13=#8f3f71
+palette = 14=#427b58
+palette = 15=#282828
+cursor-invert-fg-bg = true
+selection-invert-fg-bg = true
