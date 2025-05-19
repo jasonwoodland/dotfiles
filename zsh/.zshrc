@@ -161,26 +161,35 @@
 # Environment variables {{{
 
   export GOPATH="$HOME/.go"
+  export GPG_TTY=$(tty)
 
   PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
   PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
   PATH="$GOPATH/bin:$PATH"
-  PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
   PATH="$HOME/.cargo/bin:$PATH"
   PATH="$HOME/.bin:$PATH"
-  PATH="$HOME/.bun/bin:$PATH"
+  PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+  PATH="$PATH:/Users/jason/ghq/github.com/migaku-official/migaku-scripts/bin"
   export PATH
 
   export VISUAL=nvim
   export EDITOR=nvim
   export REACT_EDITOR=none # don't open vim on development crash
   export IRCSERVER="fileputcontents.com:6697"
+  export PAGER="less -FKX"
+
+  export LESS="-IRsj12 --mouse"
+
+  # export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/configs/vke-38bc9674-7581-4770-b591-b7568b680c8b.yaml"
+
+  export HOMEBREW_AUTO_UPDATE_SECS=86400 # 1 day
 
 # }}}
 
 # Aliases {{{
 
   source ~/.zsh/git-alias.zsh
+  source ~/.zsh/kubectl-alias.zsh
   source ~/.zsh/projdir.zsh
   source ~/.zsh/terraform.zsh
 
@@ -188,6 +197,9 @@
   alias vim=nvim
   alias vimdiff="nvim -d"
   alias vh="sudo vi /etc/hosts"
+  alias k='kubectl $kargs'
+  alias l='linode-cli'
+  alias so="source ~/.zshrc"
   alias pg="psql -U postgres"
   alias port="sudo port"
   alias rg="rg -i \
@@ -198,9 +210,9 @@
     --colors path:style:bold"
   alias t="track"
   alias ls="ls --hyperlink=auto"
-  alias icat="kitty +kitten icat"
-  alias beep="(afplay /System/Library/Sounds/Hero.aiff &)"
+  alias beep="(afplay /System/Library/Sounds/Submarine.aiff &)"
   alias cl="clockify-cli"
+  alias pc="proxychains4"
 
 # }}}
 
@@ -235,8 +247,8 @@
 
   # clockify-cli {{{
 
-    source ~/.zsh/clockify-cli-completion.zsh
-    CL_WORKSPACE=64ab5cdc067d213321e3000c
+    # source ~/.zsh/clockify-cli-completion.zsh
+    # CL_WORKSPACE=64ab5cdc067d213321e3000c
 
   # }}}
 
@@ -244,46 +256,81 @@
 
 # Functions {{{
 
-  rnd_alnum() {
+  function rnd_alnum() {
     LC_CTYPE=C tr -dc '[:alnum:]' < /dev/urandom | head -c${1:-32} | xargs echo
   }
 
-  rnd_print() {
+  function rnd_print() {
     LC_CTYPE=C tr -dc '[:print:]' < /dev/urandom | tr -d "'\"\\" | head -c${1:-32} | xargs -0 echo
   }
 
-  btoa() {
-    echo -ne ${1} | base64 | tee >(tr -d '\n' | pbcopy)
-  }
-
-  atob() {
-    echo -ne ${1} | base64 -d; echo
-    
-  }
-
-  csb() {
-    clear && printf '\e[3J'
-  }
-
-  sys_clean() {
+  function sys_clean() {
     rm -rf $(brew --cache)
     npm cache clean --force
     yarn cache clean
     docker system prune # -a # prune unused AND dangling
   }
 
-  pj_task() {
-    echo $(basename `git rev-parse --show-toplevel`) $(git branch --show-current)
+  # pj_task() {
+  #   echo $(basename `git rev-parse --show-toplevel`) $(git branch --show-current)
+  # }
+
+  function lc() {
+    for pattern in "$@"; do
+      for file in $pattern; do
+        if [[ -f "$file" ]]; then
+          echo "$file:"
+          echo '```'
+          cat "$file"
+          echo '```'
+          echo
+        fi
+      done
+    done
   }
 
 # }}}
 
 
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -e "/Applications/kitty.app/Contents/Resources/kitty/shell-integration/kitty.zsh"; then source "/Applications/kitty.app/Contents/Resources/kitty/shell-integration/kitty.zsh"; fi
-# END_KITTY_SHELL_INTEGRATION
-
 # pnpm
 export PNPM_HOME="/Users/jason/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 # pnpm end
+
+# bun completions
+# [ -s "/Users/jason/.bun/_bun" ] && source "/Users/jason/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+
+# . "/Users/jason/.deno/env"
+
+# gcloud completion
+source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+
+
+export CFLAGS="-I/opt/homebrew/include"
+export LDFLAGS="-L/opt/homebrew/lib"
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# fnm
+# FNM_PATH="/Users/jason/Library/Application Support/fnm"
+# if [ -d "$FNM_PATH" ]; then
+#   export PATH="/Users/jason/Library/Application Support/fnm:$PATH"
+#   eval "`fnm env`"
+# fi
+
+# eval "$(fnm env --use-on-cd --shell zsh)" > /dev/null
+
