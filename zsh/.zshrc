@@ -80,6 +80,13 @@
 
   # }}}
 
+  # screen-specific bindings {{{
+
+    # Disable XON/XOFF flow control so we can use ^S and ^Q
+    stty -ixon
+
+  # }}}
+
 # }}}
 
 # Completion {{{
