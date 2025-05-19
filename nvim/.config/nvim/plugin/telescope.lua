@@ -3,7 +3,7 @@ local actions = require("telescope.actions")
 require("telescope").setup({
   defaults = {
     file_ignore_patterns = { "%.git/", "node_modules/", "__generated__/", "\\.npm" },
-    winblend = 10,
+    winblend = 0,
     mappings = {
       i = {
         ["<C-a>"] = false,
@@ -11,7 +11,6 @@ require("telescope").setup({
         ["<esc>"] = "close",
         ["<C-i>"] = actions.cycle_previewers_next,
         ["<C-o>"] = actions.cycle_previewers_prev,
-
       },
     },
     layout_config = {
@@ -23,18 +22,23 @@ require("telescope").setup({
       hidden = true,
     },
     live_grep = {
-      hidden = true,
-      file_ignore_patterns = { 'node_modules', '.git' },
+      -- hidden = true,
       additional_args = function(opts)
-        return { "--hidden" }
-      end
+        return {
+          "--hidden",
+          "--pcre2",
+          "--max-filesize=5M",
+          -- "--glob '!*.json",
+        }
+      end,
     },
     colorscheme = {
-      enable_preview = true
-    }
+      enable_preview = true,
+    },
   },
 })
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("gh")
 require("telescope").load_extension("repo")
+-- require("telescope").load_extension('harpoon')
