@@ -12,6 +12,23 @@
 
 # }}}
 
+# Prompt integration (OSC 133) {{{
+
+  # setopt PROMPT_SUBST
+
+  PROMPT="%{$(printf '\033]133;A\007')%}$PROMPT"
+
+  preexec() {
+    # Command is starting
+    printf "\033]133;B\007"
+  }
+
+  precmd() {
+    printf "\033]133;C\007"
+  }
+
+# }}}
+
 # Key bindings {{{
 
   # Vi & emacs bindings {{{
