@@ -101,6 +101,12 @@
 
   # }}}
 
+  # $EPOCHSECONDS {{{
+
+    zmodload zsh/datetime
+
+  # }}}
+
   # Completion menu bindings {{{
 
     zmodload zsh/complist
