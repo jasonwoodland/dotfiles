@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("ktx.plugins", {
 	dev = {
-		path = "~/ghq/github.com/jasonwoodland",
+		path = "~/Developer/github.com/jasonwoodland",
 		patterns = { "jasonwoodland" },
 		fallback = false,
 	},
