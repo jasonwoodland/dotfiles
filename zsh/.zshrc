@@ -153,7 +153,13 @@
   # Expand aliases
   zstyle ':completion:*' completer _expand_alias _complete _ignored
 
-  autoload -Uz compinit && compinit
+  autoload -Uz compinit
+  if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+  else
+    compinit -C
+  fi
+
 
   # Add command to edit command in $EDITOR
   # Triggered using M-x ed <Cr>
