@@ -304,11 +304,7 @@
     docker system prune # -a # prune unused AND dangling
   }
 
-  # pj_task() {
-  #   echo $(basename `git rev-parse --show-toplevel`) $(git branch --show-current)
-  # }
-
-  function lc() {
+  function lcat() {
     for pattern in "$@"; do
       for file in $pattern; do
         if [[ -f "$file" ]]; then
