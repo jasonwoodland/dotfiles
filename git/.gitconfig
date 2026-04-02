@@ -187,3 +187,15 @@
 	verbose = true
 [gpg]
 	program = /opt/homebrew/bin/gpg
+[tag]
+	sort = -version:refname
+[maintenance]
+	auto = true
+	strategy = incremental
+[status]
+	branch = true
+[rerere]
+	enabled = true
+	autoUpdate = true
+[ghq]
+	root = ~/Developer
