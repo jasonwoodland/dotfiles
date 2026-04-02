@@ -7,17 +7,22 @@
 	excludesfile = /Users/jason/.gitignore_global
 	abbrev = 7
 	pager = diff-highlight | less
+	whitespace = trailing-space
 [color]
 	ui = true
 [format]
 	pretty = "%C(magenta)%h%C(blue)%d %C(reset)%s %C(dim white)(%an)%n        %C(green)%aD %C(dim white)(%ar)%C(reset)%n"
+[pager]
+	; log = diff-highlight | less
+	; show = diff-highlight | less
+	; diff = diff-highlight | less
 [alias]
 	alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 	a = add
 	aa = add --all
 	ap = add --patch
 	au = add --update
-	gapu = add --patch --update
+	apu = add --patch --update
 	bi = bisect
 	bl = blame
 	b = branch
