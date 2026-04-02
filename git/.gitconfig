@@ -30,8 +30,10 @@
 	bc = branch --contains
 	bd = branch -d
 	bdd = branch -D
-	bm = branch --move
-	bs = branch --show-current
+	bf = branch --force
+	bm = branch --merged
+	br = branch --move
+	bsh = branch --show-current
 	bv = branch --verbose
 	cl = clean
 	cldf = clean -df
@@ -47,6 +49,7 @@
 	cvm = commit --no-verify --message
 	co = checkout
 	cob = checkout -b
+	cobb = checkout -B
 	coo = checkout --ours
 	cot = checkout --theirs
 	cp = cherry-pick
@@ -63,12 +66,17 @@
 	lg = log --graph
 	la = log --all
 	lag = log --all --graph
+	ls = log --simplify-by-decoration
+	lgs = log --graph --simplify-by-decoration
+	las = log --all --simplify-by-decoration
+	lags = log --all --graph --simplify-by-decoration
 	m = merge
 	ma = merge --abort
 	mb = merge-base
 	mbia = merge-base --is-ancestor
 	ph = push
-	phf = push --force
+	phf = push --force-with-lease
+	phff = push --force
 	pl = pull
 	plr = pull --rebase
 	r = reset
@@ -83,13 +91,19 @@
 	rbe = rebase --edit-todo
 	rbo = rebase --onto
 	rl = reflog
-	ref = reflog
+	rem = remote
+	remv = remote --verbose
+	rema = remote add
+	remr = remote remove
+	remsh = remote show
 	repo = !gh repo view --web
 	rp = repo
 	res = restore
 	ress = restore --staged
+	rp = rev-parse
 	rv = revert
 	s = status
+	ss = status --short
 	sh = show
 	sm = submodule
 	sms = submodule sync
@@ -103,8 +117,8 @@
 	sts = stash --staged
 	stsm = stash --staged --message
 	stl = stash list
-	stw = stash show
-	stsw = stash show -p
+	stsh = stash show
+	stshp = stash show -p
 	std = stash drop
 	stp = stash pop
 	sta = stash apply
@@ -114,6 +128,12 @@
 	t = tag
 	tc = tag --contains
 	tcf = "!f() { git tag --contains $1 --sort=creatordate | head -n1; }; f"
+	w = worktree
+	wa = worktree add
+	; wa = "!f() { git show-ref --verify --quiet refs/heads/$1 && (mkdir -p .worktrees/$1 && git worktree add .worktrees/$1 $1 || rm -r .worktrees/$1); }; f"
+	wl = worktree list
+	wm = worktree move
+	wr = worktree remove
 	issue = "!f() { \
 		if [ \"$1\" ]; then \
 			gh issue view --web $1; \
@@ -126,7 +146,16 @@
 			fi; \
 		fi; \
 	}; f"
+	is = issue
 	pr = !gh pr view --web >/dev/null 2>&1 || gh pr create -a @me --web
+	trash = "!f() { \
+		git clean -n "$@" | sed -n 's/^Would remove //p' | while read -r file; do \
+			echo "Trashing: $file"; \
+			trash "$file"; \
+		done; \
+	}; f"
+	tr = trash
+	trdf = trash -df
 [push]
 	default = current
 [log]
