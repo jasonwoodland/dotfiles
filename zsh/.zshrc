@@ -320,46 +320,44 @@
 
 # }}}
 
+# {{{ pnpm
 
-# pnpm
-export PNPM_HOME="/Users/jason/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+  export PNPM_HOME="$HOME/Library/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
 
-# bun completions
-# [ -s "/Users/jason/.bun/_bun" ] && source "/Users/jason/.bun/_bun"
+# }}}
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# {{{ bun
 
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+  fpath+=("$HOME/.bun")
+  autoload -Uz _bun
+  compdef _bun bun
 
-# . "/Users/jason/.deno/env"
+# }}}
 
-# gcloud completion
-source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+# {{{ gcloud
 
+  source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
 
-export CFLAGS="-I/opt/homebrew/include"
-export LDFLAGS="-L/opt/homebrew/lib"
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# }}}
 
 
-# fnm
-# FNM_PATH="/Users/jason/Library/Application Support/fnm"
-# if [ -d "$FNM_PATH" ]; then
-#   export PATH="/Users/jason/Library/Application Support/fnm:$PATH"
-#   eval "`fnm env`"
-# fi
+# {{{ opencode
 
-# eval "$(fnm env --use-on-cd --shell zsh)" > /dev/null
+  export PATH=$HOME/.opencode/bin:$PATH
 
+# }}}
+
+# {{{ ollama
+  
+  export OLLAMA_MODELS="/Volumes/Media/.ollama/models"
+
+# }}}
+
+
+# zprof
