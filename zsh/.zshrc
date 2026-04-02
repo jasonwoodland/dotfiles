@@ -285,13 +285,6 @@
 
   # }}}
 
-  # clockify-cli {{{
-
-    # source ~/.zsh/clockify-cli-completion.zsh
-    # CL_WORKSPACE=64ab5cdc067d213321e3000c
-
-  # }}}
-
 # }}}
 
 # Functions {{{
