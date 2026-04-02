@@ -129,7 +129,8 @@
 # Completion {{{
 
   # Docker completion
-  fpath=(~/.zsh/completion $fpath)
+  fpath+=($HOME/.docker/completions)
+  fpath+=($HOME/.zsh/completion)
 
   # Nice completion menu
   zstyle ':completion:*' menu select
