@@ -1,19 +1,5 @@
 vim.keymap.set("n", "Q", "<nop>")
 
--- Mappings for when we're rolling on a mac keyboard
--- We usually use <C-PageUp>/<C-PageDown> on hhkb but it't not ergonomic on the mac
-vim.keymap.set("n", "<C-S-L>", "<C-PageUp>")
-vim.keymap.set("n", "<C-S-.>", "<C-PageDown>")
-vim.keymap.set("n", "<C-S->>", "<C-PageDown>")
-vim.keymap.set("t", "<C-S-L>", "<C-\\><C-n><C-PageUp>") -- Quick tab switching when in terminal mode
-vim.keymap.set("t", "<C-S-.>", "<C-\\><C-n><C-PageDown>")
-vim.keymap.set("t", "<C-S->>", "<C-\\><C-n><C-PageDown>")
-
-vim.keymap.set("n", "<C-S-PageUp>", "<Cmd>-1tabmove<CR>")
-vim.keymap.set("n", "<C-S-PageDown>", "<Cmd>+1tabmove<CR>")
-vim.keymap.set("t", "<C-S-PageUp>", "<Cmd>-1tabmove<CR>")
-vim.keymap.set("t", "<C-S-PageDown>", "<Cmd>+1tabmove<CR>")
-
 vim.keymap.set("o", "i/", "<cmd>normal! T/vt/<CR>", { silent = true })
 vim.keymap.set("o", "a/", "<cmd>normal! F/vf/<CR>", { silent = true })
 vim.keymap.set("x", "i/", "<cmd>normal! T/vt/<CR>", { silent = true })
@@ -54,7 +40,7 @@ end)
 
 vim.keymap.set("n", "g ", ":Git ")
 
-vim.keymap.set("n", "<leader>co", function()
+vim.keymap.set("n", "yoe", function()
 	if vim.wo.conceallevel == 0 then
 		vim.wo.conceallevel = 2
 		vim.wo.concealcursor = "nv"
@@ -63,7 +49,8 @@ vim.keymap.set("n", "<leader>co", function()
 		vim.wo.concealcursor = ""
 	end
 end, { silent = true })
-vim.keymap.set("n", "yoe", function()
+
+vim.keymap.set("n", "yok", function()
 	if vim.wo.linebreak then
 		vim.wo.linebreak = false
 		print(":setlocal nolinebreak")
