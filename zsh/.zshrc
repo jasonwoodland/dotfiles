@@ -207,6 +207,9 @@
   export GOPATH="$HOME/.go"
   export GPG_TTY=$(tty)
 
+  export CFLAGS="-I/opt/homebrew/include"
+  export LDFLAGS="-L/opt/homebrew/lib"
+
   PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
   PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
   PATH="$GOPATH/bin:$PATH"
