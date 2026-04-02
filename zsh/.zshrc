@@ -1,5 +1,7 @@
 # vim:fdm=marker
 
+# zmodload zsh/zprof
+
 # Prompt & highlighting {{{
 
   if [ $SSH_CONNECTION ]; then
