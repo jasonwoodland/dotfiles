@@ -1,1567 +1,1615 @@
 {
-  "global": { "show_in_menu_bar": false },
-  "profiles": [
-    {
-      "complex_modifications": {
-        "rules": [
-          {
-            "description": "Toggle Dark Mode",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "f1",
-                  "modifiers": {
-                    "mandatory": ["command", "shift"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "modifiers": [],
-                    "shell_command": "/usr/bin/osascript -e 'tell application \"System Events\" to tell appearance preferences to set dark mode to not dark mode'"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Bash style Emacs key bindings (rev 2)",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "w",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "delete_or_backspace",
-                    "modifiers": ["left_option"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.google\\.android\\.studio$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "u",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow",
-                    "modifiers": ["left_command", "left_shift"]
-                  },
-                  {
-                    "key_code": "delete_or_backspace",
-                    "repeat": false
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Emacs key bindings [C-x key strokes] (rev 2)",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "name": "C-x",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "c",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "q",
-                    "modifiers": ["left_command"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "C-x",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "f",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "o",
-                    "modifiers": ["left_command"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "C-x",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "key_code": "s",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "s",
-                    "modifiers": ["left_command"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "C-x",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "from": {
-                  "any": "key_code",
-                  "modifiers": { "optional": ["any"] }
-                },
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "x",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock"]
-                  }
-                },
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "C-x",
-                      "value": 1
-                    }
-                  }
-                ],
-                "to_delayed_action": {
-                  "to_if_canceled": [
+    "global": { "show_in_menu_bar": false },
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
                     {
-                      "set_variable": {
-                        "name": "C-x",
-                        "value": 0
-                      }
-                    }
-                  ],
-                  "to_if_invoked": [
+                        "description": "Toggle Dark Mode",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f1",
+                                    "modifiers": {
+                                        "mandatory": ["command", "shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "modifiers": [],
+                                        "shell_command": "/usr/bin/osascript -e 'tell application \"System Events\" to tell appearance preferences to set dark mode to not dark mode'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
                     {
-                      "set_variable": {
-                        "name": "C-x",
-                        "value": 0
-                      }
+                        "description": "Bash style Emacs key bindings (rev 2)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.google\\.android\\.studio$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "u",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["left_command", "left_shift"]
+                                    },
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "repeat": false
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Emacs key bindings [C-x key strokes] (rev 2)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "C-x",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "q",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "C-x",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "o",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "C-x",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "s",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "C-x",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "any": "key_code",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "x",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "C-x",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "C-x",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "C-x",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Emacs key bindings [option+keys] (rev 5)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["caps_lock", "shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "page_up" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["caps_lock", "shift"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["caps_lock", "shift"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_forward",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Emacs key bindings [control+keys] (rev 11)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.google\\.android\\.studio$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "option"]
+                                    }
+                                },
+                                "to": [{ "key_code": "delete_forward" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "option"]
+                                    }
+                                },
+                                "to": [{ "key_code": "delete_or_backspace" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "i",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "tab" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "keyboard_types": ["ansi", "iso"],
+                                        "type": "keyboard_type_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "open_bracket",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "keyboard_types": ["jis"],
+                                        "type": "keyboard_type_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "close_bracket",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift", "option"]
+                                    }
+                                },
+                                "to": [{ "key_code": "return_or_enter" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift", "option"]
+                                    }
+                                },
+                                "to": [{ "key_code": "left_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift", "option"]
+                                    }
+                                },
+                                "to": [{ "key_code": "right_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift", "option"]
+                                    }
+                                },
+                                "to": [{ "key_code": "down_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift", "option"]
+                                    }
+                                },
+                                "to": [{ "key_code": "up_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$",
+                                            "^org\\.gnu\\.AquamacsEmacs$",
+                                            "^org\\.gnu\\.Aquamacs$",
+                                            "^org\\.pqrs\\.unknownapp\\.conkeror$",
+                                            "^com\\.microsoft\\.rdc$",
+                                            "^com\\.microsoft\\.rdc\\.",
+                                            "^net\\.sf\\.cord$",
+                                            "^com\\.thinomenon\\.RemoteDesktopConnection$",
+                                            "^com\\.itap-mobile\\.qmote$",
+                                            "^com\\.nulana\\.remotixmac$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer$",
+                                            "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
+                                            "^com\\.teamviewer\\.TeamViewer$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.2X\\.Client\\.Mac$",
+                                            "^com\\.OpenText\\.Exceed-TurboX-Client$",
+                                            "^com\\.realvnc\\.vncviewer$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^co\\.zeit\\.hyperterm$",
+                                            "^co\\.zeit\\.hyper$",
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^com\\.mitchellh\\.ghostty$",
+                                            "^com\\.dosbox\\.dosbox$",
+                                            "^org\\.vim\\.",
+                                            "^com\\.neovide\\.neovide$",
+                                            "^com\\.qvacua\\.VimR$",
+                                            "^com\\.vmware\\.fusion$",
+                                            "^com\\.vmware\\.horizon$",
+                                            "^com\\.vmware\\.view$",
+                                            "^com\\.parallels\\.desktop$",
+                                            "^com\\.parallels\\.vm$",
+                                            "^com\\.parallels\\.desktop\\.console$",
+                                            "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+                                            "^com\\.citrix\\.XenAppViewer$",
+                                            "^com\\.vmware\\.proxyApp\\.",
+                                            "^com\\.parallels\\.winapp\\.",
+                                            "^com\\.utmapp\\.UTM$",
+                                            "^org\\.x\\.X11$",
+                                            "^com\\.apple\\.x11$",
+                                            "^org\\.macosforge\\.xquartz\\.X11$",
+                                            "^org\\.macports\\.X11$",
+                                            "^com\\.sublimetext\\.",
+                                            "^com\\.microsoft\\.VSCode$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "page_down" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.Excel$",
+                                            "^com\\.microsoft\\.Powerpoint$",
+                                            "^com\\.microsoft\\.Word$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "home" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.Excel$",
+                                            "^com\\.microsoft\\.Powerpoint$",
+                                            "^com\\.microsoft\\.Word$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "end" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.Excel$",
+                                            "^com\\.microsoft\\.Powerpoint$",
+                                            "^com\\.microsoft\\.Word$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "end",
+                                        "modifiers": ["left_shift"]
+                                    },
+                                    { "key_code": "delete_forward" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.eclipse\\.platform\\.ide$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.eclipse\\.platform\\.ide$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "shift"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "file_paths": ["dosbox"],
+                                "type": "frontmost_application_if"
+                            }
+                        ],
+                        "description": "DOSBox delete key",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    ",key_code": "delete_or_backspace",
+                                    "modifiers": { "mandatory": ["command"] }
+                                },
+                                "to": [{ "key_code": "delete_forward" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "HHKB Ctrl+PgUp/PgDn",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["control", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "page_up",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "period",
+                                    "modifiers": { "mandatory": ["control", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "page_down",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Discord",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": ["command", "control"],
+                                        "optional": []
+                                    }
+                                },
+                                "to": [{ "key_code": "f22" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": ["command", "control"],
+                                        "optional": []
+                                    }
+                                },
+                                "to": [{ "key_code": "f21" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Command + number for app switching",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "1",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open -a Finder" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "2",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open -a Safari" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "3",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open -a Messages" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "4",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open -a Mail" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "5",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open -a Calendar" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "6",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open -a Notes" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "7",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open -a Music" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "8",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open -a Xcode" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "9",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open -a Simulator" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "0",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open -a Ghostty" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "2",
+                                    "modifiers": { "mandatory": ["left_control", "shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a Google\\ Chrome" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "3",
+                                    "modifiers": { "mandatory": ["left_control", "shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a Discord" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "8",
+                                    "modifiers": { "mandatory": ["left_control", "shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a Android\\ Studio" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "9",
+                                    "modifiers": { "mandatory": ["left_control", "shift"] }
+                                },
+                                "to": [{ "shell_command": "open -a iPhone\\ Mirroring" }],
+                                "type": "basic"
+                            }
+                        ]
                     }
-                  ]
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 33,
+                        "vendor_id": 1278
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "keypad_num_lock" },
+                            "to": [{ "key_code": "fn" }]
+                        }
+                    ]
                 },
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Emacs key bindings [option+keys] (rev 5)",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "v",
-                  "modifiers": {
-                    "mandatory": ["option"],
-                    "optional": ["caps_lock", "shift"]
-                  }
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 641,
+                        "vendor_id": 1452
+                    },
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "caps_lock" },
+                            "to": [{ "key_code": "left_control" }]
+                        }
+                    ]
                 },
-                "to": [{ "key_code": "page_up" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "b",
-                  "modifiers": {
-                    "mandatory": ["option"],
-                    "optional": ["caps_lock", "shift"]
-                  }
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 834,
+                        "vendor_id": 1452
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "caps_lock" },
+                            "to": [{ "key_code": "left_control" }]
+                        }
+                    ]
                 },
-                "to": [
-                  {
-                    "key_code": "left_arrow",
-                    "modifiers": ["left_option"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "f",
-                  "modifiers": {
-                    "mandatory": ["option"],
-                    "optional": ["caps_lock", "shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": ["left_option"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "d",
-                  "modifiers": {
-                    "mandatory": ["option"],
-                    "optional": ["caps_lock"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "delete_forward",
-                    "modifiers": ["left_option"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Emacs key bindings [control+keys] (rev 11)",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.google\\.android\\.studio$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "d",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "option"]
-                  }
-                },
-                "to": [{ "key_code": "delete_forward" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "h",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "option"]
-                  }
-                },
-                "to": [{ "key_code": "delete_or_backspace" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "i",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift"]
-                  }
-                },
-                "to": [{ "key_code": "tab" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "keyboard_types": ["ansi", "iso"],
-                    "type": "keyboard_type_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "open_bracket",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock"]
-                  }
-                },
-                "to": [{ "key_code": "escape" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "keyboard_types": ["jis"],
-                    "type": "keyboard_type_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "close_bracket",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock"]
-                  }
-                },
-                "to": [{ "key_code": "escape" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift", "option"]
-                  }
-                },
-                "to": [{ "key_code": "return_or_enter" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "b",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift", "option"]
-                  }
-                },
-                "to": [{ "key_code": "left_arrow" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "f",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift", "option"]
-                  }
-                },
-                "to": [{ "key_code": "right_arrow" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "n",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift", "option"]
-                  }
-                },
-                "to": [{ "key_code": "down_arrow" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "p",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift", "option"]
-                  }
-                },
-                "to": [{ "key_code": "up_arrow" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^org\\.gnu\\.Emacs$",
-                      "^org\\.gnu\\.AquamacsEmacs$",
-                      "^org\\.gnu\\.Aquamacs$",
-                      "^org\\.pqrs\\.unknownapp\\.conkeror$",
-                      "^com\\.microsoft\\.rdc$",
-                      "^com\\.microsoft\\.rdc\\.",
-                      "^net\\.sf\\.cord$",
-                      "^com\\.thinomenon\\.RemoteDesktopConnection$",
-                      "^com\\.itap-mobile\\.qmote$",
-                      "^com\\.nulana\\.remotixmac$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer$",
-                      "^com\\.p5sys\\.jump\\.mac\\.viewer\\.",
-                      "^com\\.teamviewer\\.TeamViewer$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.2X\\.Client\\.Mac$",
-                      "^com\\.OpenText\\.Exceed-TurboX-Client$",
-                      "^com\\.realvnc\\.vncviewer$",
-                      "^com\\.citrix\\.receiver\\.icaviewer",
-                      "^com\\.apple\\.Terminal$",
-                      "^com\\.apple\\.dt\\.Xcode$",
-                      "^com\\.googlecode\\.iterm2$",
-                      "^co\\.zeit\\.hyperterm$",
-                      "^co\\.zeit\\.hyper$",
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^net\\.kovidgoyal\\.kitty$",
-                      "^com\\.mitchellh\\.ghostty$",
-                      "^com\\.dosbox\\.dosbox$",
-                      "^org\\.vim\\.",
-                      "^com\\.neovide\\.neovide$",
-                      "^com\\.qvacua\\.VimR$",
-                      "^com\\.vmware\\.fusion$",
-                      "^com\\.vmware\\.horizon$",
-                      "^com\\.vmware\\.view$",
-                      "^com\\.parallels\\.desktop$",
-                      "^com\\.parallels\\.vm$",
-                      "^com\\.parallels\\.desktop\\.console$",
-                      "^org\\.virtualbox\\.app\\.VirtualBoxVM$",
-                      "^com\\.citrix\\.XenAppViewer$",
-                      "^com\\.vmware\\.proxyApp\\.",
-                      "^com\\.parallels\\.winapp\\.",
-                      "^com\\.utmapp\\.UTM$",
-                      "^org\\.x\\.X11$",
-                      "^com\\.apple\\.x11$",
-                      "^org\\.macosforge\\.xquartz\\.X11$",
-                      "^org\\.macports\\.X11$",
-                      "^com\\.sublimetext\\.",
-                      "^com\\.microsoft\\.VSCode$"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "v",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift"]
-                  }
-                },
-                "to": [{ "key_code": "page_down" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^com\\.microsoft\\.Excel$",
-                      "^com\\.microsoft\\.Powerpoint$",
-                      "^com\\.microsoft\\.Word$"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "a",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift"]
-                  }
-                },
-                "to": [{ "key_code": "home" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^com\\.microsoft\\.Excel$",
-                      "^com\\.microsoft\\.Powerpoint$",
-                      "^com\\.microsoft\\.Word$"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "e",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift"]
-                  }
-                },
-                "to": [{ "key_code": "end" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^com\\.microsoft\\.Excel$",
-                      "^com\\.microsoft\\.Powerpoint$",
-                      "^com\\.microsoft\\.Word$"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "k",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "end",
-                    "modifiers": ["left_shift"]
-                  },
-                  { "key_code": "delete_forward" }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": ["^org\\.eclipse\\.platform\\.ide$"],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "a",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_arrow",
-                    "modifiers": ["left_command"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": ["^org\\.eclipse\\.platform\\.ide$"],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "e",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "shift"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "right_arrow",
-                    "modifiers": ["left_command"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "conditions": [
-              {
-                "file_paths": ["dosbox"],
-                "type": "frontmost_application_if"
-              }
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 34304,
+                        "vendor_id": 1452
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "caps_lock" },
+                            "to": [{ "key_code": "left_control" }]
+                        }
+                    ]
+                }
             ],
-            "description": "DOSBox delete key",
-            "manipulators": [
-              {
-                "from": {
-                  ",key_code": "delete_or_backspace",
-                  "modifiers": { "mandatory": ["command"] }
+            "fn_function_keys": [
+                {
+                    "from": { "key_code": "f3" },
+                    "to": [{ "apple_vendor_keyboard_key_code": "launchpad" }]
                 },
-                "to": [{ "key_code": "delete_forward" }],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Discord",
-            "enabled": false,
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "mandatory": ["command", "control"],
-                    "optional": []
-                  }
-                },
-                "to": [{ "key_code": "f22" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "d",
-                  "modifiers": {
-                    "mandatory": ["command", "control"],
-                    "optional": []
-                  }
-                },
-                "to": [{ "key_code": "f21" }],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Command + number for app switching",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "1",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "shell_command": "open -a Safari" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "2",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "shell_command": "open -a Ghostty" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "3",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "shell_command": "open -a Music" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "4",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "shell_command": "open -a Discord" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "5",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "shell_command": "open -a Finder" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "6",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "shell_command": "open -a Mail" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "7",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "shell_command": "open -a Anki" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "8",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "shell_command": "open -a ChatGPT" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "8",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "shell_command": "open -a Docker" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "9",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "shell_command": "open -a 12vpx" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "1",
-                  "modifiers": { "mandatory": ["left_command", "control"] }
-                },
-                "to": [{ "shell_command": "open -a Xcode" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "2",
-                  "modifiers": { "mandatory": ["left_command", "control"] }
-                },
-                "to": [{ "shell_command": "open -a Simulator" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "3",
-                  "modifiers": { "mandatory": ["left_command", "control"] }
-                },
-                "to": [{ "shell_command": "open -a Google\\ Chrome" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "4",
-                  "modifiers": { "mandatory": ["left_command", "control"] }
-                },
-                "to": [{ "shell_command": "open -a Android\\ Studio" }],
-                "type": "basic"
-              }
-            ]
-          }
-        ]
-      },
-      "devices": [
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 33,
-            "vendor_id": 1278
-          },
-          "simple_modifications": [
-            {
-              "from": { "key_code": "keypad_num_lock" },
-              "to": [{ "key_code": "fn" }]
+                {
+                    "from": { "key_code": "f6" },
+                    "to": [{ "key_code": "f16" }]
+                }
+            ],
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "power" },
+                    "to": [{ "consumer_key_code": "al_terminal_lock_or_screensaver" }]
+                }
+            ],
+            "virtual_hid_keyboard": {
+                "indicate_sticky_modifier_keys_state": false,
+                "keyboard_type_v2": "ansi"
             }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 641,
-            "vendor_id": 1452
-          },
-          "manipulate_caps_lock_led": false,
-          "simple_modifications": [
-            {
-              "from": { "key_code": "caps_lock" },
-              "to": [{ "key_code": "left_control" }]
-            }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 834,
-            "vendor_id": 1452
-          },
-          "simple_modifications": [
-            {
-              "from": { "key_code": "caps_lock" },
-              "to": [{ "key_code": "left_control" }]
-            }
-          ]
         }
-      ],
-      "fn_function_keys": [
-        {
-          "from": { "key_code": "f3" },
-          "to": [{ "apple_vendor_keyboard_key_code": "launchpad" }]
-        },
-        {
-          "from": { "key_code": "f6" },
-          "to": [{ "key_code": "f16" }]
-        }
-      ],
-      "name": "Default profile",
-      "selected": true,
-      "simple_modifications": [
-        {
-          "from": { "key_code": "power" },
-          "to": [{ "consumer_key_code": "al_terminal_lock_or_screensaver" }]
-        }
-      ],
-      "virtual_hid_keyboard": {
-        "indicate_sticky_modifier_keys_state": false,
-        "keyboard_type_v2": "ansi"
-      }
-    }
-  ]
+    ]
 }
