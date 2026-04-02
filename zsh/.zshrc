@@ -289,15 +289,15 @@
 
 # Functions {{{
 
-  function rnd_alnum() {
+  function rndalnum() {
     LC_CTYPE=C tr -dc '[:alnum:]' < /dev/urandom | head -c${1:-32} | xargs echo
   }
 
-  function rnd_print() {
+  function rndprint() {
     LC_CTYPE=C tr -dc '[:print:]' < /dev/urandom | tr -d "'\"\\\\" | head -c${1:-32} | xargs -0 echo
   }
 
-  function sys_clean() {
+  function sysclean() {
     brew cleanup --prune=all
     npm cache clean --force
     yarn cache clean
