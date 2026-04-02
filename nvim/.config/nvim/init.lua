@@ -23,6 +23,11 @@ require("lazy").setup("ktx.plugins", {
 	change_detection = {
 		notify = false,
 	},
+	checker = {
+		enabled = true,
+		notify = false,
+		frequency = 3600 * 12,
+	},
 })
 
 require("ktx.globals")
