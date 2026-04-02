@@ -222,13 +222,10 @@
 
   export VISUAL=nvim
   export EDITOR=nvim
-  export REACT_EDITOR=none # don't open vim on development crash
+  export REACT_EDITOR=none
   export IRCSERVER="fileputcontents.com:6697"
-  export PAGER="less -FKX"
-
-  export LESS="-IRsj12 --mouse"
-
-  # export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/configs/vke-38bc9674-7581-4770-b591-b7568b680c8b.yaml"
+  export PAGER="less"
+  export LESS="-Fij12sRX --mouse"
 
   export HOMEBREW_AUTO_UPDATE_SECS=86400 # 1 day
 
