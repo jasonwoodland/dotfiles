@@ -294,7 +294,7 @@
   }
 
   function rnd_print() {
-    LC_CTYPE=C tr -dc '[:print:]' < /dev/urandom | tr -d "'\"\\" | head -c${1:-32} | xargs -0 echo
+    LC_CTYPE=C tr -dc '[:print:]' < /dev/urandom | tr -d "'\"\\\\" | head -c${1:-32} | xargs -0 echo
   }
 
   function sys_clean() {
