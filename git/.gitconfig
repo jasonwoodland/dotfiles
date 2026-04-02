@@ -184,5 +184,6 @@
 	postBuffer = 524288000
 [commit]
 	gpgsign = true
+	verbose = true
 [gpg]
 	program = /opt/homebrew/bin/gpg
