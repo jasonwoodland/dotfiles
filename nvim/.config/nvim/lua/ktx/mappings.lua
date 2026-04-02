@@ -66,3 +66,18 @@ vim.keymap.set("n", "<leader>yp", function()
 	print(path)
 end, { silent = true })
 
+vim.keymap.set("v", "<leader>yp", function()
+	vim.cmd("normal! \27")
+	local path = vim.fn.expand("%")
+	local start_line = vim.fn.line("'<")
+	local end_line = vim.fn.line("'>")
+	local str
+	if start_line == end_line then
+		str = string.format("%s:%d", path, start_line)
+	else
+		str = string.format("%s:%d-%d", path, start_line, end_line)
+	end
+	vim.fn.setreg(vim.v.register, str)
+	print(str)
+end, { silent = true })
+
