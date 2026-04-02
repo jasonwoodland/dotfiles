@@ -215,8 +215,9 @@
   PATH="$GOPATH/bin:$PATH"
   PATH="$HOME/.cargo/bin:$PATH"
   PATH="$HOME/.bin:$PATH"
+  PATH="$HOME/Developer/github.com/jasonwoodland/nvs:$PATH"
   PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
-  PATH="$PATH:/Users/jason/ghq/github.com/migaku-official/migaku-scripts/bin"
+  PATH="$PATH:/opt/homebrew/share/git-core/contrib/diff-highlight"
   export PATH
 
   export VISUAL=nvim
