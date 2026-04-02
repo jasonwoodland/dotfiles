@@ -3,9 +3,9 @@
 # Prompt & highlighting {{{
 
   if [ $SSH_CONNECTION ]; then
-    PROMPT='%n@%m %1~ %# '
+    PROMPT='%n@%m:%1~ %# '
   else
-    PROMPT='%m %1~ %# '
+    PROMPT='%# '
   fi
 
   zle_highlight=( region:bg=0 )
