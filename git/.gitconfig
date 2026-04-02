@@ -163,6 +163,7 @@
 	abbrevcommit = yes
 [branch]
 	autoSetupMerge = always
+	sort = -committerdate
 [pull]
 	default = current
 	rebase = false
