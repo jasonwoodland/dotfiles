@@ -60,8 +60,9 @@ vim.keymap.set("n", "yok", function()
 	end
 end, { silent = true })
 
-vim.keymap.set("n", "<leader>yf", function()
-	local filename = vim.fn.expand("%")
-	vim.fn.setreg("*", filename)
-	print(filename)
-end, { desc = "Yank current file name to system clipboard" })
+vim.keymap.set("n", "<leader>yp", function()
+	local path = vim.fn.expand("%")
+	vim.fn.setreg(vim.v.register, path)
+	print(path)
+end, { silent = true })
+
