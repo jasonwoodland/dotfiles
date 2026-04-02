@@ -1,26 +1,36 @@
-theme = dark:gruvbox-dark,light:gruvbox-light
-mouse-hide-while-typing = true
-font-size = 12
-# native, transparent, tabs, hidden
-macos-titlebar-style = native
-# font-family = "JetBrains Mono"
-font-family = "SF Mono Medium"
-# font-family = "Berkeley Mono"
-adjust-cell-height = 5%
-font-thicken = true
-font-feature = -calt
-mouse-scroll-multiplier = 1
-adjust-cursor-thickness = 2
-adjust-box-thickness = 2
+# Font
+font-family = Ohlfs
+font-size = 15
+font-synthetic-style = false
+adjust-cell-height = 4
 
+# Cursor
+adjust-cursor-thickness = 1
+mouse-hide-while-typing = true
+
+# Theme
+theme = light:gruvbox-light,dark:gruvbox-dark
+
+# Scroll
+mouse-scroll-multiplier = 1
+
+# Window
+window-padding-x = 6
+window-padding-y = 2
+window-height = 24
+window-width = 80
+
+# Keyboard
 macos-option-as-alt = true
 
-# macos-icon = custom-style
-# aluminum beige plastic chrome
-# macos-icon-frame = chrome
-# macos-icon-screen-color = #000000
-# macos-icon-ghost-color = #ffffff
-macos-icon = xray
+# Fullscreen
+macos-non-native-fullscreen = false
 
-window-width = 80
-window-height = 24
+# Icon
+macos-icon = "custom"
+macos-custom-icon = ~/.config/ghostty/Ghostty.icns
+
+# Update
+auto-update = download
+auto-update-channel = tip
+
