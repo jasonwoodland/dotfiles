@@ -236,7 +236,7 @@
   source ~/.zsh/git-alias.zsh
   source ~/.zsh/kubectl-alias.zsh
   source ~/.zsh/projdir.zsh
-  source ~/.zsh/terraform.zsh
+  source ~/.zsh/git-worktree.zsh
 
   alias vi=nvim
   alias vim=nvim
