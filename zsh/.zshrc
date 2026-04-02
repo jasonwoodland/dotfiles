@@ -241,12 +241,9 @@
   alias vi=nvim
   alias vim=nvim
   alias vimdiff="nvim -d"
-  alias vh="sudo vi /etc/hosts"
   alias k='kubectl $kargs'
   alias l='linode-cli'
   alias so="source ~/.zshrc"
-  alias pg="psql -U postgres"
-  alias port="sudo port"
   alias rg="rg -i \
     --colors match:fg:13 \
     --colors line:none \
@@ -256,8 +253,6 @@
   alias t="track"
   alias ls="ls --hyperlink=auto"
   alias beep="(afplay /System/Library/Sounds/Submarine.aiff &)"
-  alias cl="clockify-cli"
-  alias pc="proxychains4"
 
 # }}}
 
