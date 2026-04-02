@@ -77,6 +77,9 @@
     # handle WORDCHARS properly
     bindkey "^W" vi-backward-kill-word
 
+    # For some reason `bindkey -e` sets ^U to kill-whole-line
+    bindkey "^U" backward-kill-line
+
     # Clear wordchars so all symbols break words when ^W'ing
     WORDCHARS=
 
