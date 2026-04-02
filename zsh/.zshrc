@@ -298,7 +298,7 @@
   }
 
   function sys_clean() {
-    rm -rf $(brew --cache)
+    brew cleanup --prune=all
     npm cache clean --force
     yarn cache clean
     docker system prune # -a # prune unused AND dangling
