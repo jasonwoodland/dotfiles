@@ -158,6 +158,7 @@
 	trdf = trash -df
 [push]
 	default = current
+	autoSetupRemote = true
 [log]
 	abbrevcommit = yes
 [branch]
