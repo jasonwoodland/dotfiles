@@ -12,19 +12,47 @@
 
 # }}}
 
-# Prompt integration (OSC 133) {{{
-
-  # setopt PROMPT_SUBST
+# Prompt & shell integration {{{
 
   PROMPT="%{$(printf '\033]133;A\007')%}$PROMPT"
 
   preexec() {
-    # Command is starting
+    # Shell integration - start of prompt
     printf "\033]133;B\007"
+
+    # Set window title to current command
+    print -Pn "\e]0;$1\a"
+    
+    # Store command start time and the command itself
+    _CMD_START_TIME=$EPOCHSECONDS
+    _LAST_CMD="$1"
   }
 
   precmd() {
+    local exit_code=$?
+
+    # Shell integration - start of command output
     printf "\033]133;C\007"
+
+    # Set window title to PWD
+    print -Pn "\e]0;%~\a"
+
+    # Check if we have a start time and calculate duration
+    if [[ -n $_CMD_START_TIME ]]; then
+      local elapsed=$(($EPOCHSECONDS - $_CMD_START_TIME))
+      # Send notification if command took more than 3 seconds
+      if [[ $elapsed -gt 3 ]]; then
+        sleep 0.1
+        if [[ $exit_code -eq 0 ]]; then
+          printf '\033]777;notify;Success;%s\007' "$_LAST_CMD"
+        else
+          printf '\033]777;notify;Error;%s\007' "$_LAST_CMD"
+        fi
+      fi
+      # Clear the start time
+      unset _CMD_START_TIME
+      unset _LAST_CMD
+    fi
   }
 
 # }}}
