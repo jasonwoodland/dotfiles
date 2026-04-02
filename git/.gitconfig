@@ -6,6 +6,7 @@
 	editor = nvim
 	excludesfile = /Users/jason/.gitignore_global
 	abbrev = 7
+	pager = diff-highlight | less
 [color]
 	ui = true
 [format]
