@@ -81,3 +81,20 @@ vim.keymap.set("v", "<leader>yp", function()
 	print(str)
 end, { silent = true })
 
+vim.keymap.set("n", "<D-c>", function()
+	local content = vim.fn.getreg('"')
+	vim.fn.setreg("*", content)
+	local lines = select(2, string.gsub(content, "\n", ""))
+	if string.sub(content, -1) ~= "\n" then
+		lines = lines + 1
+	end
+
+	local label = (lines == 1) and "line" or "lines"
+	print(string.format('%d %s yanked into "*', lines, label))
+end, { silent = true })
+
+vim.keymap.set("v", "<D-c>", function()
+	vim.cmd("normal! \27")
+	vim.cmd('normal! gv"*y')
+end)
+
