@@ -9,16 +9,19 @@ return {
         file_pattern = {
           ".env*",
           "*.env",
+          "*.properties",
         },
         cloak_pattern = {
           "(ID=).+",
           "(KEY=).+",
           "(PASSWORD=).+",
+          "(PWD=).+",
           "(SECRET=).+",
           "(TOKEN=).+",
           "(id=).+",
           "(key=).+",
           "(password=).+",
+          "(pwd=).+",
           "(secret=).+",
           "(token=).+",
         },
@@ -33,7 +36,7 @@ return {
         },
         replace = "%1",
       },
-    }
+    },
   },
   config = function(_, opts)
     require("cloak").setup(opts)
