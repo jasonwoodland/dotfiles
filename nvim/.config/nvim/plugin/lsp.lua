@@ -1,21 +1,11 @@
-local lsp_zero = require("lsp-zero")
+vim.lsp.config("*", {
+	capabilities = vim.lsp.protocol.make_client_capabilities(),
+})
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = {},
-	handlers = {
-		function(server_name)
-			require("lspconfig")[server_name].setup({})
-		end,
-		lua_ls = function()
-			require("lspconfig").lua_ls.setup(lsp_zero.nvim_lua_ls())
-		end,
-	},
+	ensure_installed = { "lua_ls" },
 })
-
-local lspconfig_defaults = require("lspconfig").util.default_config
-lspconfig_defaults.capabilities =
-    vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 local function configure_diagnostics()
 	vim.diagnostic.config({
@@ -67,36 +57,6 @@ local function configure_diagnostics()
 		end,
 	})
 end
-
-local lspconfig = require("lspconfig")
-
-lspconfig.ts_ls.setup({
-	on_attach = lspconfig_defaults.on_attach,
-	capabilities = lspconfig_defaults.capabilities,
-	init_options = {
-		plugins = { -- I think this was my breakthrough that made it work
-			{
-				name = "@vue/typescript-plugin",
-				location =
-				"/Users/jason/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/language-server",
-				languages = { "vue" },
-			},
-		},
-	},
-	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-})
-
-lspconfig.volar.setup({})
-
-vim.lsp.config["kotlin_language_server"] = {
-	-- Command and arguments to start the server.
-	cmd = { "kotlin-language-server -jvm-target 17" },
-}
-
-lspconfig.kotlin_language_server.setup({
-	on_attach = lspconfig_defaults.on_attach,
-	capabilities = lspconfig_defaults.capabilities,
-})
 
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
 	callback = function(args)
@@ -153,7 +113,7 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 						bufnr = args.buf,
 						id = client.id,
 						filter = function(c)
-							return c.name ~= "ts_ls"
+							return c.name ~= "ts_ls" and c.name ~= "kotlin_lsp"
 						end,
 						timeout_ms = 2000,
 					})
@@ -183,9 +143,9 @@ null_ls.setup({
 		require("none-ls.diagnostics.eslint_d"),
 		require("none-ls.formatting.eslint_d"),
 		-- python
-		null_ls.builtins.diagnostics.pylint,
-		null_ls.builtins.formatting.isort,
-		null_ls.builtins.formatting.blackd,
+		-- null_ls.builtins.diagnostics.pylint,
+		-- null_ls.builtins.formatting.isort,
+		-- null_ls.builtins.formatting.blackd,
 	},
 })
 
@@ -277,7 +237,7 @@ local function rgb_to_hex(rgb)
 	return string.format("#%02x%02x%02x", rgb[1], rgb[2], rgb[3])
 end
 
-local function setup_virtual_text()
+local function configure_virtual_text()
 	local normal = get_hl("Normal")
 	local normalBgRgb = hex_to_rgb(normal.bg)
 
@@ -305,8 +265,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	pattern = "*",
 	callback = function()
 		configure_diagnostics()
-		setup_virtual_text()
+		configure_virtual_text()
 	end,
 })
 
-setup_virtual_text()
+configure_virtual_text()

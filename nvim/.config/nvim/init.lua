@@ -5,7 +5,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out,                            "WarningMsg" },
+			{ out, "WarningMsg" },
 			{ "\nPress any key to exit..." },
 		}, true, {})
 		vim.fn.getchar()
@@ -30,6 +30,7 @@ require("lazy").setup("ktx.plugins", {
 	},
 })
 
-require("ktx.globals")
+require("ktx.keymap")
+require("ktx.command")
 require("ktx.options")
-require("ktx.mappings")
+require("ktx.snippet")
