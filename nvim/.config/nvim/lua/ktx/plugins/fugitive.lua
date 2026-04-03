@@ -14,8 +14,7 @@ return {
         vim.cmd("Git")
       end
 
-      vim.keymap.set("n", "<leader>f", Toggle_git)
-      vim.keymap.set("n", "<C-`>", Toggle_git)
+      vim.keymap.set("n", "<C-/>", Toggle_git)
     end,
   },
 }
