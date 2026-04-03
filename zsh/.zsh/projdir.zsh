@@ -1,8 +1,8 @@
 _getprojdirs() {
   declare arr="$1"
   dirs=(
-    ~/ghq/*/*/*/
-    ~/ghq/*/*/dotfiles/*/
+    ~/Developer/*/*/*/
+    ~/Developer/*/*/dotfiles/*/
   )
   dirs=("${(u)dirs[@]}") #`
   arr=$dirs

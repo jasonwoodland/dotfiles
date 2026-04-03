@@ -1,5 +1,7 @@
 alias g='git'
 
+# eval `${0:h}/git-alias`
+
 eval `git alias | awk '
 function join(array, start, end, sep,    result, i)
 {
